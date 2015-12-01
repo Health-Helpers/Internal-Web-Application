@@ -27,13 +27,13 @@ public class PatientResponsible implements Serializable {
 
 	//bi-directional many-to-one association to Responsible
 	@ManyToOne
-	@JoinColumns({@JoinColumn(name="\"responsibleId\"")
+	@JoinColumns({@JoinColumn(name="\"responsibleId\"",insertable=false,updatable=false)
 		})
 	private Responsible responsible;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
-	@JoinColumns({@JoinColumn(name="\"userId\"")
+	@JoinColumns({@JoinColumn(name="\"userId\"",insertable=false,updatable=false)
 		})
 	private User user;
 

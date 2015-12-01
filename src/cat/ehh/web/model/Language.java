@@ -27,7 +27,7 @@ public class Language implements Serializable {
 
 	//bi-directional many-to-one association to User
 	//@OneToMany(mappedBy="langid")
-	private List<User> users;
+//	private List<User> users;
 
 	public Language() {
 	}
@@ -56,15 +56,15 @@ public class Language implements Serializable {
 		this.name = name;
 	}
 
-	public List<User> getUsers() {
+	/*public List<User> getUsers() {
 		return this.users;
 	}
 
 	public void setUsers(List<User> users) {
 		this.users = users;
-	}
+	}*/
 
-	public User addUser(User user) {
+	/*public User addUser(User user) {
 		getUsers().add(user);
 		user.setLangid(BigDecimal.valueOf(this.getLanguageId()));
 
@@ -77,5 +77,5 @@ public class Language implements Serializable {
 
 		return user;
 	}
-
+*/
 }

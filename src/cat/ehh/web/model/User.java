@@ -49,6 +49,8 @@ public class User implements Serializable {
 	//bi-directional many-to-one association to Responsible
 	@OneToMany(mappedBy="user")
 	private List<Responsible> responsibles;
+	
+	
 
 	public User() {
 	}

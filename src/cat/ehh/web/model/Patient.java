@@ -28,7 +28,7 @@ public class Patient implements Serializable {
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
-	@JoinColumns({@JoinColumn(name="\"userId\"")
+	@JoinColumns({@JoinColumn(name="\"userId\"",insertable=false,updatable=false)
 	})
 	private User user;
 
