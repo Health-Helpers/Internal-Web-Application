@@ -49,7 +49,8 @@ public class User implements Serializable {
 	//bi-directional many-to-one association to Responsible
 	@OneToMany(mappedBy="user")
 	private List<Responsible> responsibles;
-	
+
+	private Language language;
 	
 
 	public User() {
@@ -192,5 +193,15 @@ public class User implements Serializable {
 
 		return responsible;
 	}
+
+	public Language getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(Language language) {
+		this.language = language;
+	}
+	
+	
 
 }

@@ -1,10 +1,10 @@
 package cat.ehh.web.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+
 
 import javax.persistence.*;
-import java.util.List;
+
 
 
 /**
@@ -29,7 +29,7 @@ public class Language implements Serializable {
 
 	//bi-directional many-to-one association to User
 	//@OneToMany(mappedBy="langid")
-//	private List<User> users;
+	//private List<User> users;
 
 	public Language() {
 	}
