@@ -8,8 +8,7 @@ import javax.persistence.PersistenceContext;
 
 public abstract class DAO<T> {
 
-	@PersistenceContext
-	protected EntityManager entityManager;
+
 	
 	public abstract T create(T entity);
 	public abstract T read(BigDecimal entityId);
