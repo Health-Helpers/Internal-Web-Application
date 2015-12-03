@@ -48,7 +48,7 @@
 
 <fieldset>
 	<legend>Formulario Alta</legend>
-	<form class="formularioAlta" action="user/add" method="POST">
+	<form class="formularioAlta" action="addUser" method="POST">
 		DNI: <input type="text" name="iddoc" /><br /> 
 		Nombre:	<input type="text" name="nombre" /><br /> 
 		Apellidos: <input type="text" name="surname" /><br /> 
