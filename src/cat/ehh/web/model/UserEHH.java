@@ -17,9 +17,8 @@ import java.util.List;
 public class UserEHH implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	 @Id
-     @GeneratedValue
-	//@SequenceGenerator(name="USER_SEQUENCE", sequenceName="USER_SEQUENCE",allocationSize=10000)
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="\"userId\"")
 	private long userId;
 
