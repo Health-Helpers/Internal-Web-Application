@@ -8,19 +8,19 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import cat.ehh.web.model.UserEHH;
+import cat.ehh.web.model.Language;
 
 @Repository
-public class UserDAO extends DAO<UserEHH> {
+public class LanguageDAO extends DAO<Language> {
 
 	@PersistenceContext(unitName = "entities")
 	protected EntityManager entityManager;
 
 	@Override
 	@Transactional
-	public UserEHH create(UserEHH entity) {
+	public Language create(Language entity) {
 		try{
-			this.entityManager.persist(entity);			
+			entityManager.persist(entity);	
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -29,24 +29,25 @@ public class UserDAO extends DAO<UserEHH> {
 
 	@Override
 	@Transactional
-	public UserEHH read(BigDecimal entityId) {
-		return entityManager.find(UserEHH.class,entityId);
+	public Language read(BigDecimal entityId) {
+		return entityManager.find(Language.class,entityId);
 	}
 
 	@Override
 	@Transactional
-	public UserEHH update(UserEHH entity) {
+	public Language update(Language entity) {
 		entityManager.merge(entity);
+		entityManager.refresh(entity);
+
 		return entity;
 	}
 
 	@Override
 	@Transactional
-	public boolean delete(UserEHH entity) {
+	public boolean delete(Language entity) {
 		entityManager.remove(entity);
 
 		return true;
 	}
 
 }
-

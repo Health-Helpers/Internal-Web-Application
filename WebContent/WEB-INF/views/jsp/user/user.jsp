@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="cat.ehh.web.model.User"%>
+<%@page import="cat.ehh.web.model.UserEHH"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -13,12 +13,10 @@
 <body>
 
 <%
-List<User> usuarios = (List<User>)session.getAttribute("usuarios");
+List<UserEHH> usuarios = (List<UserEHH>)session.getAttribute("usuarios");
 %>
 
-<c:forEach var="user" items="${usuarios}">
-	<a href="user/read?id=${user.userId}"><c:out value="${user.name}"/></a>
-</c:forEach>
+
 
 <table>
 <c:forEach var="user" items="${usuarios}">

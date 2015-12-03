@@ -30,7 +30,7 @@ public class Patient implements Serializable {
 	@ManyToOne
 	@JoinColumns({@JoinColumn(name="\"userId\"",insertable=false,updatable=false)
 	})
-	private User user;
+	private UserEHH user;
 
 	public Patient() {
 	}
@@ -67,11 +67,11 @@ public class Patient implements Serializable {
 		this.userId = userId;
 	}
 
-	public User getUser() {
+	public UserEHH getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserEHH user) {
 		this.user = user;
 	}
 

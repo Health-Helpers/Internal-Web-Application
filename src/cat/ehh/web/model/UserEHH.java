@@ -12,12 +12,14 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-public class User implements Serializable {
+@Table(name = "userehh")
+@NamedQuery(name="User.findAll", query="SELECT u FROM UserEHH u")
+public class UserEHH implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	 @Id
+     @GeneratedValue
+	//@SequenceGenerator(name="USER_SEQUENCE", sequenceName="USER_SEQUENCE",allocationSize=10000)
 	@Column(name="\"userId\"")
 	private long userId;
 
@@ -50,10 +52,11 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="user")
 	private List<Responsible> responsibles;
 
+	@Transient
 	private Language language;
-	
 
-	public User() {
+
+	public UserEHH() {
 	}
 
 	public long getUserId() {
@@ -201,7 +204,7 @@ public class User implements Serializable {
 	public void setLanguage(Language language) {
 		this.language = language;
 	}
-	
-	
+
+
 
 }

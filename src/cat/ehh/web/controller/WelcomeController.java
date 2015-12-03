@@ -11,18 +11,18 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import cat.ehh.web.model.User;
+import cat.ehh.web.model.UserEHH;
 
 
 @Controller
 public class WelcomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String redirectWelcomePage(ModelMap model,HttpServletRequest request) {
-		List<User> listadoUsuarios = new ArrayList<User>();
-		User user1 = new User();
+		List<UserEHH> listadoUsuarios = new ArrayList<UserEHH>();
+		UserEHH user1 = new UserEHH();
 		user1.setName("Usuario1");
 		user1.setUserId(1);
-		User user2 = new User();
+		UserEHH user2 = new UserEHH();
 		user2.setName("Usuario2");
 		user2.setUserId(2);
 		listadoUsuarios.add(user1);

@@ -30,7 +30,7 @@ public class Responsible implements Serializable {
 	@ManyToOne
 	@JoinColumns({@JoinColumn(name="\"userId\"",insertable=false,updatable=false)
 		})
-	private User user;
+	private UserEHH user;
 
 	public Responsible() {
 	}
@@ -73,11 +73,11 @@ public class Responsible implements Serializable {
 		return patientResponsible;
 	}
 
-	public User getUser() {
+	public UserEHH getUser() {
 		return this.user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserEHH user) {
 		this.user = user;
 	}
 
