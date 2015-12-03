@@ -35,14 +35,17 @@ public class UserController {
 	@RequestMapping(value = "user/remove", method = RequestMethod.GET)
 	public String removeUser(ModelMap model,HttpServletRequest request) {
 
-		model.addAttribute("message", "Spring 3 MVC Hello World");
+		String userId = request.getParameter("id");
+		
+		//TODO: Remove the user data from de DB
+		
 		return "hello";
 	}
 	
 	@RequestMapping(value = "user/read", method = RequestMethod.GET)
 	public String readUser(ModelMap model,HttpServletRequest request) {
-
-		model.addAttribute("message", "Spring 3 MVC Hello World");
-		return "hello";
+		String userId = request.getParameter("id");
+		//TODO: Read the user data from de DB
+		return "user/editUser";
 	}
 }
