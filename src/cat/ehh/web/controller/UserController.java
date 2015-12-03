@@ -39,7 +39,7 @@ public class UserController {
 		
 		//TODO: Remove the user data from de DB
 		
-		return "hello";
+		return "user/user";
 	}
 	
 	@RequestMapping(value = "user/read", method = RequestMethod.GET)
