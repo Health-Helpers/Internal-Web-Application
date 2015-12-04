@@ -28,9 +28,15 @@
 			</table>
 
 
-			<a href="user/add"><button class="btn btn-primary">Añadir
-					Usuario</button></a>
+
+
+
+			<form action="user/add" method="GET">
+
+				<input type="submit" class="btn btn-primary" value="Añadir Usuario" />
+			</form>
 		</div>
+
 	</div>
 </body>
 </html>
