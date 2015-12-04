@@ -28,7 +28,7 @@
 			</table>
 
 
-			<a href="/user/add"><button class="btn btn-primary">Añadir
+			<a href="user/add"><button class="btn btn-primary">Añadir
 					Usuario</button></a>
 		</div>
 	</div>
