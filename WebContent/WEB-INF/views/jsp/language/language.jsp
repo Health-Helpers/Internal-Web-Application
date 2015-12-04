@@ -51,8 +51,7 @@
 			method="GET">
 			<div class="centered">
 				<input type="submit" class="btn btn-primary" value="Añadir Idioma" />
-				<a href="/"><input type="submit" class="btn btn-primary"
-					value="Volver" /></a>
+				<a href="${pageContext.request.contextPath}"><input type="button" class="btn btn-primary" value="Volver" /></a>
 			</div>
 		</form>
 	</div>

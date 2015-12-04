@@ -9,33 +9,39 @@
 <title>Editing <%=language.getName()%></title>
 </head>
 <body>
+	<div class="wrapper">
+		<form class="form-horizontal" role="form" action="editLanguage"
+			method="post">
 
-	<form class="form-horizontal" role="form" action="editLanguage" method="post">
-	
-	<input type="hidden"  name="id" id="id" value="<%=language.getLanguageId()%>">
-					
-		<div class="form-group">
-			<label class="control-label col-sm-2" for="codigo">Código:</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="codigo" name="codigo"
-					placeholder="<%=language.getCode()%>" value="<%=language.getCode()%>">
+			<input type="hidden" name="id" id="id"
+				value="<%=language.getLanguageId()%>">
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="codigo">Código:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="codigo" name="codigo"
+						placeholder="<%=language.getCode()%>"
+						value="<%=language.getCode()%>">
+				</div>
 			</div>
-		</div>
 
-		<div class="form-group">
-			<label class="control-label col-sm-2" for="nombre">Nombre:</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="nombre" name="nombre"
-					placeholder="<%=language.getName()%>" value="<%=language.getName()%>">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="nombre">Nombre:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="nombre" name="nombre"
+						placeholder="<%=language.getName()%>"
+						value="<%=language.getName()%>">
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">Guardar Cambios</button>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Guardar
+						Cambios</button>
+					<button onclick="javascript:history.back();" type="button" class="btn btn-primary">Volver</button>
+				</div>
 			</div>
-		</div>
-	</form>
+		</form>
 
-
+	</div>
 </body>
 </html>
