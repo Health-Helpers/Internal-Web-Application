@@ -36,8 +36,8 @@
 							<td><c:out value="${language.name}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/language/read?id=${language.languageId}">Editar</a></td>
-							<td><a
-								onclick="return confirm('Está seguro?')" href="${pageContext.request.contextPath}/language/remove?id=${language.languageId}">Eliminar</a></td>
+							<td><a onclick="return confirm('Está seguro?')"
+								href="${pageContext.request.contextPath}/language/remove?id=${language.languageId}">Eliminar</a></td>
 
 						</tr>
 					</c:forEach>
@@ -51,9 +51,11 @@
 			method="GET">
 			<div class="centered">
 				<input type="submit" class="btn btn-primary" value="Añadir Idioma" />
-				<a href="${pageContext.request.contextPath}"><input type="button" class="btn btn-primary" value="Volver" /></a>
+				<a href="${pageContext.request.contextPath}"><input
+					type="button" class="btn btn-primary" value="Volver" /></a>
 			</div>
 		</form>
+
 	</div>
 </body>
 </html>

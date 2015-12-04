@@ -4,11 +4,12 @@
 </head>
 <body>
 	<div class="wrapper">
-		<a href="user"><button class="btn btn-primary">Gestionar
-				Usuarios</button></a> <a href="language"><br/><br/>
-		<button class="btn btn-primary">Gestionar
-				Idiomas</button></a>
-
+		<div class="container">
+			<a href="user"><button class="btn btn-primary">Gestionar
+					Usuarios</button></a> <a href="language"><br />
+			<br />
+				<button class="btn btn-primary">Gestionar Idiomas</button></a>
+		</div>
 	</div>
 </body>
 </html>
