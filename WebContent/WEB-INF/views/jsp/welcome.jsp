@@ -3,18 +3,12 @@
 <title>Welcome to EHH Management!</title>
 </head>
 <body>
-<form action="user" method="GET">
+	<div class="wrapper">
+		<a href="user"><button class="btn btn-primary">Gestionar
+				Usuarios</button></a> <a href="language"><br/><br/>
+		<button class="btn btn-primary">Gestionar
+				Idiomas</button></a>
 
-<input type="submit" value="Gestionar usuarios"/>
-
-</form>
-
-<form action="language" method="GET">
-
-<input type="submit" value="Gestionar idiomas"/>
-
-</form>
-
-
+	</div>
 </body>
 </html>
