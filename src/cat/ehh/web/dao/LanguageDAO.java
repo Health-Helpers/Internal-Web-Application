@@ -1,6 +1,6 @@
 package cat.ehh.web.dao;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,7 +29,7 @@ public class LanguageDAO extends DAO<Language> {
 
 	@Override
 	@Transactional
-	public Language read(BigDecimal entityId) {
+	public Language read(Long entityId) {
 		return entityManager.find(Language.class,entityId);
 	}
 
@@ -37,17 +37,24 @@ public class LanguageDAO extends DAO<Language> {
 	@Transactional
 	public Language update(Language entity) {
 		entityManager.merge(entity);
-		entityManager.refresh(entity);
-
 		return entity;
 	}
 
 	@Override
 	@Transactional
 	public boolean delete(Language entity) {
-		entityManager.remove(entity);
-
+		Language toBeRemoved = entityManager.merge(entity);
+		entityManager.remove(toBeRemoved);
 		return true;
 	}
 
+	@Transactional
+	public List<Language> findAll() {
+		
+		List<Language> llistatTots = (List<Language>)entityManager.createNamedQuery("Language.findAll").getResultList();
+		
+
+		return llistatTots;
+	}
+	
 }

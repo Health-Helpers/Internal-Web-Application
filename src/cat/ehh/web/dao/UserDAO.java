@@ -1,7 +1,5 @@
 package cat.ehh.web.dao;
 
-import java.math.BigDecimal;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -29,7 +27,7 @@ public class UserDAO extends DAO<UserEHH> {
 
 	@Override
 	@Transactional
-	public UserEHH read(BigDecimal entityId) {
+	public UserEHH read(Long entityId) {
 		return entityManager.find(UserEHH.class,entityId);
 	}
 
