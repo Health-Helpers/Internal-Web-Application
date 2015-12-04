@@ -57,7 +57,7 @@ public class UserController {
 	@RequestMapping(value = "user/remove", method = RequestMethod.GET)
 	public String removeUser(ModelMap model,HttpServletRequest request) {
 
-		String userId = request.getParameter("id");
+//		String userId = request.getParameter("id");
 
 		//TODO: Remove the user data from de DB
 
@@ -66,7 +66,7 @@ public class UserController {
 
 	@RequestMapping(value = "user/read", method = RequestMethod.GET)
 	public String readUser(ModelMap model,HttpServletRequest request) {
-		String userId = request.getParameter("id");
+		//String userId = request.getParameter("id");
 		//TODO: Read the user data from de DB
 		return "user/editUser";
 	}
