@@ -24,8 +24,8 @@
 						<th>ID</th>
 						<th>Código</th>
 						<th>Nombre</th>
-						<th></th>
-						<th></th>
+						<th><span class="glyphicon glyphicon-pencil"></span></th>
+						<th><span class="glyphicon glyphicon-trash"></span></th>
 					</tr>
 				</thead>
 				<tbody>
