@@ -1,9 +1,13 @@
 package cat.ehh.web.controller;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,11 +20,14 @@ import cat.ehh.web.model.Language;
 @Controller
 public class LanguageController {
 
+	
+
+	
 	@Autowired
 	LanguageDAO langDao;
 
 	@RequestMapping(value = "language/editLanguage", method = RequestMethod.POST)
-	public String editLanguage(ModelMap model,HttpServletRequest request) {
+	public void editLanguage(ModelMap model,HttpServletRequest request,HttpServletResponse response) {
 		String idStr = (String)request.getParameter("id");
 		String codigo = (String)request.getParameter("codigo");
 		String nombre = (String)request.getParameter("nombre");
@@ -35,7 +42,12 @@ public class LanguageController {
 
 		request.getSession().setAttribute("languages", listadoTotal);
 
-		return "language/language";
+
+		try {
+			response.sendRedirect(request.getContextPath()+"/language");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@RequestMapping(value = "language/add", method = RequestMethod.GET)
@@ -44,7 +56,7 @@ public class LanguageController {
 	}
 
 	@RequestMapping(value = "language/addLanguage", method = RequestMethod.POST)
-	public String addLanguage(ModelMap model,HttpServletRequest request) {
+	public void addLanguage(ModelMap model,HttpServletRequest request,HttpServletResponse response) {
 
 		String codigo = (String)request.getParameter("codigo");
 		String nombre = (String)request.getParameter("nombre");
@@ -59,21 +71,26 @@ public class LanguageController {
 
 		request.getSession().setAttribute("languages", listadoTotal);
 
-		return "language/language";
+		try {
+			response.sendRedirect(request.getContextPath()+"/language");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	@RequestMapping(value = "language/remove", method = RequestMethod.GET)
-	public String removeLanguage(ModelMap model,HttpServletRequest request) {
+	public void removeLanguage(ModelMap model,HttpServletRequest request,HttpServletResponse response) {
 
 		String langId = request.getParameter("id");
 		Language lang = langDao.read(new Long(langId));
 		langDao.delete(lang);
 		
-		List<Language> listadoTotal = langDao.findAll();
-
-		request.getSession().setAttribute("languages", listadoTotal);
-
-		return "language/language";
+		try {
+			response.sendRedirect(request.getContextPath()+"/language");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@RequestMapping(value = "language/read", method = RequestMethod.GET)

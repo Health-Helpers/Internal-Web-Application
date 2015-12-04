@@ -50,7 +50,7 @@ public class EntityManagerConfiguration {
 
     @Bean
     public DataSource dataSource() throws Exception {
-        return (DataSource)  new InitialContext().lookup("java:jboss/PostgresXA");
+        return (DataSource)  new InitialContext().lookup("java:jboss/EHHDS");
     }
 
     @Bean

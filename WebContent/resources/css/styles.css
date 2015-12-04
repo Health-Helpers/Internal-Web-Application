@@ -1,6 +1,15 @@
-
-form.formularioAlta input{
-	 padding: 5px;
-	margin: 10px;
+.wrapper{
+    margin-top: 5%;
+        margin-bottom: 5%;
 }
 
+.centered {
+	margin: auto;
+	width: 60%;
+	padding: 10px;
+}
+
+form.formularioAlta input {
+	padding: 5px;
+	margin: 10px;
+}
