@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="cat.ehh.web.model.UserEHH"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 
 <jsp:include page="../header.jsp"></jsp:include>
 

@@ -1,4 +1,6 @@
 <%@page import="cat.ehh.web.model.Language"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+
 <jsp:include page="../header.jsp"></jsp:include>
 
 
@@ -6,7 +8,7 @@
 	Language language = (Language) request.getSession().getAttribute("language");
 %>
 
-<title>Editing <%=language.getName()%></title>
+<title><spring:message code="label.editing" /> <%=language.getName()%></title>
 </head>
 <body>
 	<div class="wrapper">
@@ -17,7 +19,7 @@
 				value="<%=language.getLanguageId()%>">
 
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="codigo">Código:</label>
+				<label class="control-label col-sm-1" for="codigo"><spring:message code="label.code" />:</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control" id="codigo" name="codigo"
 						placeholder="<%=language.getCode()%>"
@@ -26,7 +28,7 @@
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="nombre">Nombre:</label>
+				<label class="control-label col-sm-1" for="nombre"><spring:message code="label.name" />:</label>
 				<div class="col-sm-2">
 					<input type="text" class="form-control" id="nombre" name="nombre"
 						placeholder="<%=language.getName()%>"
@@ -35,9 +37,8 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-1 col-sm-3">
-					<button type="submit" class="btn btn-primary">Guardar
-						Cambios</button>
-					<button onclick="javascript:history.back();" type="button" class="btn btn-primary">Volver</button>
+					<button type="submit" class="btn btn-primary"><spring:message code="label.saveChanges" /></button>
+					<button onclick="javascript:history.back();" type="button" class="btn btn-primary"><spring:message code="label.return" /></button>
 				</div>
 			</div>
 		</form>

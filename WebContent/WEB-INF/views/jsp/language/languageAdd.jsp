@@ -1,8 +1,10 @@
 <%@page import="cat.ehh.web.model.Language"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+
 <jsp:include page="../header.jsp"></jsp:include>
 
 
-<title>Nuevo idioma</title>
+<title><spring:message code="label.newLang" /></title>
 </head>
 <body>
 	<div class="wrapper">
@@ -12,25 +14,25 @@
 
 
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="codigo">Código:</label>
+				<label class="control-label col-sm-2" for="codigo"><spring:message code="label.code" />:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="codigo" name="codigo"
-						placeholder="Código">
+						placeholder="<spring:message code="label.code" />">
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="nombre">Nombre:</label>
+				<label class="control-label col-sm-2" for="nombre"><spring:message code="label.name" />:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="nombre" name="nombre"
-						placeholder="Nombre">
+						placeholder="<spring:message code="label.name" />">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-primary">Guardar</button>
+					<button type="submit" class="btn btn-primary"><spring:message code="label.save" /></button>
 					<button onclick="javascript:history.back();" type="button"
-						class="btn btn-primary">Volver</button>
+						class="btn btn-primary"><spring:message code="label.return" /></button>
 				</div>
 			</div>
 		</form>
