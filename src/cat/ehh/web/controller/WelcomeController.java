@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import cat.ehh.web.dao.LanguageDAO;
+import cat.ehh.web.dao.UserDAO;
 import cat.ehh.web.model.Language;
 import cat.ehh.web.model.UserEHH;
 
@@ -23,6 +24,10 @@ public class WelcomeController {
 	@Autowired
 	LanguageDAO langDao;
 	
+	@Autowired
+	UserDAO userDao;
+	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String redirectWelcomePage(ModelMap model,HttpServletRequest request) {
 		return "welcome";
@@ -30,16 +35,8 @@ public class WelcomeController {
 	
 	@RequestMapping(value = "user", method = RequestMethod.GET)
 	public String manageUsers(ModelMap model,HttpServletRequest request) {
-		//TODO: S'ha d'agafar el llistat de BD
-		List<UserEHH> listadoUsuarios = new ArrayList<UserEHH>();
-		UserEHH user1 = new UserEHH();
-		user1.setName("Usuario1");
-		user1.setUserId(1);
-		UserEHH user2 = new UserEHH();
-		user2.setName("Usuario2");
-		user2.setUserId(2);
-		listadoUsuarios.add(user1);
-		listadoUsuarios.add(user2);
+
+		List<UserEHH> listadoUsuarios = userDao.findAll();
 		
 		request.getSession().setAttribute("usuarios", listadoUsuarios);
 		
