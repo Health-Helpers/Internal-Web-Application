@@ -37,7 +37,7 @@
 							<td><a
 								href="${pageContext.request.contextPath}/language/read?id=${language.languageId}">Editar</a></td>
 							<td><a
-								href="${pageContext.request.contextPath}/language/remove?id=${language.languageId}">Eliminar</a></td>
+								onclick="return confirm('Está seguro?')" href="${pageContext.request.contextPath}/language/remove?id=${language.languageId}">Eliminar</a></td>
 
 						</tr>
 					</c:forEach>
