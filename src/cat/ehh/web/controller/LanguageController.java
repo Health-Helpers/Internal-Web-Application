@@ -1,12 +1,9 @@
 package cat.ehh.web.controller;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.logging.Logger;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,32 +17,29 @@ import cat.ehh.web.model.Language;
 @Controller
 public class LanguageController {
 
-	
 
-	
+	Logger log = LoggerFactory.getLogger(LanguageController.class);
+
 	@Autowired
 	LanguageDAO langDao;
 
 	@RequestMapping(value = "language/editLanguage", method = RequestMethod.POST)
 	public void editLanguage(ModelMap model,HttpServletRequest request,HttpServletResponse response) {
-		String idStr = (String)request.getParameter("id");
-		String codigo = (String)request.getParameter("codigo");
-		String nombre = (String)request.getParameter("nombre");
-
-		Language lang = langDao.read(new Long(idStr));
-		lang.setCode(codigo);
-		lang.setName(nombre);
-
-		lang = langDao.update(lang);
-
-		List<Language> listadoTotal = langDao.findAll();
-
-		request.getSession().setAttribute("languages", listadoTotal);
-
-
 		try {
+			String idStr = (String)request.getParameter("id");
+			String codigo = (String)request.getParameter("codigo");
+			String nombre = (String)request.getParameter("nombre");
+
+			Language lang = langDao.read(new Long(idStr));
+			lang.setCode(codigo);
+			lang.setName(nombre);
+
+			lang = langDao.update(lang);
+
+
 			response.sendRedirect(request.getContextPath()+"/language");
-		} catch (IOException e) {
+		} catch (Exception e) {
+			log.error(e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -57,23 +51,19 @@ public class LanguageController {
 
 	@RequestMapping(value = "language/addLanguage", method = RequestMethod.POST)
 	public void addLanguage(ModelMap model,HttpServletRequest request,HttpServletResponse response) {
-
-		String codigo = (String)request.getParameter("codigo");
-		String nombre = (String)request.getParameter("nombre");
-
-		Language lang = new Language();
-		lang.setCode(codigo);
-		lang.setName(nombre);
-
-		langDao.create(lang);
-
-		List<Language> listadoTotal = langDao.findAll();
-
-		request.getSession().setAttribute("languages", listadoTotal);
-
 		try {
+			String codigo = (String)request.getParameter("codigo");
+			String nombre = (String)request.getParameter("nombre");
+
+			Language lang = new Language();
+			lang.setCode(codigo);
+			lang.setName(nombre);
+
+			langDao.create(lang);
+
 			response.sendRedirect(request.getContextPath()+"/language");
-		} catch (IOException e) {
+		} catch (Exception e) {
+			log.error(e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -81,14 +71,14 @@ public class LanguageController {
 
 	@RequestMapping(value = "language/remove", method = RequestMethod.GET)
 	public void removeLanguage(ModelMap model,HttpServletRequest request,HttpServletResponse response) {
-
-		String langId = request.getParameter("id");
-		Language lang = langDao.read(new Long(langId));
-		langDao.delete(lang);
-		
 		try {
+			String langId = request.getParameter("id");
+			Language lang = langDao.read(new Long(langId));
+			langDao.delete(lang);
+
 			response.sendRedirect(request.getContextPath()+"/language");
-		} catch (IOException e) {
+		} catch (Exception e) {
+			log.error(e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -96,13 +86,16 @@ public class LanguageController {
 	@RequestMapping(value = "language/read", method = RequestMethod.GET)
 	public String readLanguage(ModelMap model,HttpServletRequest request) {
 
+		try{
+			String langId = request.getParameter("id");
 
-		String langId = request.getParameter("id");
+			Language lang = langDao.read(new Long(langId));
 
-		Language lang = langDao.read(new Long(langId));
+			request.getSession().setAttribute("language", lang);
 
-		request.getSession().setAttribute("language", lang);
-
+		}catch(Exception e){
+			log.error(e.getMessage());
+		}
 		return "language/languageEdit";
 	}
 }
