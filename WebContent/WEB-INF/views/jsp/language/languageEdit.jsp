@@ -23,7 +23,7 @@
 				<div class="col-sm-1">
 					<input type="text" class="form-control" id="codigo" name="codigo"
 						placeholder="<%=language.getCode()%>"
-						value="<%=language.getCode()%>">
+						value="<%=language.getCode()%>" required pattern="[A-Za-z]{2}_[A-Za-z]{2}" title="<spring:message code="label.localePattern" />"/>
 				</div>
 			</div>
 
@@ -32,7 +32,7 @@
 				<div class="col-sm-2">
 					<input type="text" class="form-control" id="nombre" name="nombre"
 						placeholder="<%=language.getName()%>"
-						value="<%=language.getName()%>">
+						value="<%=language.getName()%>" required />
 				</div>
 			</div>
 			<div class="form-group">

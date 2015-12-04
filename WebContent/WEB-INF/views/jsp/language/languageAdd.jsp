@@ -15,17 +15,17 @@
 
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="codigo"><spring:message code="label.code" />:</label>
-				<div class="col-sm-10">
+				<div class="col-sm-1">
 					<input type="text" class="form-control" id="codigo" name="codigo"
-						placeholder="<spring:message code="label.code" />">
+						placeholder="<spring:message code="label.code" />" required pattern="[A-Za-z]{2}_[A-Za-z]{2}" title="<spring:message code="label.localePattern" />"/>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="nombre"><spring:message code="label.name" />:</label>
-				<div class="col-sm-10">
+				<div class="col-sm-2">
 					<input type="text" class="form-control" id="nombre" name="nombre"
-						placeholder="<spring:message code="label.name" />">
+						placeholder="<spring:message code="label.name"  />" required />
 				</div>
 			</div>
 			<div class="form-group">
