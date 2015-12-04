@@ -34,6 +34,7 @@
 			<form action="user/add" method="GET">
 
 				<input type="submit" class="btn btn-primary" value="Añadir Usuario" />
+					<a href="${pageContext.request.contextPath}"><input type="button" class="btn btn-primary" value="Volver" /></a>
 			</form>
 		</div>
 
