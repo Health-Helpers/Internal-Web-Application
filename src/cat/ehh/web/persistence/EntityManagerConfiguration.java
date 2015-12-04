@@ -37,12 +37,14 @@ public class EntityManagerConfiguration {
     @Bean
     public Properties jpaProperties() {
         Properties props = new Properties();
-        props.setProperty("eclipselink.ddl-generation", "create-tables");
+        props.setProperty("eclipselink.ddl-generation", "drop-and-create-tables");
         props.setProperty("eclipselink.weaving", "false");
         props.setProperty("eclipselink.logging.level", "FINEST");
         props.setProperty("eclipselink.logging.parameters", "true");
         props.setProperty("eclipselink.target-server", "JBoss");
-        props.setProperty("eclipselink.ddl-generation.output-mode","both");
+        props.setProperty("eclipselink.ddl-generation.output-mode","sql-script");
+        props.setProperty("eclipselink.create-ddl-jdbc-file-name", "createDDL_ddlGeneration.jdbc");
+        props.setProperty("eclipselink.drop-ddl-jdbc-file-name", "dropDDL_ddlGeneration.jdbc");
         return props;
     }
 
