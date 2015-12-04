@@ -25,6 +25,12 @@ public class WelcomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String redirectWelcomePage(ModelMap model,HttpServletRequest request) {
+		return "welcome";
+	}
+	
+	@RequestMapping(value = "user", method = RequestMethod.GET)
+	public String manageUsers(ModelMap model,HttpServletRequest request) {
+		//TODO: S'ha d'agafar el llistat de BD
 		List<UserEHH> listadoUsuarios = new ArrayList<UserEHH>();
 		UserEHH user1 = new UserEHH();
 		user1.setName("Usuario1");
@@ -37,11 +43,6 @@ public class WelcomeController {
 		
 		request.getSession().setAttribute("usuarios", listadoUsuarios);
 		
-		return "welcome";
-	}
-	
-	@RequestMapping(value = "user", method = RequestMethod.GET)
-	public String manageUsers(ModelMap model) {
 		return "user/user";
 	}
 	
