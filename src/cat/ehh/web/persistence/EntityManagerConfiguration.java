@@ -2,9 +2,7 @@ package cat.ehh.web.persistence;
 
 import java.util.Properties;
 
-import javax.naming.InitialContext;
 import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +24,7 @@ public class EntityManagerConfiguration {
     public EntityManagerFactory entities() throws Exception {
         LocalContainerEntityManagerFactoryBean theEntityManager = new LocalContainerEntityManagerFactoryBean();
         theEntityManager.setPackagesToScan(UserEHH.class.getPackage().getName());
-        theEntityManager.setJtaDataSource(dataSource());
+       // theEntityManager.setJtaDataSource(dataSource());
         theEntityManager.setPersistenceUnitName("EHHWebPersistenceUnit");
         theEntityManager.setJpaVendorAdapter(jpaVendorAdapter());
         theEntityManager.setJpaProperties(jpaProperties());
@@ -48,10 +46,10 @@ public class EntityManagerConfiguration {
         return props;
     }
 
-    @Bean
-    public DataSource dataSource() throws Exception {
-        return (DataSource)  new InitialContext().lookup("java:jboss/EHHDS");
-    }
+//    @Bean
+//    public DataSource dataSource() throws Exception {
+//        return (DataSource)  new InitialContext().lookup("java:jboss/PostgresXA");
+//    }
 
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
