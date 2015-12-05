@@ -13,6 +13,8 @@
 
 
 <title><spring:message code="label.langMng" /></title>
+
+
 </head>
 <body>
 
@@ -42,7 +44,8 @@
 								href="${pageContext.request.contextPath}/language/read?id=${language.languageId}"><spring:message
 										code="label.editar" /></a></td>
 							<td><a
-								onclick="return confirm('<spring:message code="label.sure" />')"
+								onclick="return confirmDeletion('<spring:message
+									code="label.sure" />');"
 								href="${pageContext.request.contextPath}/language/remove?id=${language.languageId}"><spring:message
 										code="label.eliminar" /></a></td>
 
