@@ -1,8 +1,12 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <jsp:include page="../header.jsp"></jsp:include>
+
+<%
+	if (session.getAttribute("username") != null && !session.getAttribute("username").equals("")) {
+%>
 
 <%@page import="cat.ehh.web.model.Language"%>
 <%@page import="java.util.List"%>
@@ -17,7 +21,7 @@
 	%>
 
 	<div class="wrapper">
-		<div class="container">
+		<div class="container-fluid">
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -35,9 +39,12 @@
 							<td><c:out value="${language.code}" /></td>
 							<td><c:out value="${language.name}" /></td>
 							<td><a
-								href="${pageContext.request.contextPath}/language/read?id=${language.languageId}"><spring:message code="label.editar" /></a></td>
-							<td><a onclick="return confirm('<spring:message code="label.sure" />')"
-								href="${pageContext.request.contextPath}/language/remove?id=${language.languageId}"><spring:message code="label.eliminar" /></a></td>
+								href="${pageContext.request.contextPath}/language/read?id=${language.languageId}"><spring:message
+										code="label.editar" /></a></td>
+							<td><a
+								onclick="return confirm('<spring:message code="label.sure" />')"
+								href="${pageContext.request.contextPath}/language/remove?id=${language.languageId}"><spring:message
+										code="label.eliminar" /></a></td>
 
 						</tr>
 					</c:forEach>
@@ -50,12 +57,22 @@
 		<form action="${pageContext.request.contextPath}/language/add"
 			method="GET">
 			<div class="centered">
-				<input type="submit" class="btn btn-primary" value="<spring:message code="label.addLang" />" />
-				<a href="${pageContext.request.contextPath}"><input
-					type="button" class="btn btn-primary" value="<spring:message code="label.return" />" /></a>
+				<input type="submit" class="btn btn-primary"
+					value="<spring:message code="label.addLang" />" /> <a
+					href="${pageContext.request.contextPath}"><input type="button"
+					class="btn btn-primary"
+					value="<spring:message code="label.return" />" /></a>
 			</div>
 		</form>
 
 	</div>
 </body>
 </html>
+
+<%
+	} else {
+%>
+<jsp:include page="../notLogged.jsp"></jsp:include>
+<%
+	}
+%>

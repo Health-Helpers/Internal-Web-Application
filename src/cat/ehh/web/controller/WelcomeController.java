@@ -1,6 +1,6 @@
 package cat.ehh.web.controller;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,14 +28,14 @@ public class WelcomeController {
 	UserDAO userDao;
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
 	public String redirectWelcomePage(ModelMap model,HttpServletRequest request) {
 		return "welcome";
 	}
 	
 	@RequestMapping(value = "user", method = RequestMethod.GET)
 	public String manageUsers(ModelMap model,HttpServletRequest request) {
-
+	
 		List<UserEHH> listadoUsuarios = userDao.findAll();
 		
 		request.getSession().setAttribute("usuarios", listadoUsuarios);

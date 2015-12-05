@@ -4,6 +4,11 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <jsp:include page="../header.jsp"></jsp:include>
+<%
+	if (session.getAttribute("username") != null && !session.getAttribute("username").equals("")) {
+%>
+
+
 
 <title>User Management</title>
 </head>
@@ -15,7 +20,7 @@
 
 	<div class="wrapper">
 
-		<div class="container">
+		<div class="container-fluid">
 			<table class="table table-hover">
 			<thead>
 					<tr>
@@ -51,3 +56,11 @@
 	</div>
 </body>
 </html>
+
+<%
+	} else {
+%>
+<jsp:include page="../notLogged.jsp"></jsp:include>
+<%
+	}
+%>
