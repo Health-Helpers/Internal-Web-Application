@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -14,21 +16,26 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-<title>No se ha autenticado</title>
+<title><spring:message code="label.notLogged" /></title>
 </head>
 <body>
 	<div class="wrapper">
 		<div class="container-fluid">
-			<div class="span12">
-				<h1>Lo siento, para acceder a la aplicación es necessario
-					autenticarse</h1>
-				<div style="margin-left: 10%">
-					<img
-						src="${pageContext.request.contextPath}/resources/img/chuckNorris.png" />
-				</div>
-				<div style="margin-left: 25%">
+			<div class="span12 centered">
+				<div class="centeredChuck">
 					<h2>
-						<a href="${pageContext.request.contextPath}">Identificarme</a>
+						<spring:message code="label.sorry" />
+					</h2>
+					<h3>
+						<spring:message code="label.sorryExp" />
+					</h3>
+					<img style=" display:block;margin:auto;"
+						src="${pageContext.request.contextPath}/resources/img/chuckNorris.png" />
+
+
+					<h2>
+						<a href="${pageContext.request.contextPath}"><spring:message
+								code="label.goLogin" /></a>
 					</h2>
 				</div>
 			</div>
