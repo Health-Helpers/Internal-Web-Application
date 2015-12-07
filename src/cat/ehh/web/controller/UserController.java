@@ -1,8 +1,11 @@
 package cat.ehh.web.controller;
 
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import cat.ehh.web.dao.LanguageDAO;
 import cat.ehh.web.dao.UserDAO;
 import cat.ehh.web.model.UserEHH;
+import cat.ehh.web.util.DateUtil;
 
 
 
@@ -25,49 +29,119 @@ public class UserController {
 	@Autowired
 	LanguageDAO langDao;
 
-	@RequestMapping(value = "user/edit", method = RequestMethod.GET)
-	public String editUser(ModelMap model,HttpServletRequest request) {
-		model.addAttribute("message", "Spring 3 MVC Hello World");
-		return "hello";
+	@RequestMapping(value = "user/edit", method = RequestMethod.POST)
+	public void editUser(ModelMap model,HttpServletRequest request,HttpServletResponse response) {
+		String name= request.getParameter("nombre");
+		String dni = request.getParameter("iddoc");
+		String surname = request.getParameter("surname");
+		String birthdate = request.getParameter("birthdate");
+		String phone = request.getParameter("phone");
+		String typeStr = request.getParameter("tipo");
+		String address = request.getParameter("direccion");
+		String language = request.getParameter("language");
+
+		int type = 0;
+		switch (typeStr) {
+			case "Paciente":
+				type = 0;
+				break;
+			case "Responsable":
+				type = 1;
+				break;
+			default:
+				break;
+		}
+		UserEHH user = new UserEHH();
+		user.setName(name);
+		user.setBirthdate(new Date());
+		user.setName(name);
+		user.setIddoc(dni);
+		user.setBirthdate(DateUtil.getDateFromString(birthdate));
+		user.setPhone(phone);
+		user.setSurname(surname);
+		user.setType(type);
+		user.setAdress(address);
+		user.setLangid(new BigDecimal(language));
+		userDao.update(user);
+		try {
+			response.sendRedirect(request.getContextPath()+"/user");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 
 	@RequestMapping(value = "user/add", method = RequestMethod.GET)
-	public String redirectAddUser(HttpServletRequest request) {
+	public String redirectAddUser(HttpServletRequest request,HttpServletResponse response) {
 		request.getParameter("input");
+		request.getSession().setAttribute("languages", langDao.findAll());
 		return "user/addUser";
 	}
 
 	@RequestMapping(value = "user/addUser", method = RequestMethod.POST)
-	public String addUser(HttpServletRequest request) {
+	public String addUser(HttpServletRequest request,HttpServletResponse response) {
 		String name= request.getParameter("nombre");
+		String dni = request.getParameter("iddoc");
+		String surname = request.getParameter("surname");
+		String birthdate = request.getParameter("birthdate");
+		String phone = request.getParameter("phone");
+		String typeStr = request.getParameter("tipo");
+		String address = request.getParameter("direccion");
+		String language = request.getParameter("language");
+		int type = 0;
+		switch (typeStr) {
+			case "Paciente":
+				type = 0;
+				break;
+			case "Responsable":
+				type = 1;
+				break;
+			default:
+				break;
+		}
 		UserEHH user = new UserEHH();
 		user.setName(name);
-		user.setAdress("");
-
 		user.setBirthdate(new Date());
-		user.setIddoc("");
-
+		user.setName(name);
+		user.setIddoc(dni);
+		user.setBirthdate(DateUtil.getDateFromString(birthdate));
+		user.setPhone(phone);
+		user.setSurname(surname);
+		user.setType(type);
+		user.setAdress(address);
+		user.setLangid(new BigDecimal(language));
 		userDao.create(user);
-
-
-
 		return "user/addUser";
 	}
 
 	@RequestMapping(value = "user/remove", method = RequestMethod.GET)
-	public String removeUser(ModelMap model,HttpServletRequest request) {
+	public void removeUser(ModelMap model,HttpServletRequest request,HttpServletResponse response) {
 
-//		String userId = request.getParameter("id");
-
-		//TODO: Remove the user data from de DB
-
-		return "user/user";
+		String userId = request.getParameter("id");
+		Long dni = 0L;
+		if(userId != null){
+			dni = Long.parseLong(userId);
+		}
+		UserEHH user = userDao.read(dni);
+		if(user!=null)
+			userDao.delete(user);
+		try {
+			response.sendRedirect(request.getContextPath()+"/user");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@RequestMapping(value = "user/read", method = RequestMethod.GET)
-	public String readUser(ModelMap model,HttpServletRequest request) {
-		//String userId = request.getParameter("id");
-		//TODO: Read the user data from de DB
+	public String readUser(ModelMap model,HttpServletRequest request,HttpServletResponse response) {
+		String userId = request.getParameter("id");
+		Long id = 0L;
+		if(userId != null){
+			id = Long.parseLong(userId);
+		}
+		UserEHH user = userDao.read(id);
+		request.getSession().setAttribute("user", user);
+		request.getSession().setAttribute("languages", langDao.findAll());
 		return "user/editUser";
 	}
 }

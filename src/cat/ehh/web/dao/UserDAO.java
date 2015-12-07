@@ -44,17 +44,14 @@ public class UserDAO extends DAO<UserEHH> {
 	@Override
 	@Transactional
 	public boolean delete(UserEHH entity) {
-		entityManager.remove(entity);
-
+		UserEHH removedUser = entityManager.merge(entity);
+		entityManager.remove(removedUser);
 		return true;
 	}
 
 	@Transactional
 	public List<UserEHH> findAll() {
-		
 		List<UserEHH> llistatTots = (List<UserEHH>)entityManager.createNamedQuery("User.findAll").getResultList();
-		
-
 		return llistatTots;
 	}
 }

@@ -34,8 +34,11 @@
 					<tr>
 						<td><c:out value="${user.name}" /></td>
 						<td><a href="user/read?id=${user.userId}"><spring:message code="label.editar"/></a></td>
-						<td><a onclick="alert('Cuidao!')"
-							href="user/remove?id=${user.userId}"><spring:message code="label.eliminar"/></a></td>
+						<td><a
+								onclick="return confirmDeletion('<spring:message
+									code="label.sure" />');"
+								href="${pageContext.request.contextPath}/user/remove?id=${user.userId}"><spring:message
+										code="label.eliminar" /></a></td>
 
 					</tr>
 				</c:forEach>
