@@ -79,7 +79,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "user/addUser", method = RequestMethod.POST)
-	public String addUser(HttpServletRequest request,HttpServletResponse response) {
+	public void addUser(HttpServletRequest request,HttpServletResponse response) {
 		String name= request.getParameter("nombre");
 		String dni = request.getParameter("iddoc");
 		String surname = request.getParameter("surname");
@@ -111,7 +111,12 @@ public class UserController {
 		user.setAdress(address);
 		user.setLangid(new BigDecimal(language));
 		userDao.create(user);
-		return "user/addUser";
+		
+		try {
+			response.sendRedirect(request.getContextPath()+"/user");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@RequestMapping(value = "user/remove", method = RequestMethod.GET)
