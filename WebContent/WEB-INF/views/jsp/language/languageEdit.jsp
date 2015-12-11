@@ -13,7 +13,9 @@
 	Language language = (Language) request.getSession().getAttribute("language");
 %>
 
-<title><spring:message code="label.editing" /> <%=language.getName()%></title>
+<title><spring:message code="label.editing" /> <%=language.getName()%>
+
+</title>
 </head>
 <body>
 	<div class="wrapper">

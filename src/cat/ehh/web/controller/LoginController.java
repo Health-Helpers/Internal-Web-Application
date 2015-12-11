@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
 
-	/*
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String checkLogin(ModelMap model,HttpServletRequest request) {
 		if(request.getSession().getAttribute("username")!=null && !request.getSession().getAttribute("username").equals("")){
@@ -20,9 +20,9 @@ public class LoginController {
 			return "index";
 		}	
 	}
-	*/
+	
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String redirectWelcomePage(ModelMap model,HttpServletRequest request) {
 		return "index";
 	}
@@ -35,7 +35,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String redirectLogin(ModelMap model,HttpServletRequest request) {
 		return "login";
-	}
+	}*/
 	
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
@@ -43,8 +43,6 @@ public class LoginController {
 		try{
 			String username = (String) request.getParameter("username");
 			String password = (String) request.getParameter("password");
-
-			//TODO: Check login against DB
 
 			if(username.equals("admin") && password.equals("1234")){
 				request.getSession().setAttribute("username",username);

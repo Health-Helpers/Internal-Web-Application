@@ -1,22 +1,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Elder Health Helper</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <link href="resources/css/index_styles.css" rel="stylesheet" type="text/css">
-  <link href="resources/css/modal_login.css" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="resources/img/favicon.ico" type="image/x-icon"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="resources/js/modernizr.js"></script>
+
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -29,7 +14,7 @@
         <span class="icon-bar"></span>                        
       </button>
       <a href="#myPage">
-      	<img src="resources/img/ic_EHH_72_48.png" /> 
+      	<img src="${pageContext.request.contextPath}/resources/img/ic_EHH_72_48.png" /> 
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -53,13 +38,13 @@
 				<form class="cd-form" action="login" method="post">
 					<p class="fieldset">
 						<label class="image-replace cd-username" for="signup-username">Username</label>
-						<input class="full-width has-padding has-border" name="username" type="text" placeholder="Username">
+						<input class="full-width has-padding has-border" required name="username" type="text" placeholder="Username">
 
 					</p>
 
 					<p class="fieldset">
 						<label class="image-replace cd-password" for="signin-password">Password</label>
-						<input class="full-width has-padding has-border" name="password" type="password"  placeholder="Password">
+						<input class="full-width has-padding has-border" name="password" type="password" required placeholder="Password">
 						<a href="#0" class="hide-password">Show</a>
 						
 					</p>
@@ -362,7 +347,7 @@ $(document).ready(function(){
     // Using jQuery's animate() method to add smooth page scroll
     // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
     $('html, body').animate({
-      scrollTop: $(hash).offset().top
+     // scrollTop: $(hash).offset().top
     }, 900, function(){
    
       // Add hash (#) to URL when done scrolling (default click behavior)
@@ -383,6 +368,6 @@ $(document).ready(function(){
   });
 })
 </script>
-<script src="resources/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 </body>
 </html>
