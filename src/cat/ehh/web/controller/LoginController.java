@@ -22,10 +22,10 @@ public class LoginController {
 	}
 	
 
-	/*@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String redirectWelcomePage(ModelMap model,HttpServletRequest request) {
-		return "index";
-	}
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	public String redirectWelcomePage(ModelMap model,HttpServletRequest request) {
+//		return "index";
+//	}
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String redirectIndex(ModelMap model,HttpServletRequest request) {
@@ -35,7 +35,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String redirectLogin(ModelMap model,HttpServletRequest request) {
 		return "login";
-	}*/
+	}
 	
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
