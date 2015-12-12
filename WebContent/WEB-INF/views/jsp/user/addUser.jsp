@@ -46,14 +46,14 @@
 </head>
 
 <body>
-
+ <jsp:include page="../menu.jsp"></jsp:include>
 	<div class="wrapper">
 		<div class="container-fluid">
 			<fieldset>
 				<legend>Formulario Alta</legend>
 				<form class="formularioAlta" action="addUser" method="POST">
 					<label  for="iddoc"><spring:message
-							code="label.dni" />:</label> <input type="text" name="iddoc" id="iddoc" /><br />
+							code="label.dni" />:</label> <input type="text" name="iddoc" id="iddoc" required/><br />
 					<label  for="name"><spring:message
 							code="label.name" />:</label> <input type="text" name="nombre" id="name" /><br />
 					<label  for="surname"><spring:message
@@ -65,7 +65,7 @@
 							code="label.address" />:</label> <input type="text" name="direccion"
 						id="address" /> <br /> <label 
 						for="phone"><spring:message code="label.phone" />:</label> <input
-						type="text" name="phone" id="phone" /><br /> <label
+						type="text" name="phone" id="phone" required /><br /> <label
 						 for="language"><spring:message
 							code="label.language" />:</label> <select name="language" id="language">
 						<c:forEach items="${languages}" var="language">

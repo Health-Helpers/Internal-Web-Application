@@ -17,7 +17,7 @@
 	<%
 		List<UserEHH> usuarios = (List<UserEHH>) session.getAttribute("usuarios");
 	%>
-
+ 	 <jsp:include page="../menu.jsp"></jsp:include>
 	<div class="wrapper">
 
 		<div class="container-fluid">

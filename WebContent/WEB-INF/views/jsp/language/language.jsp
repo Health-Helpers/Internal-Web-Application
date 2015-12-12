@@ -21,7 +21,7 @@
 	<%
 		List<Language> languages = (List<Language>) session.getAttribute("languages");
 	%>
-
+	<jsp:include page="../menu.jsp"></jsp:include>
 	<div class="wrapper">
 		<div class="container-fluid">
 			<table class="table table-hover">

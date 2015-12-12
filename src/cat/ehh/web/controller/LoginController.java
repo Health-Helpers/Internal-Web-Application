@@ -22,10 +22,14 @@ public class LoginController {
 	}
 	
 
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String redirectWelcomePage(ModelMap model,HttpServletRequest request) {
-//		return "index";
-//	}
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String doLogout(ModelMap model,HttpServletRequest request) {
+		if(request.getSession().getAttribute("username")!=null && !request.getSession().getAttribute("username").equals("")){
+			request.getSession().invalidate();
+		}
+		
+		return "index";
+	}
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String redirectIndex(ModelMap model,HttpServletRequest request) {

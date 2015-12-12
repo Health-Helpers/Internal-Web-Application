@@ -16,8 +16,9 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
+	
+	   <link href="${pageContext.request.contextPath}/resources/css/simple-sidebar.css" rel="stylesheet">
+  
 
 
 <!--   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"> -->

@@ -16,7 +16,7 @@
 <title>User Edit</title>
 </head>
 <body>
-
+ <jsp:include page="../menu.jsp"></jsp:include>
 	<div class="wrapper">
 		<div class="container-fluid">
 			<fieldset>
