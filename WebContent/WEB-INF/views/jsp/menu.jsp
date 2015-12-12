@@ -9,12 +9,12 @@
                     <img src="${pageContext.request.contextPath}/resources/img/ic_EHH_72_48.png" />
                 </li>
                 <li>
-                   	<a id="userBtn" href="user">
+                   	<a id="userBtn" href="${pageContext.request.contextPath}/user">
 					<spring:message code="label.mngUsers" /> 
 				</a>
                 </li>
                 <li>
-                    <a id="languageBtn" href="language">
+                    <a id="languageBtn" href="${pageContext.request.contextPath}/language">
 					<spring:message code="label.mngLang" />
  				</a>
                 </li>
