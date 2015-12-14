@@ -14,14 +14,14 @@ public class Adjustement implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="ADJUSTEMENTS_IDADJUSTEMENTS_GENERATOR", sequenceName="SEQ_ADJUSTEMENTS",initialValue=1,allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ADJUSTEMENTS_IDADJUSTEMENTS_GENERATOR")
-	@Column(name="\"idAdjustements\"")
+	@SequenceGenerator(name="ADJUSTEMENTS_ID_GENERATOR", sequenceName="SEQ_ADJUSTEMENTS",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ADJUSTEMENTS_ID_GENERATOR")
+	@Column(name="idAdjustements")
 	private long idAdjustements;
 
 	private String json;
 
-	@Column(name="\"userId\"")
+	@Column(name="userId")
 	private java.math.BigDecimal userId;
 
 	public Adjustement() {

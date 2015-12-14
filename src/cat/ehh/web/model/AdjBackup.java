@@ -24,7 +24,7 @@ public class AdjBackup implements Serializable {
 
 	private String json;
 
-	@Column(name="\"userId\"")
+	@Column(name="userId")
 	private java.math.BigDecimal userId;
 
 	public AdjBackup() {
