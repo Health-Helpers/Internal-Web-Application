@@ -1,7 +1,21 @@
-<jsp:include page="header.jsp"></jsp:include>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Elder Health Helper</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="resources/css/index_styles.css" rel="stylesheet" type="text/css">
+  <link href="resources/css/modal_login.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="resources/img/favicon.ico" type="image/x-icon"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="resources/js/modernizr.js"></script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -18,6 +32,9 @@
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav" >
+        <li><a href="#about">EHH</a></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right" >
         <li><a href="#about">ABOUT</a></li>
         <li><a href="#services">SERVICES</a></li>
@@ -277,7 +294,7 @@
       <p>Contact us and we'll get back to you within 24 hours.</p>
       <p><span class="glyphicon glyphicon-map-marker"></span> Lleida, CAT</p>
       <p><span class="glyphicon glyphicon-phone"></span> +34 123456789</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> myemail@test.com</p>	   
+	  <p><span class="glyphicon glyphicon-envelope"></span> myemail@test.com</p>	   
     </div>
     <div class="col-sm-7 slideanim">
       <div class="row">
@@ -347,7 +364,7 @@ $(document).ready(function(){
     // Using jQuery's animate() method to add smooth page scroll
     // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
     $('html, body').animate({
-     // scrollTop: $(hash).offset().top
+      //scrollTop: $(hash).offset().top
     }, 900, function(){
    
       // Add hash (#) to URL when done scrolling (default click behavior)
