@@ -59,27 +59,27 @@
 					</p>
 				</form>
 				
-				<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
-				<!-- <a href="#0" class="cd-close-form">Close</a> -->
+<!-- 				<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p> -->
+				<a href="#0" class="cd-close-form">Close</a>
 			</div> <!-- cd-login -->
 
 			
-			<div id="cd-reset-password"> <!-- reset password form -->
-				<p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+<!-- 			<div id="cd-reset-password"> reset password form -->
+<!-- 				<p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p> -->
 
-				<form class="cd-form">
-					<p class="fieldset">
-						<label class="image-replace cd-email" for="reset-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
-					</p>
+<!-- 				<form class="cd-form"> -->
+<!-- 					<p class="fieldset"> -->
+<!-- 						<label class="image-replace cd-email" for="reset-email">E-mail</label> -->
+<!-- 						<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail"> -->
+<!-- 					</p> -->
 
-					<p class="fieldset">
-						<input class="full-width has-padding" type="submit" value="Reset password">
-					</p>
-				</form>
+<!-- 					<p class="fieldset"> -->
+<!-- 						<input class="full-width has-padding" type="submit" value="Reset password"> -->
+<!-- 					</p> -->
+<!-- 				</form> -->
 
-				<p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
-			</div> <!-- cd-reset-password -->
+<!-- 				<p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p> -->
+<!-- 			</div> cd-reset-password -->
 			<a href="#0" class="cd-close-form">Close</a>
 		</div> <!-- cd-user-modal-container -->
 	</div> <!-- cd-user-modal -->
@@ -89,10 +89,10 @@
 <div class="jumbotron text-center">
   <h1 class="h1-top">Elder Health Helper</h1> 
   <p>Helping to care for people</p> 
-  <form class="form-inline">
-    <input type="email" class="form-control" size="50" placeholder="Email Address" required>
-    <button type="button" class="btn btn-danger">Subscribe</button>
-  </form>
+<!--   <form class="form-inline"> -->
+<!--     <input type="email" class="form-control" size="50" placeholder="Email Address" required> -->
+<!--     <button type="button" class="btn btn-danger">Subscribe</button> -->
+<!--   </form> -->
 </div>
 
 <!-- Container (About Section) -->
@@ -224,7 +224,7 @@
         <div class="panel-footer plan">
           <h3>$19</h3>
           <h4>per month</h4>
-          <button class="btn btn-lg">Sign Up</button>
+<!--           <button class="btn btn-lg">Sign Up</button> -->
         </div>
       </div>      
     </div>     
@@ -243,7 +243,7 @@
         <div class="panel-footer plan">
           <h3>$29</h3>
           <h4>per month</h4>
-          <button class="btn btn-lg">Sign Up</button>
+<!--           <button class="btn btn-lg">Sign Up</button> -->
         </div>
       </div>      
     </div>       
@@ -262,7 +262,7 @@
         <div class="panel-footer plan">
           <h3>$49</h3>
           <h4>per month</h4>
-          <button class="btn btn-lg">Sign Up</button>
+<!--           <button class="btn btn-lg">Sign Up</button> -->
         </div>
       </div>      
     </div>    
@@ -275,9 +275,9 @@
   <div class="row">
     <div class="col-sm-5">
       <p>Contact us and we'll get back to you within 24 hours.</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
-      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>	   
+      <p><span class="glyphicon glyphicon-map-marker"></span> Lleida, CAT</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +34 123456789</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> myemail@test.com</p>	   
     </div>
     <div class="col-sm-7 slideanim">
       <div class="row">

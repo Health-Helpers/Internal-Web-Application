@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import cat.ehh.web.model.Language;
 import cat.ehh.web.model.UserEHH;
 
 @Repository

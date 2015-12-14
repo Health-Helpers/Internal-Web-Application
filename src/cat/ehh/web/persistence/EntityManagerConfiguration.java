@@ -24,7 +24,6 @@ public class EntityManagerConfiguration {
     public EntityManagerFactory entities() throws Exception {
         LocalContainerEntityManagerFactoryBean theEntityManager = new LocalContainerEntityManagerFactoryBean();
         theEntityManager.setPackagesToScan(UserEHH.class.getPackage().getName());
-       // theEntityManager.setJtaDataSource(dataSource());
         theEntityManager.setPersistenceUnitName("EHHWebPersistenceUnit");
         theEntityManager.setJpaVendorAdapter(jpaVendorAdapter());
         theEntityManager.setJpaProperties(jpaProperties());
@@ -35,21 +34,17 @@ public class EntityManagerConfiguration {
     @Bean
     public Properties jpaProperties() {
         Properties props = new Properties();
-        props.setProperty("eclipselink.ddl-generation", "drop-and-create-tables");
+        props.setProperty("eclipselink.ddl-generation", "create-or-extend-tables");
         props.setProperty("eclipselink.weaving", "false");
         props.setProperty("eclipselink.logging.level", "FINEST");
         props.setProperty("eclipselink.logging.parameters", "true");
         props.setProperty("eclipselink.target-server", "JBoss");
-        props.setProperty("eclipselink.ddl-generation.output-mode","sql-script");
+        props.setProperty("eclipselink.ddl-generation.output-mode","both");
         props.setProperty("eclipselink.create-ddl-jdbc-file-name", "createDDL_ddlGeneration.jdbc");
         props.setProperty("eclipselink.drop-ddl-jdbc-file-name", "dropDDL_ddlGeneration.jdbc");
         return props;
     }
 
-//    @Bean
-//    public DataSource dataSource() throws Exception {
-//        return (DataSource)  new InitialContext().lookup("java:jboss/PostgresXA");
-//    }
 
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
