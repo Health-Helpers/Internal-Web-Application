@@ -22,6 +22,7 @@
 			<fieldset>
 				<legend>Formulario edición</legend>
 				<form class="formularioAlta" action="editUser" method="POST">
+					<input type="hidden" name="userId" value="<%=user.getUserId()%>"/>
 					<spring:message code="label.dni" />
 					: <input type="text" name="iddoc" value="<%=user.getIddoc()%>" /><br />
 					<spring:message code="label.name" />
