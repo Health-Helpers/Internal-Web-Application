@@ -29,8 +29,9 @@ public class UserController {
 	@Autowired
 	LanguageDAO langDao;
 
-	@RequestMapping(value = "user/edit", method = RequestMethod.POST)
+	@RequestMapping(value = "user/editUser", method = RequestMethod.POST)
 	public void editUser(ModelMap model,HttpServletRequest request,HttpServletResponse response) {
+		String userId= request.getParameter("userId");
 		String name= request.getParameter("nombre");
 		String dni = request.getParameter("iddoc");
 		String surname = request.getParameter("surname");
@@ -51,7 +52,7 @@ public class UserController {
 			default:
 				break;
 		}
-		UserEHH user = new UserEHH();
+		UserEHH user = userDao.read(new Long(userId));
 		user.setName(name);
 		user.setBirthdate(new Date());
 		user.setName(name);
@@ -66,7 +67,6 @@ public class UserController {
 		try {
 			response.sendRedirect(request.getContextPath()+"/user");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 	}
