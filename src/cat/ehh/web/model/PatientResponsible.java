@@ -15,25 +15,26 @@ public class PatientResponsible implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="\"patientResponsibleId\"")
+	@SequenceGenerator(name="PatientRespID_GENERATOR", sequenceName="SEQ_PATIENTRESP",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PatientRespID_GENERATOR")
+	@Column(name="patientResponsibleId")
 	private long patientResponsibleId;
 
-	@Column(name="\"responsibleId\"")
+	@Column(name="responsibleId")
 	private java.math.BigDecimal responsibleId;
 
-	@Column(name="\"userId\"")
+	@Column(name="userId")
 	private java.math.BigDecimal userId;
 
 	//bi-directional many-to-one association to Responsible
 	@ManyToOne
-	@JoinColumns({@JoinColumn(name="\"responsibleId\"",insertable=false,updatable=false)
+	@JoinColumns({@JoinColumn(name="responsibleId",insertable=false,updatable=false)
 		})
 	private Responsible responsible;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
-	@JoinColumns({@JoinColumn(name="\"userId\"",insertable=false,updatable=false)
+	@JoinColumns({@JoinColumn(name="userId",insertable=false,updatable=false)
 		})
 	private UserEHH user;
 

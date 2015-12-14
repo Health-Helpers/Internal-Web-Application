@@ -18,8 +18,9 @@ public class UserEHH implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="\"userId\"")
+	@SequenceGenerator(name="UserID_GENERATOR", sequenceName="SEQ_User",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="UserID_GENERATOR")
+	@Column(name="userId")
 	private long userId;
 
 	private String adress;

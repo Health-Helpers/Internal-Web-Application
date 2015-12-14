@@ -27,7 +27,7 @@ import cat.ehh.web.util.DateUtil;
 @Controller
 public class UserController {
 	
-	private HashMap<String, Object> JSONROOT = new HashMap<String, Object>();
+	protected HashMap<String, Object> JSONROOT = new HashMap<String, Object>();
 
 	@Autowired
 	UserDAO userDao;// = new UserDAO();//UserDAO.getInstance();

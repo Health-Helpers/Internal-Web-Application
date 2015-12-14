@@ -23,7 +23,7 @@ import cat.ehh.web.model.Language;
 @Controller
 public class LanguageController {
 
-	private HashMap<String, Object> JSONROOT = new HashMap<String, Object>();
+	protected HashMap<String, Object> JSONROOT = new HashMap<String, Object>();
 	Logger log = LoggerFactory.getLogger(LanguageController.class);
 
 	@Autowired

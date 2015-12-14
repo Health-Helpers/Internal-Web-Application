@@ -12,7 +12,12 @@
 		<class>cat.ehh.web.model.Patient</class>
 		<class>cat.ehh.web.model.PatientResponsible</class>
 		<class>cat.ehh.web.model.Responsible</class>
+		<class>cat.ehh.web.model.AdjBackup</class>
+		<class>cat.ehh.web.model.Adjustement</class>
+		<class>cat.ehh.web.model.Auxiliar_data</class>
+		
 
 	</persistence-unit>
 
 </persistence>
+
