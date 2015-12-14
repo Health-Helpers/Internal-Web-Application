@@ -14,12 +14,6 @@ if (session.getAttribute("username") != null && !session.getAttribute("username"
 %>
 
 
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link href="${pageContext.request.contextPath}/resources/css/styles.css" rel="stylesheet">
-<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//oss.maxcdn.com/bootbox/4.2.0/bootbox.min.js"></script>
 <title>User Management</title>
 </head>
@@ -51,10 +45,6 @@ if (session.getAttribute("username") != null && !session.getAttribute("username"
 						
 						<td><button type="button" data-id="1" onclick="openModal(${user.userId});"  class="btn btn-default editButton">Edit</button></td>
 						<td><button type="button" data-id="2" onclick="deleteUser(${user.userId})"  class="btn btn-default editButton">Delete</button></td>
-						
-						<!-- <td><a href="user/read?id=${user.userId}"><spring:message code="label.editar"/></a></td>
-						<td><a onclick="alert('Cuidao!')" href="user/remove?id=${user.userId}"><spring:message code="label.eliminar"/></a></td>
-						 -->
 					</tr>
 				</c:forEach>
 				</tbody>
@@ -157,7 +147,7 @@ if (session.getAttribute("username") != null && !session.getAttribute("username"
 <script>
 function deleteUser(idUser)
 {
-	 alert("User will be deleted!");
+	 if(confirm("User will be deleted!")){
 		$.ajax({
 	        //url: 'UserController/readUser',
 	        url: 'user/remove',
@@ -167,7 +157,9 @@ function deleteUser(idUser)
 	     method: 'GET'
 	 }).success(function(response) {
 		 alert("Delete Sucess!");
+		 location.reload();
 	 });
+	 }
 		
 }
 function openModal(idUser){

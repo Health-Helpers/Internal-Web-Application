@@ -11,12 +11,6 @@
 <%@page import="cat.ehh.web.model.Language"%>
 <%@page import="java.util.List"%>
 
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link href="${pageContext.request.contextPath}/resources/css/styles.css" rel="stylesheet">
-<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//oss.maxcdn.com/bootbox/4.2.0/bootbox.min.js"></script>
 <title><spring:message code="label.langMng" /></title>
 
@@ -106,7 +100,7 @@
 <script>
 function deleteLang(idLang)
 {
-	 alert("Language will be deleted!");
+	 if(confirm("Language will be deleted!")){
 		$.ajax({
 	        //url: 'UserController/readUser',
 	        url: 'language/remove',
@@ -116,8 +110,9 @@ function deleteLang(idLang)
 	     method: 'GET'
 	 }).success(function(response) {
 		 alert("Delete Sucess!");
+		 location.reload();
 	 });
-		
+	 }		
 }
 function openModal(idLang){
 
