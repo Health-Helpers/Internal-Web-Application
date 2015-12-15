@@ -14,21 +14,22 @@ public class Patient implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="\"patientId\"")
+	@SequenceGenerator(name="PatientID_GENERATOR", sequenceName="SEQ_PATIENT",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PatientID_GENERATOR")
+	@Column(name="patientId")
 	private long patientId;
 
-	@Column(name="\"dependencyGrade\"")
+	@Column(name="dependencyGrade")
 	private String dependencyGrade;
 
 	private String disease;
 
-	@Column(name="\"userId\"")
+	@Column(name="userId")
 	private java.math.BigDecimal userId;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
-	@JoinColumns({@JoinColumn(name="\"userId\"",insertable=false,updatable=false)
+	@JoinColumns({@JoinColumn(name="userId",insertable=false,updatable=false)
 	})
 	private UserEHH user;
 
