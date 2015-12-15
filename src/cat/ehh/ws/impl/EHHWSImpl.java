@@ -11,6 +11,7 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import cat.ehh.web.dao.PatientDAO;
 import cat.ehh.web.dao.UserDAO;
+import cat.ehh.web.dto.CreatePatientResponseDto;
 import cat.ehh.web.model.Patient;
 import cat.ehh.web.model.UserEHH;
 import cat.ehh.web.util.DateUtil;
@@ -43,7 +44,13 @@ public class EHHWSImpl extends SpringBeanAutowiringSupport implements PatientWS,
 		patient.setUser(user);
 		
 		patientDao.create(patient);
-		return "OK";
+		CreatePatientResponseDto responseDto = new CreatePatientResponseDto();
+		
+		responseDto.setCode("0");
+		responseDto.setMessage("guai");
+		responseDto.setPatient(patient);
+		
+		return responseDto.createXMLString();
 	}
 
 }
