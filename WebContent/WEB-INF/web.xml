@@ -1,27 +1,46 @@
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	version="2.5">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
 	<display-name>Spring3 MVC Application</display-name>
+	
 
+  <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+  </listener>
+	
+	
 	<servlet>
 		<servlet-name>spring-web</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/applicationContext.xml</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>spring-web</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
-
 	<error-page>
 		<error-code>404</error-code>
 		<location>/WEB-INF/views/jsp/notLogged.jsp</location>
 	</error-page>
+	<servlet>
+		<display-name>EHHWS</display-name>
+		<servlet-name>EHHWS</servlet-name>
+		<servlet-class>cat.ehh.ws.impl.EHHWSImpl</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EHHWS</servlet-name>
+		<url-pattern>/EHHWS</url-pattern>
+	</servlet-mapping>
 </web-app>

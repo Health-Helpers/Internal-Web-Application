@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="EHHWSImplService" targetNamespace="http://impl.ws.ehh.cat/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://impl.ws.ehh.cat/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://impl.ws.ehh.cat/" schemaLocation="EHHWSImplService_schema1.xsd"></import>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="createPatient">
+    <wsdl:part name="parameters" element="tns:createPatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createPatientResponse">
+    <wsdl:part name="parameters" element="tns:createPatientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EHHWSImpl">
+    <wsdl:operation name="createPatient">
+      <wsdl:input name="createPatient" message="tns:createPatient">
+    </wsdl:input>
+      <wsdl:output name="createPatientResponse" message="tns:createPatientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EHHWSImplServiceSoapBinding" type="tns:EHHWSImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createPatient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createPatient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createPatientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EHHWSImplService">
+    <wsdl:port name="EHHWSImplPort" binding="tns:EHHWSImplServiceSoapBinding">
+      <soap:address location="http://localhost:8080/EHHWSImplPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
