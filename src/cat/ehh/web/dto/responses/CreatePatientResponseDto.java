@@ -38,7 +38,7 @@ public class CreatePatientResponseDto extends ResponseDTO{
 	
 	@Override
 	public String createXMLString(){
-		return StringEscapeUtils.unescapeXml(XMLUtil.fromXMLTOString(this.createXML()));
+		return StringEscapeUtils.unescapeXml(XMLUtil.fromXMLToString(this.createXML()));
 	}
 	
 	@Override
@@ -66,7 +66,7 @@ public class CreatePatientResponseDto extends ResponseDTO{
 
 			Element patient = doc.createElement("patient");
 			
-			// lastname elements
+			// patient elements
 			Element patientId = doc.createElement("patientId");
 			patientId.appendChild(doc.createTextNode(String.valueOf(this.getPatient().getPatientId())));
 			patient.appendChild(patientId);

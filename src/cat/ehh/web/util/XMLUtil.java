@@ -9,7 +9,7 @@ import org.w3c.dom.Document;
 
 public class XMLUtil {
 
-	public static String fromXMLTOString(Document xmlDOc){
+	public static String fromXMLToString(Document xmlDOc){
 		String outputString = "";
 		try{
 			
@@ -22,14 +22,6 @@ public class XMLUtil {
             serializer.serialize(xmlDOc);
 
             outputString =  out.toString();
-			
-//			TransformerFactory tf = TransformerFactory.newInstance();
-//			Transformer transformer = tf.newTransformer();
-//			transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-//			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-//			StringWriter writer = new StringWriter();
-//			transformer.transform(new DOMSource(xmlDOc), new StreamResult(writer));
-//			outputString = writer.getBuffer().toString().replaceAll("\n|\r", "");
 		}catch (Exception e){
 			e.printStackTrace();
 		}
