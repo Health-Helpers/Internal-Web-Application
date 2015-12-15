@@ -1,10 +1,15 @@
 package cat.ehh.web.dto.responses;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.lang3.StringEscapeUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -13,6 +18,8 @@ import cat.ehh.web.util.XMLUtil;
 
 public class CreatePatientResponseDto extends ResponseDTO{
 
+	Logger log = LoggerFactory.getLogger(CreatePatientResponseDto.class);
+	
 	String code;
 	String message;
 	Patient patient;
@@ -35,12 +42,12 @@ public class CreatePatientResponseDto extends ResponseDTO{
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
-	
+
 	@Override
 	public String createXMLString(){
 		return StringEscapeUtils.unescapeXml(XMLUtil.fromXMLToString(this.createXML()));
 	}
-	
+
 	@Override
 	public Document createXML(){
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -64,21 +71,25 @@ public class CreatePatientResponseDto extends ResponseDTO{
 			message.appendChild(doc.createTextNode(this.getMessage()));
 			rootElement.appendChild(message);
 
-			Element patient = doc.createElement("patient");
-			
-			// patient elements
-			Element patientId = doc.createElement("patientId");
-			patientId.appendChild(doc.createTextNode(String.valueOf(this.getPatient().getPatientId())));
-			patient.appendChild(patientId);
-			
-			rootElement.appendChild(patient);
+			if(this.getPatient()!=null){
+				Element patient = doc.createElement("patient");
 
-		
+				// patient elements
+				Element patientId = doc.createElement("patientId");
+				patientId.appendChild(doc.createTextNode(String.valueOf(this.getPatient().getPatientId())));
+				patient.appendChild(patientId);
+
+				rootElement.appendChild(patient);
+			}
+
+
 		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			log.error(sw.toString());
 		}
-		
-		
+
+
 		return doc;
 
 	}
