@@ -20,8 +20,8 @@ public class Auxiliar_data implements Serializable {
 	@Column(name="idAuxiliarData")
 	private long idAuxiliarData;
 
-	@Column(name="auxiliar-data")
-	private BigDecimal auxiliar_data;
+	@Column(name="auxiliar_data")
+	private String auxiliar_data;
 
 	@Column(name="patientId")
 	private BigDecimal patientId;
@@ -37,11 +37,13 @@ public class Auxiliar_data implements Serializable {
 		this.idAuxiliarData = idAuxiliarData;
 	}
 
-	public BigDecimal getAuxiliar_data() {
-		return this.auxiliar_data;
+	
+
+	public String getAuxiliar_data() {
+		return auxiliar_data;
 	}
 
-	public void setAuxiliar_data(BigDecimal auxiliar_data) {
+	public void setAuxiliar_data(String auxiliar_data) {
 		this.auxiliar_data = auxiliar_data;
 	}
 

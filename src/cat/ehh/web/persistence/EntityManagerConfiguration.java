@@ -42,8 +42,8 @@ public class EntityManagerConfiguration {
         props.setProperty("eclipselink.logging.level", "FINEST");
         props.setProperty("eclipselink.logging.parameters", "true");
         props.setProperty("eclipselink.target-server", "JBoss");
-        props.setProperty("eclipselink.ddl-generation.output-mode","database");
-        props.setProperty("eclipselink.create-ddl-jdbc-file-name", "createDDL_ddlGeneration.jdbc");
+        props.setProperty("eclipselink.ddl-generation.output-mode","both");
+        props.setProperty("eclipselink.create-ddl-jdbc-file-name", "createTables.jdbc");
         props.setProperty("eclipselink.drop-ddl-jdbc-file-name", "dropDDL_ddlGeneration.jdbc");
         props.setProperty("eclipselink.deploy-on-startup", "true");
         return props;

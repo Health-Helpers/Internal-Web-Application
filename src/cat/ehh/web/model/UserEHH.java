@@ -1,6 +1,7 @@
 package cat.ehh.web.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -58,6 +59,23 @@ public class UserEHH implements Serializable {
 
 	public UserEHH() {
 	}
+	
+	
+
+	public UserEHH(String adress, Date birthdate, String iddoc, BigDecimal langid, String name, String phone,
+			String surname, Integer type) {
+		super();
+		this.adress = adress;
+		this.birthdate = birthdate;
+		this.iddoc = iddoc;
+		this.langid = langid;
+		this.name = name;
+		this.phone = phone;
+		this.surname = surname;
+		this.type = type;
+	}
+
+
 
 	public long getUserId() {
 		return this.userId;

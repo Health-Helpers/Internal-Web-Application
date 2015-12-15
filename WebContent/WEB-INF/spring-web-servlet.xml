@@ -37,6 +37,12 @@
 	<!-- DAO's -->
 	<bean id="userDao" class="cat.ehh.web.dao.UserDAO" />
 	<bean id="langDao" class="cat.ehh.web.dao.LanguageDAO" />
+	<bean id="adjBackuoDao" class="cat.ehh.web.dao.AdjBackupDAO" />
+	<bean id="adjustementDao" class="cat.ehh.web.dao.AdjustementDAO" />
+	<bean id="auxiliarDataDao" class="cat.ehh.web.dao.AuxiliarDataDAO" />
+	<bean id="patientDao" class="cat.ehh.web.dao.PatientDAO" />
+	<bean id="patientResponsibleDao" class="cat.ehh.web.dao.PatientResponsibleDAO" />
+	<bean id="responsibleDao" class="cat.ehh.web.dao.ResponsibleDAO" />
 
 
 	<!-- i18n -->
