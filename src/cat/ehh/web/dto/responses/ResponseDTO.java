@@ -1,4 +1,4 @@
-package cat.ehh.web.dto;
+package cat.ehh.web.dto.responses;
 
 import org.w3c.dom.Document;
 

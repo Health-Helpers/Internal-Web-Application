@@ -1,4 +1,4 @@
-package cat.ehh.web.dto;
+package cat.ehh.web.dto.responses;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -75,7 +75,6 @@ public class CreatePatientResponseDto extends ResponseDTO{
 
 		
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
