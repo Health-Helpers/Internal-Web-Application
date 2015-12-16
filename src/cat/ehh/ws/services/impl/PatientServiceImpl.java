@@ -1,12 +1,9 @@
-package cat.ehh.ws.impl;
+package cat.ehh.ws.services.impl;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.util.Date;
-
-import javax.jws.WebMethod;
-import javax.jws.WebService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,14 +16,11 @@ import cat.ehh.web.dto.responses.CreatePatientResponseDto;
 import cat.ehh.web.model.Patient;
 import cat.ehh.web.model.UserEHH;
 import cat.ehh.web.util.DateUtil;
-import cat.ehh.ws.PatientWS;
-import cat.ehh.ws.ResponsibleWS;
+import cat.ehh.ws.services.PatientService;
 
-@WebService
-public class EHHWSImpl extends SpringBeanAutowiringSupport implements PatientWS, ResponsibleWS {
+public class PatientServiceImpl extends SpringBeanAutowiringSupport implements PatientService {
 
-
-	Logger log = LoggerFactory.getLogger(EHHWSImpl.class);
+	Logger log = LoggerFactory.getLogger(PatientServiceImpl.class);
 
 	@Autowired
 	PatientDAO patientDao;
@@ -34,18 +28,16 @@ public class EHHWSImpl extends SpringBeanAutowiringSupport implements PatientWS,
 	@Autowired
 	UserDAO userDao;
 
-	@WebMethod
 	@Override
-	public String createPatient(String name, String surname,String idDoc, String phone, String birthdate, String adress,String type,String disease, String dependencyGrade,String langId) {
+	public String createPatient(String name, String surname,String idDoc, String phone, String birthdate, String adress,String disease, String dependencyGrade,String langId) {
 		CreatePatientResponseDto responseDto = new CreatePatientResponseDto();
 
 		try{
 
-			Integer typeInteger = type!=null&&type.equals("1")?new Integer(1):new Integer(0);
 			BigDecimal langIdBigDeci = new BigDecimal(langId);
 			Date birthD = DateUtil.getDateFromString(birthdate);
 
-			UserEHH user = new UserEHH(adress, birthD, idDoc, langIdBigDeci, name, phone, surname, typeInteger);
+			UserEHH user = new UserEHH(adress, birthD, idDoc, langIdBigDeci, name, phone, surname, 0);
 			user = userDao.create(user);
 
 			Patient patient = new Patient();
@@ -70,6 +62,25 @@ public class EHHWSImpl extends SpringBeanAutowiringSupport implements PatientWS,
 			
 		}
 		return responseDto.createXMLString();
+	}
+
+	@Override
+	public String updatePatient(String name, String surname, String idDoc, String phone, String birthdate,
+			String adress, String disease, String dependencyGrade, String langId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String readPatient(int patientId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deletePatient(int patientId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

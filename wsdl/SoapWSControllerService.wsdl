@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="SoapWSControllerService" targetNamespace="http://ws.ehh.cat/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.ehh.cat/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://ws.ehh.cat/" schemaLocation="SoapWSControllerService_schema1.xsd"></import>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="createPatient">
+    <wsdl:part name="parameters" element="tns:createPatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createPatientResponse">
+    <wsdl:part name="parameters" element="tns:createPatientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SoapWSController">
+    <wsdl:operation name="createPatient">
+      <wsdl:input name="createPatient" message="tns:createPatient">
+    </wsdl:input>
+      <wsdl:output name="createPatientResponse" message="tns:createPatientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SoapWSControllerServiceSoapBinding" type="tns:SoapWSController">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createPatient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createPatient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createPatientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SoapWSControllerService">
+    <wsdl:port name="SoapWSControllerPort" binding="tns:SoapWSControllerServiceSoapBinding">
+      <soap:address location="http://localhost:9090/SoapWSControllerPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

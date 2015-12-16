@@ -72,7 +72,12 @@
 		</property>
 	</bean>
 	
+	<!-- Services & WebServices -->
+		<bean id="patientService" class="cat.ehh.ws.services.impl.PatientServiceImpl" />
+		<bean id="responsibleService" class="cat.ehh.ws.services.impl.ResponsibleServiceImpl" />
+		<bean id="userService" class="cat.ehh.ws.services.impl.UserServiceImpl" />
+	
 	<!-- WebServices -->
 <!-- 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean> -->
-  <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
+<!--   <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean> -->
 </beans>
