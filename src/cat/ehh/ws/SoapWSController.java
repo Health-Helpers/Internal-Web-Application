@@ -57,7 +57,7 @@ public class SoapWSController extends SpringBeanAutowiringSupport{
 		return patientService.getPatientResponsibles(patientId);
 	}
 	
-	/*Responsible*/
+	/************************************Responsible***********************************************/
 	@WebMethod
 	public String createResponsible(String name, String surname,String idDoc, String phone, String birthdate, String adress, String langId){
 		return responsibleService.createResponsible(name, surname, idDoc, phone, birthdate, adress, langId);

@@ -15,14 +15,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import cat.ehh.web.dto.responses.ResponseDTO;
-import cat.ehh.web.model.Responsible;
+import cat.ehh.web.model.Patient;
 import cat.ehh.web.util.XMLUtil;
 
-public class GetPatientResponsiblesResponseDto extends ResponseDTO{
+public class GetResponsiblePatientsResponseDto extends ResponseDTO{
 
-	Logger log = LoggerFactory.getLogger(GetPatientResponsiblesResponseDto.class);
+	Logger log = LoggerFactory.getLogger(GetResponsiblePatientsResponseDto.class);
 
-	List<Responsible> patientResponsibles;
+	List<Patient> responsiblePatients;
 
 	public String getCode() {
 		return code;
@@ -39,11 +39,11 @@ public class GetPatientResponsiblesResponseDto extends ResponseDTO{
 
 
 
-	public List<Responsible> getPatientResponsibles() {
-		return patientResponsibles;
+	public List<Patient> getResponsiblePatients() {
+		return responsiblePatients;
 	}
-	public void setPatientResponsibles(List<Responsible> patientResponsibles) {
-		this.patientResponsibles = patientResponsibles;
+	public void setResponsiblePatients(List<Patient> responsiblePatients) {
+		this.responsiblePatients = responsiblePatients;
 	}
 	@Override
 	public String createXMLString(){
@@ -73,20 +73,20 @@ public class GetPatientResponsiblesResponseDto extends ResponseDTO{
 			message.appendChild(doc.createTextNode(this.getMessage()));
 			rootElement.appendChild(message);
 
-			if(this.getPatientResponsibles()!=null){
+			if(this.getResponsiblePatients()!=null){
 				// responsible elements
-				for(Responsible resp : this.getPatientResponsibles()){
-					Element responsible = doc.createElement("responsible");
+				for(Patient patient : this.getResponsiblePatients()){
+					Element patientElement = doc.createElement("patient");
 					
-					Element responsibleId = doc.createElement("responsibleId");
-					responsibleId.appendChild(doc.createTextNode(String.valueOf(resp.getResponsibleId())));
-					responsible.appendChild(responsibleId);
+					Element responsibleId = doc.createElement("patientId");
+					responsibleId.appendChild(doc.createTextNode(String.valueOf(patient.getPatientId())));
+					patientElement.appendChild(responsibleId);
 					
-					Element responsibleName = doc.createElement("responsibleName");
-					responsibleName.appendChild(doc.createTextNode(String.valueOf(resp.getUser().getName())));
-					responsible.appendChild(responsibleName);
+					Element responsibleName = doc.createElement("patientName");
+					responsibleName.appendChild(doc.createTextNode(String.valueOf(patient.getUser().getName())));
+					patientElement.appendChild(responsibleName);
 
-					rootElement.appendChild(responsible);
+					rootElement.appendChild(patientElement);
 				}
 			}
 

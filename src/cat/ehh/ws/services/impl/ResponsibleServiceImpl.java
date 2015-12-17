@@ -3,7 +3,9 @@ package cat.ehh.ws.services.impl;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,12 +16,14 @@ import cat.ehh.web.constants.Constants;
 import cat.ehh.web.dao.PatientResponsibleDAO;
 import cat.ehh.web.dao.ResponsibleDAO;
 import cat.ehh.web.dao.UserDAO;
+import cat.ehh.web.dto.responses.patient.GetResponsiblePatientsResponseDto;
 import cat.ehh.web.dto.responses.responsible.AddPatientToResponsibleResponseDto;
 import cat.ehh.web.dto.responses.responsible.CreateResponsibleResponseDto;
 import cat.ehh.web.dto.responses.responsible.DeletePatientFromResponsibleResponseDto;
 import cat.ehh.web.dto.responses.responsible.DeleteResponsibleResponseDto;
 import cat.ehh.web.dto.responses.responsible.ReadResponsibleResponseDto;
 import cat.ehh.web.dto.responses.responsible.UpdateResponsibleResponseDto;
+import cat.ehh.web.model.Patient;
 import cat.ehh.web.model.PatientResponsible;
 import cat.ehh.web.model.Responsible;
 import cat.ehh.web.model.UserEHH;
@@ -215,7 +219,35 @@ public class ResponsibleServiceImpl extends SpringBeanAutowiringSupport implemen
 
 	@Override
 	public String getResponsiblePatients(int responsibleId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		GetResponsiblePatientsResponseDto responseDto = new GetResponsiblePatientsResponseDto();
+
+		try{
+			Responsible responsible = responsibleDao.read(new Long(responsibleId));
+
+
+			responseDto.setCode("0");
+			responseDto.setMessage("getResponsiblePatients OK");
+
+
+			List<PatientResponsible> responsiblePatients = responsible.getPatientResponsibles();
+			List<Patient> patientsList = new ArrayList<Patient>();
+
+			if(responsiblePatients!=null){
+				for(PatientResponsible patResp : responsiblePatients){
+					patientsList.add(patResp.getPatient());
+				}
+				responseDto.setResponsiblePatients(patientsList);
+			}
+		}catch(Exception e){
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			log.error(sw.toString());
+
+			responseDto.setCode("-1");
+			responseDto.setMessage("getResponsiblePatients Error");
+		}
+
+		return responseDto.createXMLString();
 	}
 }
