@@ -1,6 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.ehh.cat/" elementFormDefault="unqualified" targetNamespace="http://ws.ehh.cat/" version="1.0">
+<xs:element name="addPatientToResponsible" type="tns:addPatientToResponsible"/>
+<xs:element name="addPatientToResponsibleResponse" type="tns:addPatientToResponsibleResponse"/>
+<xs:element name="addResponsibleToPatient" type="tns:addResponsibleToPatient"/>
+<xs:element name="addResponsibleToPatientResponse" type="tns:addResponsibleToPatientResponse"/>
 <xs:element name="createPatient" type="tns:createPatient"/>
 <xs:element name="createPatientResponse" type="tns:createPatientResponse"/>
+<xs:element name="createResponsible" type="tns:createResponsible"/>
+<xs:element name="createResponsibleResponse" type="tns:createResponsibleResponse"/>
+<xs:element name="deletePatient" type="tns:deletePatient"/>
+<xs:element name="deletePatientFromResponsible" type="tns:deletePatientFromResponsible"/>
+<xs:element name="deletePatientFromResponsibleResponse" type="tns:deletePatientFromResponsibleResponse"/>
+<xs:element name="deletePatientResponse" type="tns:deletePatientResponse"/>
+<xs:element name="deleteResponsible" type="tns:deleteResponsible"/>
+<xs:element name="deleteResponsibleFromPatient" type="tns:deleteResponsibleFromPatient"/>
+<xs:element name="deleteResponsibleFromPatientResponse" type="tns:deleteResponsibleFromPatientResponse"/>
+<xs:element name="deleteResponsibleResponse" type="tns:deleteResponsibleResponse"/>
+<xs:element name="getPatientResponsibles" type="tns:getPatientResponsibles"/>
+<xs:element name="getPatientResponsiblesResponse" type="tns:getPatientResponsiblesResponse"/>
+<xs:element name="getResponsiblePatients" type="tns:getResponsiblePatients"/>
+<xs:element name="getResponsiblePatientsResponse" type="tns:getResponsiblePatientsResponse"/>
+<xs:element name="readPatient" type="tns:readPatient"/>
+<xs:element name="readPatientResponse" type="tns:readPatientResponse"/>
+<xs:element name="readResponsible" type="tns:readResponsible"/>
+<xs:element name="readResponsibleResponse" type="tns:readResponsibleResponse"/>
+<xs:element name="updatePatient" type="tns:updatePatient"/>
+<xs:element name="updatePatientResponse" type="tns:updatePatientResponse"/>
+<xs:element name="updateResponsible" type="tns:updateResponsible"/>
+<xs:element name="updateResponsibleResponse" type="tns:updateResponsibleResponse"/>
+<xs:complexType name="addResponsibleToPatient">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+      <xs:element name="arg1" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="addResponsibleToPatientResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deletePatient">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deletePatientResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="addPatientToResponsible">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+      <xs:element name="arg1" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="addPatientToResponsibleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deleteResponsibleFromPatient">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+      <xs:element name="arg1" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deleteResponsibleFromPatientResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="readPatient">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="readPatientResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="readResponsible">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="readResponsibleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="updatePatient">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg4" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg5" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg6" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg7" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg8" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg9" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="updatePatientResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deletePatientFromResponsible">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+      <xs:element name="arg1" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deletePatientFromResponsibleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deleteResponsible">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deleteResponsibleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
 <xs:complexType name="createPatient">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string"/>
@@ -15,6 +144,61 @@
     </xs:sequence>
   </xs:complexType>
 <xs:complexType name="createPatientResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getPatientResponsibles">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getPatientResponsiblesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getResponsiblePatients">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getResponsiblePatientsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="updateResponsible">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg4" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg5" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg6" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg7" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="updateResponsibleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="createResponsible">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg4" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg5" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg6" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg7" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg8" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="createResponsibleResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>

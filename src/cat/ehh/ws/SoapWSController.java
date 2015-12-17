@@ -59,7 +59,7 @@ public class SoapWSController extends SpringBeanAutowiringSupport{
 	
 	/*Responsible*/
 	@WebMethod
-	public String createResponsible(String name, String surname,String idDoc, String phone, String birthdate, String adress,String disease, String dependencyGrade,String langId){
+	public String createResponsible(String name, String surname,String idDoc, String phone, String birthdate, String adress, String langId){
 		return responsibleService.createResponsible(name, surname, idDoc, phone, birthdate, adress, langId);
 	}
 	
@@ -76,5 +76,20 @@ public class SoapWSController extends SpringBeanAutowiringSupport{
 	@WebMethod
 	public String deleteResponsible(int responsibleId){
 		return responsibleService.deleteResponsible(responsibleId);
+	}
+	
+	@WebMethod
+	public String addPatientToResponsible(int patientId,int responsibleId){
+		return responsibleService.addPatientToResponsible(responsibleId, patientId);
+	}
+	
+	@WebMethod
+	public String deletePatientFromResponsible(int patientId,int responsibleId){
+		return responsibleService.deletePatientFromResponsible(patientId, responsibleId);
+	}
+	
+	@WebMethod
+	public String getResponsiblePatients(int responsibleId){
+		return responsibleService.getResponsiblePatients(responsibleId);
 	}
 }

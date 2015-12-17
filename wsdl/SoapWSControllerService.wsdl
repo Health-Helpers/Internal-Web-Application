@@ -5,24 +5,287 @@
   <import namespace="http://ws.ehh.cat/" schemaLocation="SoapWSControllerService_schema1.xsd"></import>
 </schema>
   </wsdl:types>
-  <wsdl:message name="createPatient">
-    <wsdl:part name="parameters" element="tns:createPatient">
+  <wsdl:message name="addPatientToResponsible">
+    <wsdl:part name="parameters" element="tns:addPatientToResponsible">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteResponsibleFromPatientResponse">
+    <wsdl:part name="parameters" element="tns:deleteResponsibleFromPatientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="readResponsibleResponse">
+    <wsdl:part name="parameters" element="tns:readResponsibleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateResponsibleResponse">
+    <wsdl:part name="parameters" element="tns:updateResponsibleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deletePatientFromResponsible">
+    <wsdl:part name="parameters" element="tns:deletePatientFromResponsible">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteResponsible">
+    <wsdl:part name="parameters" element="tns:deleteResponsible">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createResponsibleResponse">
+    <wsdl:part name="parameters" element="tns:createResponsibleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPatientResponsibles">
+    <wsdl:part name="parameters" element="tns:getPatientResponsibles">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deletePatientFromResponsibleResponse">
+    <wsdl:part name="parameters" element="tns:deletePatientFromResponsibleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addResponsibleToPatientResponse">
+    <wsdl:part name="parameters" element="tns:addResponsibleToPatientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deletePatientResponse">
+    <wsdl:part name="parameters" element="tns:deletePatientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteResponsibleResponse">
+    <wsdl:part name="parameters" element="tns:deleteResponsibleResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="createPatientResponse">
     <wsdl:part name="parameters" element="tns:createPatientResponse">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="addResponsibleToPatient">
+    <wsdl:part name="parameters" element="tns:addResponsibleToPatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deletePatient">
+    <wsdl:part name="parameters" element="tns:deletePatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getResponsiblePatientsResponse">
+    <wsdl:part name="parameters" element="tns:getResponsiblePatientsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteResponsibleFromPatient">
+    <wsdl:part name="parameters" element="tns:deleteResponsibleFromPatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="readPatient">
+    <wsdl:part name="parameters" element="tns:readPatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPatientToResponsibleResponse">
+    <wsdl:part name="parameters" element="tns:addPatientToResponsibleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="readResponsible">
+    <wsdl:part name="parameters" element="tns:readResponsible">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="readPatientResponse">
+    <wsdl:part name="parameters" element="tns:readPatientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePatient">
+    <wsdl:part name="parameters" element="tns:updatePatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createPatient">
+    <wsdl:part name="parameters" element="tns:createPatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getResponsiblePatients">
+    <wsdl:part name="parameters" element="tns:getResponsiblePatients">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateResponsible">
+    <wsdl:part name="parameters" element="tns:updateResponsible">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePatientResponse">
+    <wsdl:part name="parameters" element="tns:updatePatientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createResponsible">
+    <wsdl:part name="parameters" element="tns:createResponsible">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPatientResponsiblesResponse">
+    <wsdl:part name="parameters" element="tns:getPatientResponsiblesResponse">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="SoapWSController">
+    <wsdl:operation name="addResponsibleToPatient">
+      <wsdl:input name="addResponsibleToPatient" message="tns:addResponsibleToPatient">
+    </wsdl:input>
+      <wsdl:output name="addResponsibleToPatientResponse" message="tns:addResponsibleToPatientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePatient">
+      <wsdl:input name="deletePatient" message="tns:deletePatient">
+    </wsdl:input>
+      <wsdl:output name="deletePatientResponse" message="tns:deletePatientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPatientToResponsible">
+      <wsdl:input name="addPatientToResponsible" message="tns:addPatientToResponsible">
+    </wsdl:input>
+      <wsdl:output name="addPatientToResponsibleResponse" message="tns:addPatientToResponsibleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteResponsibleFromPatient">
+      <wsdl:input name="deleteResponsibleFromPatient" message="tns:deleteResponsibleFromPatient">
+    </wsdl:input>
+      <wsdl:output name="deleteResponsibleFromPatientResponse" message="tns:deleteResponsibleFromPatientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readPatient">
+      <wsdl:input name="readPatient" message="tns:readPatient">
+    </wsdl:input>
+      <wsdl:output name="readPatientResponse" message="tns:readPatientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readResponsible">
+      <wsdl:input name="readResponsible" message="tns:readResponsible">
+    </wsdl:input>
+      <wsdl:output name="readResponsibleResponse" message="tns:readResponsibleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePatient">
+      <wsdl:input name="updatePatient" message="tns:updatePatient">
+    </wsdl:input>
+      <wsdl:output name="updatePatientResponse" message="tns:updatePatientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePatientFromResponsible">
+      <wsdl:input name="deletePatientFromResponsible" message="tns:deletePatientFromResponsible">
+    </wsdl:input>
+      <wsdl:output name="deletePatientFromResponsibleResponse" message="tns:deletePatientFromResponsibleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteResponsible">
+      <wsdl:input name="deleteResponsible" message="tns:deleteResponsible">
+    </wsdl:input>
+      <wsdl:output name="deleteResponsibleResponse" message="tns:deleteResponsibleResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="createPatient">
       <wsdl:input name="createPatient" message="tns:createPatient">
     </wsdl:input>
       <wsdl:output name="createPatientResponse" message="tns:createPatientResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getPatientResponsibles">
+      <wsdl:input name="getPatientResponsibles" message="tns:getPatientResponsibles">
+    </wsdl:input>
+      <wsdl:output name="getPatientResponsiblesResponse" message="tns:getPatientResponsiblesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getResponsiblePatients">
+      <wsdl:input name="getResponsiblePatients" message="tns:getResponsiblePatients">
+    </wsdl:input>
+      <wsdl:output name="getResponsiblePatientsResponse" message="tns:getResponsiblePatientsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateResponsible">
+      <wsdl:input name="updateResponsible" message="tns:updateResponsible">
+    </wsdl:input>
+      <wsdl:output name="updateResponsibleResponse" message="tns:updateResponsibleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createResponsible">
+      <wsdl:input name="createResponsible" message="tns:createResponsible">
+    </wsdl:input>
+      <wsdl:output name="createResponsibleResponse" message="tns:createResponsibleResponse">
+    </wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SoapWSControllerServiceSoapBinding" type="tns:SoapWSController">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="deletePatient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deletePatient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deletePatientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addResponsibleToPatient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addResponsibleToPatient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addResponsibleToPatientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPatientToResponsible">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addPatientToResponsible">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addPatientToResponsibleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteResponsibleFromPatient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteResponsibleFromPatient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteResponsibleFromPatientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readPatient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="readPatient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="readPatientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readResponsible">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="readResponsible">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="readResponsibleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePatient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updatePatient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updatePatientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePatientFromResponsible">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deletePatientFromResponsible">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deletePatientFromResponsibleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteResponsible">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteResponsible">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteResponsibleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="createPatient">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="createPatient">
@@ -32,10 +295,46 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getPatientResponsibles">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPatientResponsibles">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPatientResponsiblesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getResponsiblePatients">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getResponsiblePatients">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getResponsiblePatientsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateResponsible">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateResponsible">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateResponsibleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createResponsible">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createResponsible">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createResponsibleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="SoapWSControllerService">
     <wsdl:port name="SoapWSControllerPort" binding="tns:SoapWSControllerServiceSoapBinding">
-      <soap:address location="http://localhost:9090/SoapWSControllerPort"/>
+      <soap:address location="http://localhost:8080/SoapWSControllerPort"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

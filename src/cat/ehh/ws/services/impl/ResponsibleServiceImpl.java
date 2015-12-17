@@ -11,12 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import cat.ehh.web.constants.Constants;
+import cat.ehh.web.dao.PatientResponsibleDAO;
 import cat.ehh.web.dao.ResponsibleDAO;
 import cat.ehh.web.dao.UserDAO;
+import cat.ehh.web.dto.responses.responsible.AddPatientToResponsibleResponseDto;
 import cat.ehh.web.dto.responses.responsible.CreateResponsibleResponseDto;
+import cat.ehh.web.dto.responses.responsible.DeletePatientFromResponsibleResponseDto;
 import cat.ehh.web.dto.responses.responsible.DeleteResponsibleResponseDto;
 import cat.ehh.web.dto.responses.responsible.ReadResponsibleResponseDto;
 import cat.ehh.web.dto.responses.responsible.UpdateResponsibleResponseDto;
+import cat.ehh.web.model.PatientResponsible;
 import cat.ehh.web.model.Responsible;
 import cat.ehh.web.model.UserEHH;
 import cat.ehh.web.util.DateUtil;
@@ -31,6 +35,9 @@ public class ResponsibleServiceImpl extends SpringBeanAutowiringSupport implemen
 
 	@Autowired
 	UserDAO userDao;
+	
+	@Autowired
+	PatientResponsibleDAO patientResponsibleDao;
 	
 	@Override
 	public String createResponsible(String name, String surname, String idDoc, String phone, String birthdate,
@@ -157,14 +164,53 @@ public class ResponsibleServiceImpl extends SpringBeanAutowiringSupport implemen
 
 	@Override
 	public String addPatientToResponsible(int responsibleId, int patientId) {
-		// TODO Auto-generated method stub
-		return null;
+		AddPatientToResponsibleResponseDto responseDto = new AddPatientToResponsibleResponseDto();
+
+		try{
+			PatientResponsible patientResponsible = new PatientResponsible();
+			patientResponsible.setResponsibleId(new BigDecimal(responsibleId));
+			patientResponsible.setPatientId(new BigDecimal(patientId));
+
+			patientResponsibleDao.create(patientResponsible);
+
+
+			responseDto.setCode("0");
+			responseDto.setMessage("addPatientToResponsible OK");
+
+		}catch(Exception e){
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			log.error(sw.toString());
+
+			responseDto.setCode("-1");
+			responseDto.setMessage("addPatientToResponsible Error");
+		}
+
+		return responseDto.createXMLString();
 	}
 
 	@Override
 	public String deletePatientFromResponsible(int responsibleId, int patientId) {
-		// TODO Auto-generated method stub
-		return null;
+		DeletePatientFromResponsibleResponseDto responseDto = new DeletePatientFromResponsibleResponseDto();
+
+
+		try{
+			PatientResponsible patientResponsible  = patientResponsibleDao.findByPatientAndResponsible(patientId, responsibleId);
+			patientResponsibleDao.delete(patientResponsible);
+
+			responseDto.setCode("0");
+			responseDto.setMessage("deletePatientFromResponsible OK");
+
+		}catch(Exception e){
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			log.error(sw.toString());
+
+			responseDto.setCode("-1");
+			responseDto.setMessage("deletePatientFromResponsible Error");
+		}
+
+		return responseDto.createXMLString();
 	}
 
 	@Override
