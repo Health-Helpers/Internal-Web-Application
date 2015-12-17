@@ -14,7 +14,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import cat.ehh.web.dto.responses.ResponseDTO;
-import cat.ehh.web.model.Patient;
 import cat.ehh.web.model.Responsible;
 import cat.ehh.web.util.XMLUtil;
 

@@ -17,7 +17,6 @@ import cat.ehh.web.dto.responses.responsible.CreateResponsibleResponseDto;
 import cat.ehh.web.dto.responses.responsible.DeleteResponsibleResponseDto;
 import cat.ehh.web.dto.responses.responsible.ReadResponsibleResponseDto;
 import cat.ehh.web.dto.responses.responsible.UpdateResponsibleResponseDto;
-import cat.ehh.web.model.Patient;
 import cat.ehh.web.model.Responsible;
 import cat.ehh.web.model.UserEHH;
 import cat.ehh.web.util.DateUtil;
