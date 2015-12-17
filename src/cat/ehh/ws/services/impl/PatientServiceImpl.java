@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import cat.ehh.web.constants.Constants;
 import cat.ehh.web.dao.PatientDAO;
 import cat.ehh.web.dao.PatientResponsibleDAO;
 import cat.ehh.web.dao.UserDAO;
@@ -51,7 +52,7 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 			BigDecimal langIdBigDeci = new BigDecimal(langId);
 			Date birthD = DateUtil.getDateFromString(birthdate);
 
-			UserEHH user = new UserEHH(adress, birthD, idDoc, langIdBigDeci, name, phone, surname, 0);
+			UserEHH user = new UserEHH(adress, birthD, idDoc, langIdBigDeci, name, phone, surname, Constants.PATIENT);
 			user = userDao.create(user);
 
 			Patient patient = new Patient();

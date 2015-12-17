@@ -12,5 +12,5 @@ public interface PatientService {
 	public String addResponsibleToPatient(int patientId,int responsibleId);
 	public String deleteResponsibleFromPatient(int patientId,int responsibleId);
 	public String getPatientResponsibles(int patientId);
-	//TODO: Define more methods, i.e. getAdjustements, getAuxiliarData, addResponsible, removeResponsible...
+	//TODO: Define more methods, i.e. getAdjustements, getAuxiliarData,...
 }
