@@ -45,10 +45,6 @@ public class UserEHH implements Serializable {
 	@OneToMany(mappedBy="user")
 	private List<Patient> patients;
 
-	//bi-directional many-to-one association to PatientResponsible
-	@OneToMany(mappedBy="user")
-	private List<PatientResponsible> patientResponsibles;
-
 	//bi-directional many-to-one association to Responsible
 	@OneToMany(mappedBy="user")
 	private List<Responsible> responsibles;
@@ -171,27 +167,6 @@ public class UserEHH implements Serializable {
 		return patient;
 	}
 
-	public List<PatientResponsible> getPatientResponsibles() {
-		return this.patientResponsibles;
-	}
-
-	public void setPatientResponsibles(List<PatientResponsible> patientResponsibles) {
-		this.patientResponsibles = patientResponsibles;
-	}
-
-	public PatientResponsible addPatientResponsible(PatientResponsible patientResponsible) {
-		getPatientResponsibles().add(patientResponsible);
-		patientResponsible.setUser(this);
-
-		return patientResponsible;
-	}
-
-	public PatientResponsible removePatientResponsible(PatientResponsible patientResponsible) {
-		getPatientResponsibles().remove(patientResponsible);
-		patientResponsible.setUser(null);
-
-		return patientResponsible;
-	}
 
 	public List<Responsible> getResponsibles() {
 		return this.responsibles;

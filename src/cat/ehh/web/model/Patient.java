@@ -1,6 +1,8 @@
 package cat.ehh.web.model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -21,6 +23,12 @@ public class Patient implements Serializable {
 
 	@Column(name="dependencyGrade")
 	private String dependencyGrade;
+
+
+	//bi-directional many-to-one association to PatientResponsible
+	@OneToMany(mappedBy="patient")
+	private List<PatientResponsible> patientResponsibles;
+
 
 	private String disease;
 
@@ -76,7 +84,15 @@ public class Patient implements Serializable {
 		this.user = user;
 	}
 
-	
-	
+	public List<PatientResponsible> getPatientResponsibles() {
+		return patientResponsibles;
+	}
+
+	public void setPatientResponsibles(List<PatientResponsible> patientResponsibles) {
+		this.patientResponsibles = patientResponsibles;
+	}
+
+
+
 
 }

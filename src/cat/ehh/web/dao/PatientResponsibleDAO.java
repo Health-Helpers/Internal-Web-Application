@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,4 +56,20 @@ public class PatientResponsibleDAO extends DAO<PatientResponsible> {
 
 		return llistatTots;
 	}
+	
+	
+	@Transactional
+	public PatientResponsible findByPatientAndResponsible(int patientId, int responsibleId) {
+		
+		Query query = entityManager.createQuery("SELECT p FROM PatientResponsible p where p.patientId = ? and p.responsibleId = ?");
+		query.setParameter(1, patientId);
+		query.setParameter(2, responsibleId);
+		
+		
+		PatientResponsible patientResponsible = (PatientResponsible) query.getSingleResult();
+
+		return patientResponsible;
+	}
+	
+	
 }

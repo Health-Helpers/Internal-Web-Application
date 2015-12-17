@@ -6,7 +6,7 @@
 
 	<persistence-unit name="EHHWebPersistenceUnit" transaction-type="JTA">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<jta-data-source>java:jboss/PostgresXA</jta-data-source>
+		<jta-data-source>java:jboss/EHHDS</jta-data-source>
 		<class>cat.ehh.web.model.Language</class>
 		<class>cat.ehh.web.model.UserEHH</class>
 		<class>cat.ehh.web.model.Patient</class>

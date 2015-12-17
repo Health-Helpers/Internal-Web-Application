@@ -23,8 +23,8 @@ public class PatientResponsible implements Serializable {
 	@Column(name="responsibleId")
 	private java.math.BigDecimal responsibleId;
 
-	@Column(name="userId")
-	private java.math.BigDecimal userId;
+	@Column(name="patientId")
+	private java.math.BigDecimal patientId;
 
 	//bi-directional many-to-one association to Responsible
 	@ManyToOne
@@ -32,11 +32,11 @@ public class PatientResponsible implements Serializable {
 		})
 	private Responsible responsible;
 
-	//bi-directional many-to-one association to User
+	//bi-directional many-to-one association to Patient
 	@ManyToOne
-	@JoinColumns({@JoinColumn(name="userId",insertable=false,updatable=false)
+	@JoinColumns({@JoinColumn(name="patientId",insertable=false,updatable=false)
 		})
-	private UserEHH user;
+	private Patient patient;
 
 	public PatientResponsible() {
 	}
@@ -57,14 +57,7 @@ public class PatientResponsible implements Serializable {
 		this.responsibleId = responsibleId;
 	}
 
-	public java.math.BigDecimal getUserId() {
-		return this.userId;
-	}
-
-	public void setUserId(java.math.BigDecimal userId) {
-		this.userId = userId;
-	}
-
+	
 	public Responsible getResponsible() {
 		return this.responsible;
 	}
@@ -73,12 +66,22 @@ public class PatientResponsible implements Serializable {
 		this.responsible = responsible;
 	}
 
-	public UserEHH getUser() {
-		return this.user;
+	public java.math.BigDecimal getPatientId() {
+		return patientId;
 	}
 
-	public void setUser(UserEHH user) {
-		this.user = user;
+	public void setPatientId(java.math.BigDecimal patientId) {
+		this.patientId = patientId;
 	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	
 
 }
