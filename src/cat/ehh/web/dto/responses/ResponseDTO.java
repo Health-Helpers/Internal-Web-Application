@@ -1,11 +1,12 @@
 package cat.ehh.web.dto.responses;
 
-import javax.xml.parsers.ParserConfigurationException;
-
 import org.w3c.dom.Document;
 
-public abstract class ResponseDTO {
+public class ResponseDTO {
 
-	public abstract String createXMLString();
-	public abstract Document createXML();
+	protected String code = "";
+	protected String message = "";
+	
+	public String createXMLString(){return "";};
+	public Document createXML(){return null;};
 }

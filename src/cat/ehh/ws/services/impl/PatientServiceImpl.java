@@ -12,7 +12,10 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import cat.ehh.web.dao.PatientDAO;
 import cat.ehh.web.dao.UserDAO;
-import cat.ehh.web.dto.responses.CreatePatientResponseDto;
+import cat.ehh.web.dto.responses.patient.CreatePatientResponseDto;
+import cat.ehh.web.dto.responses.patient.DeletePatientResponseDto;
+import cat.ehh.web.dto.responses.patient.ReadPatientResponseDto;
+import cat.ehh.web.dto.responses.patient.UpdatePatientResponseDto;
 import cat.ehh.web.model.Patient;
 import cat.ehh.web.model.UserEHH;
 import cat.ehh.web.util.DateUtil;
@@ -59,26 +62,116 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 
 			responseDto.setCode("-1");
 			responseDto.setMessage("Create Patient Error");
-			
+
 		}
 		return responseDto.createXMLString();
 	}
 
 	@Override
-	public String updatePatient(String name, String surname, String idDoc, String phone, String birthdate,
+	public String updatePatient(int patientId,String name, String surname, String idDoc, String phone, String birthdate,
 			String adress, String disease, String dependencyGrade, String langId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		UpdatePatientResponseDto responseDto = new UpdatePatientResponseDto();
+
+		try{
+
+			BigDecimal langIdBigDeci = new BigDecimal(langId);
+			Date birthD = DateUtil.getDateFromString(birthdate);
+
+			Patient patient = patientDao.read(new Long(patientId));
+			UserEHH user = userDao.read(patient.getUserId().longValue());
+			user.setAdress(adress);
+			user.setBirthdate(birthD);
+			user.setIddoc(idDoc);
+			user.setLangid(langIdBigDeci);
+			user.setName(name);
+			user.setSurname(surname);
+			user.setPhone(phone);
+
+			userDao.update(user);
+
+			patient.setDependencyGrade(dependencyGrade);
+			patient.setDisease(disease);
+
+			patient = patientDao.update(patient);
+
+			responseDto.setCode("0");
+			responseDto.setMessage("Update Patient OK");
+			responseDto.setPatient(patient);
+
+		}catch(Exception e){
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			log.error(sw.toString());
+
+			responseDto.setCode("-1");
+			responseDto.setMessage("Update Patient Error");
+
+		}
+		return responseDto.createXMLString();
 	}
 
 	@Override
 	public String readPatient(int patientId) {
+		ReadPatientResponseDto responseDto = new ReadPatientResponseDto();
+		try{
+
+			Patient patient = patientDao.read(new Long(patientId));
+
+			responseDto.setCode("0");
+			responseDto.setMessage("Read Patient OK");
+			responseDto.setPatient(patient);
+
+		}catch(Exception e){
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			log.error(sw.toString());
+
+			responseDto.setCode("-1");
+			responseDto.setMessage("Read Patient Error");
+
+		}
+		return responseDto.createXMLString();
+	}
+
+	@Override
+	public String deletePatient(int patientId) {
+		DeletePatientResponseDto responseDto = new DeletePatientResponseDto();
+		try{
+
+			Patient patient = patientDao.read(new Long(patientId));
+			patientDao.delete(patient);
+			
+			responseDto.setCode("0");
+			responseDto.setMessage("Delete Patient OK");
+			responseDto.setPatient(patient);
+
+		}catch(Exception e){
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			log.error(sw.toString());
+
+			responseDto.setCode("-1");
+			responseDto.setMessage("Delete Patient Error");
+
+		}
+		return responseDto.createXMLString();
+	}
+
+	@Override
+	public String addResponsibleToPatient(int patientId, int responsibleId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String deletePatient(int patientId) {
+	public String deleteResponsibleFromPatient(int patientId, int responsibleId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getPatientResponsibles(int patientId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

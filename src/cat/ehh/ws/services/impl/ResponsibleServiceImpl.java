@@ -44,4 +44,22 @@ public class ResponsibleServiceImpl extends SpringBeanAutowiringSupport implemen
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String addPatientToResponsible(int responsibleId, int patientId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deletePatientFromResponsible(int responsibleId, int patientId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getResponsiblePatients(int responsibleId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

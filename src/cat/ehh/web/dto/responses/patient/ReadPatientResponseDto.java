@@ -1,4 +1,4 @@
-package cat.ehh.web.dto.responses;
+package cat.ehh.web.dto.responses.patient;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -13,15 +13,14 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import cat.ehh.web.dto.responses.ResponseDTO;
 import cat.ehh.web.model.Patient;
 import cat.ehh.web.util.XMLUtil;
 
-public class CreatePatientResponseDto extends ResponseDTO{
+public class ReadPatientResponseDto extends ResponseDTO{
 
-	Logger log = LoggerFactory.getLogger(CreatePatientResponseDto.class);
+	Logger log = LoggerFactory.getLogger(ReadPatientResponseDto.class);
 	
-	String code;
-	String message;
 	Patient patient;
 
 	public String getCode() {
