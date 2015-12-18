@@ -1,5 +1,6 @@
 package cat.ehh.ws;
 
+import javax.annotation.PostConstruct;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
@@ -21,6 +22,11 @@ public class SoapWSController extends SpringBeanAutowiringSupport{
 	
 	@Autowired
 	UserService userService;
+	
+	@PostConstruct
+	public void init() {
+	    SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+	}
 	
 	@WebMethod
 	public String createPatient(String name, String surname,String idDoc, String phone, String birthdate, String adress,String disease, String dependencyGrade,String langId){
