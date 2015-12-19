@@ -15,6 +15,7 @@ import org.w3c.dom.Element;
 
 import cat.ehh.web.dto.responses.ResponseDTO;
 import cat.ehh.web.model.Responsible;
+import cat.ehh.web.util.DateUtil;
 import cat.ehh.web.util.XMLUtil;
 
 public class CreateResponsibleResponseDto extends ResponseDTO{
@@ -72,14 +73,38 @@ public class CreateResponsibleResponseDto extends ResponseDTO{
 			rootElement.appendChild(message);
 
 			if(this.getResponsible()!=null){
-				Element patient = doc.createElement("responsible");
+				Element responsible = doc.createElement("responsible");
 
-				// patient elements
-				Element patientId = doc.createElement("responsibleId");
-				patientId.appendChild(doc.createTextNode(String.valueOf(this.getResponsible().getResponsibleId())));
-				patient.appendChild(patientId);
+				// responsible elements
+				Element responsibleId = doc.createElement("responsibleId");
+				responsibleId.appendChild(doc.createTextNode(String.valueOf(this.getResponsible().getResponsibleId())));
+				responsible.appendChild(responsibleId);
 
-				rootElement.appendChild(patient);
+				Element responsibleDoc = doc.createElement("idDoc");
+				responsibleDoc.appendChild(doc.createTextNode(String.valueOf(this.getResponsible().getUser().getIddoc())));
+				responsible.appendChild(responsibleDoc);
+				
+				Element responsibleName = doc.createElement("name");
+				responsibleName.appendChild(doc.createTextNode(String.valueOf(this.getResponsible().getUser().getName())));
+				responsible.appendChild(responsibleName);
+				
+				Element responsibleSurname = doc.createElement("surname");
+				responsibleSurname.appendChild(doc.createTextNode(String.valueOf(this.getResponsible().getUser().getSurname())));
+				responsible.appendChild(responsibleSurname);
+				
+				Element responsibleBirth = doc.createElement("birthdate");
+				responsibleBirth.appendChild(doc.createTextNode(DateUtil.getStringFromDate(this.getResponsible().getUser().getBirthdate())));
+				responsible.appendChild(responsibleBirth);
+				
+				Element responsibleAddress = doc.createElement("address");
+				responsibleAddress.appendChild(doc.createTextNode(String.valueOf(this.getResponsible().getUser().getAdress())));
+				responsible.appendChild(responsibleAddress);
+				
+				Element responsiblePhone = doc.createElement("phone");
+				responsiblePhone.appendChild(doc.createTextNode(String.valueOf(this.getResponsible().getUser().getPhone())));
+				responsible.appendChild(responsiblePhone);
+				
+				rootElement.appendChild(responsible);
 			}
 
 

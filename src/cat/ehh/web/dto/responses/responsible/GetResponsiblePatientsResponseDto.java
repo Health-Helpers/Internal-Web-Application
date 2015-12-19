@@ -1,4 +1,4 @@
-package cat.ehh.web.dto.responses.patient;
+package cat.ehh.web.dto.responses.responsible;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -16,6 +16,7 @@ import org.w3c.dom.Element;
 
 import cat.ehh.web.dto.responses.ResponseDTO;
 import cat.ehh.web.model.Patient;
+import cat.ehh.web.util.DateUtil;
 import cat.ehh.web.util.XMLUtil;
 
 public class GetResponsiblePatientsResponseDto extends ResponseDTO{
@@ -78,13 +79,43 @@ public class GetResponsiblePatientsResponseDto extends ResponseDTO{
 				for(Patient patient : this.getResponsiblePatients()){
 					Element patientElement = doc.createElement("patient");
 					
-					Element responsibleId = doc.createElement("patientId");
-					responsibleId.appendChild(doc.createTextNode(String.valueOf(patient.getPatientId())));
-					patientElement.appendChild(responsibleId);
+					// patient elements
+					Element patientId = doc.createElement("patientId");
+					patientId.appendChild(doc.createTextNode(String.valueOf(patient.getPatientId())));
+					patientElement.appendChild(patientId);
 					
-					Element responsibleName = doc.createElement("patientName");
-					responsibleName.appendChild(doc.createTextNode(String.valueOf(patient.getUser().getName())));
-					patientElement.appendChild(responsibleName);
+					Element patientDoc = doc.createElement("idDoc");
+					patientDoc.appendChild(doc.createTextNode(String.valueOf(patient.getUser().getIddoc())));
+					patientElement.appendChild(patientDoc);
+					
+					Element patientName = doc.createElement("name");
+					patientName.appendChild(doc.createTextNode(String.valueOf(patient.getUser().getName())));
+					patientElement.appendChild(patientName);
+					
+					Element patientSurname = doc.createElement("surname");
+					patientSurname.appendChild(doc.createTextNode(String.valueOf(patient.getUser().getSurname())));
+					patientElement.appendChild(patientSurname);
+					
+					Element patientBirth = doc.createElement("birthdate");
+					patientBirth.appendChild(doc.createTextNode(DateUtil.getStringFromDate(patient.getUser().getBirthdate())));
+					patientElement.appendChild(patientBirth);
+					
+					Element patientAddress = doc.createElement("address");
+					patientAddress.appendChild(doc.createTextNode(String.valueOf(patient.getUser().getAdress())));
+					patientElement.appendChild(patientAddress);
+					
+					Element patientPhone = doc.createElement("phone");
+					patientPhone.appendChild(doc.createTextNode(String.valueOf(patient.getUser().getPhone())));
+					patientElement.appendChild(patientPhone);
+					
+					Element disease = doc.createElement("disease");
+					disease.appendChild(doc.createTextNode(String.valueOf(patient.getDisease())));
+					patientElement.appendChild(disease);
+					
+					Element depGrade = doc.createElement("depGrade");
+					depGrade.appendChild(doc.createTextNode(String.valueOf(patient.getDependencyGrade())));
+					patientElement.appendChild(depGrade);
+
 
 					rootElement.appendChild(patientElement);
 				}

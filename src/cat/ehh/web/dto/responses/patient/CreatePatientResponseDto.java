@@ -15,6 +15,7 @@ import org.w3c.dom.Element;
 
 import cat.ehh.web.dto.responses.ResponseDTO;
 import cat.ehh.web.model.Patient;
+import cat.ehh.web.util.DateUtil;
 import cat.ehh.web.util.XMLUtil;
 
 public class CreatePatientResponseDto extends ResponseDTO{
@@ -77,6 +78,39 @@ public class CreatePatientResponseDto extends ResponseDTO{
 				Element patientId = doc.createElement("patientId");
 				patientId.appendChild(doc.createTextNode(String.valueOf(this.getPatient().getPatientId())));
 				patient.appendChild(patientId);
+				
+				Element patientDoc = doc.createElement("idDoc");
+				patientDoc.appendChild(doc.createTextNode(String.valueOf(this.getPatient().getUser().getIddoc())));
+				patient.appendChild(patientDoc);
+				
+				Element patientName = doc.createElement("name");
+				patientName.appendChild(doc.createTextNode(String.valueOf(this.getPatient().getUser().getName())));
+				patient.appendChild(patientName);
+				
+				Element patientSurname = doc.createElement("surname");
+				patientSurname.appendChild(doc.createTextNode(String.valueOf(this.getPatient().getUser().getSurname())));
+				patient.appendChild(patientSurname);
+				
+				Element patientBirth = doc.createElement("birthdate");
+				patientBirth.appendChild(doc.createTextNode(DateUtil.getStringFromDate(this.getPatient().getUser().getBirthdate())));
+				patient.appendChild(patientBirth);
+				
+				Element patientAddress = doc.createElement("address");
+				patientAddress.appendChild(doc.createTextNode(String.valueOf(this.getPatient().getUser().getAdress())));
+				patient.appendChild(patientAddress);
+				
+				Element patientPhone = doc.createElement("phone");
+				patientPhone.appendChild(doc.createTextNode(String.valueOf(this.getPatient().getUser().getPhone())));
+				patient.appendChild(patientPhone);
+				
+				
+				Element disease = doc.createElement("disease");
+				disease.appendChild(doc.createTextNode(String.valueOf(this.getPatient().getDisease())));
+				patient.appendChild(disease);
+				
+				Element depGrade = doc.createElement("depGrade");
+				depGrade.appendChild(doc.createTextNode(String.valueOf(this.getPatient().getDependencyGrade())));
+				patient.appendChild(depGrade);
 
 				rootElement.appendChild(patient);
 			}
