@@ -58,7 +58,7 @@ public class DeleteResponsibleResponseDto extends ResponseDTO{
 
 			// root elements
 			doc = docBuilder.newDocument();
-			Element rootElement = doc.createElement("createPatientResponse");
+			Element rootElement = doc.createElement("deleteResponsibleResponse");
 			doc.appendChild(rootElement);
 
 			// code element

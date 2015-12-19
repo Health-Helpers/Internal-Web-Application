@@ -61,7 +61,7 @@ public class GetPatientResponsiblesResponseDto extends ResponseDTO{
 
 			// root elements
 			doc = docBuilder.newDocument();
-			Element rootElement = doc.createElement("createPatientResponse");
+			Element rootElement = doc.createElement("getPatientResponsiblesPatientResponse");
 			doc.appendChild(rootElement);
 
 			// code element

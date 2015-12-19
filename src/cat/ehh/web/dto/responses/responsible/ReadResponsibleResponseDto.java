@@ -60,7 +60,7 @@ public class ReadResponsibleResponseDto extends ResponseDTO{
 
 			// root elements
 			doc = docBuilder.newDocument();
-			Element rootElement = doc.createElement("createPatientResponse");
+			Element rootElement = doc.createElement("readResponsibleResponse");
 			doc.appendChild(rootElement);
 
 			// code element
