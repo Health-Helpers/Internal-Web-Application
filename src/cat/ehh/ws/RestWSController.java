@@ -14,4 +14,6 @@ public class RestWSController{
 	public String sayHello( ){
 		return "Hello Guy!";
 	}
+	
+	
 }
