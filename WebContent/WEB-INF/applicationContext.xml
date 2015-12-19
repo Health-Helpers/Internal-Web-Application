@@ -43,6 +43,8 @@
 	<bean id="patientDao" class="cat.ehh.web.dao.PatientDAO" />
 	<bean id="patientResponsibleDao" class="cat.ehh.web.dao.PatientResponsibleDAO" />
 	<bean id="responsibleDao" class="cat.ehh.web.dao.ResponsibleDAO" />
+	
+	
 
 
 	<!-- i18n -->
@@ -76,5 +78,10 @@
 	<bean id="patientService" class="cat.ehh.ws.services.impl.PatientServiceImpl" />
 	<bean id="responsibleService" class="cat.ehh.ws.services.impl.ResponsibleServiceImpl" />
 	<bean id="userService" class="cat.ehh.ws.services.impl.UserServiceImpl" />
+
+
+	<bean id="soapWSController" class="cat.ehh.ws.SoapWSController" >
+<!-- 		<property name="patientService" ref="patientService" /> -->
+	</bean>
 
 </beans>
