@@ -19,9 +19,9 @@ import javax.xml.bind.annotation.XmlType;
 
 public class AddPatientToResponsible {
 
-    @XmlElement(name = "patientId")
+    @XmlElement(name = "patientId",namespace = "http://ws.ehh.cat/")
     private int arg0;
-    @XmlElement(name = "responsibleId")
+    @XmlElement(name = "responsibleId",namespace = "http://ws.ehh.cat/")
     private int arg1;
 
     public int getArg0() {

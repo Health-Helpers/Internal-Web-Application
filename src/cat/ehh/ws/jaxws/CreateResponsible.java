@@ -19,19 +19,19 @@ import javax.xml.bind.annotation.XmlType;
 
 public class CreateResponsible {
 
-    @XmlElement(name = "name")
+    @XmlElement(name = "name",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg0;
-    @XmlElement(name = "surname")
+    @XmlElement(name = "surname",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg1;
-    @XmlElement(name = "idDoc")
+    @XmlElement(name = "idDoc",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg2;
-    @XmlElement(name = "phone")
+    @XmlElement(name = "phone",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg3;
-    @XmlElement(name = "birthdate")
+    @XmlElement(name = "birthdate",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg4;
-    @XmlElement(name = "address")
+    @XmlElement(name = "address",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg5;
-    @XmlElement(name = "langId")
+    @XmlElement(name = "langId",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg6;
  
 

@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
 
 public class DeleteResponsible {
 
-    @XmlElement(name = "responsibleId")
+    @XmlElement(name = "responsibleId",namespace = "http://ws.ehh.cat/")
     private int arg0;
 
     public int getArg0() {

@@ -19,21 +19,21 @@ import javax.xml.bind.annotation.XmlType;
 
 public class UpdateResponsible {
 
-    @XmlElement(name = "responsibleId")
+    @XmlElement(name = "responsibleId",namespace = "http://ws.ehh.cat/")
     private int arg0;
-    @XmlElement(name = "name")
+    @XmlElement(name = "name",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg1;
-    @XmlElement(name = "surname")
+    @XmlElement(name = "surname",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg2;
-    @XmlElement(name = "idDoc")
+    @XmlElement(name = "idDoc",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg3;
-    @XmlElement(name = "phone")
+    @XmlElement(name = "phone",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg4;
-    @XmlElement(name = "birthdate")
+    @XmlElement(name = "birthdate",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg5;
-    @XmlElement(name = "address")
+    @XmlElement(name = "address",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg6;
-    @XmlElement(name = "langId")
+    @XmlElement(name = "langId",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg7;
 
     public int getArg0() {

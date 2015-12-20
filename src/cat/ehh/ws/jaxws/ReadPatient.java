@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
 
 public class ReadPatient {
 
-    @XmlElement(name = "patientId")
+    @XmlElement(name = "patientId",namespace = "http://ws.ehh.cat/")
     private int arg0;
 
     public int getArg0() {

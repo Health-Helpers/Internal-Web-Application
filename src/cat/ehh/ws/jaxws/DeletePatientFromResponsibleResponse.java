@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
 
 public class DeletePatientFromResponsibleResponse {
 
-    @XmlElement(name = "return")
+    @XmlElement(name = "return",namespace = "http://ws.ehh.cat/")
     private java.lang.String _return;
 
     public java.lang.String getReturn() {

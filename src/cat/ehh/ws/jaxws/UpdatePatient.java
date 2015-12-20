@@ -19,25 +19,25 @@ import javax.xml.bind.annotation.XmlType;
 
 public class UpdatePatient {
 
-    @XmlElement(name = "patientId")
+    @XmlElement(name = "patientId",namespace = "http://ws.ehh.cat/")
     private int arg0;
-    @XmlElement(name = "name")
+    @XmlElement(name = "name",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg1;
-    @XmlElement(name = "surname")
+    @XmlElement(name = "surname",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg2;
-    @XmlElement(name = "idDOc")
+    @XmlElement(name = "idDOc",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg3;
-    @XmlElement(name = "phone")
+    @XmlElement(name = "phone",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg4;
-    @XmlElement(name = "birthdate")
+    @XmlElement(name = "birthdate",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg5;
-    @XmlElement(name = "address")
+    @XmlElement(name = "address",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg6;
-    @XmlElement(name = "disease")
+    @XmlElement(name = "disease",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg7;
-    @XmlElement(name = "dependencyGrade")
+    @XmlElement(name = "dependencyGrade",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg8;
-    @XmlElement(name = "langId")
+    @XmlElement(name = "langId",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg9;
 
     public int getArg0() {
