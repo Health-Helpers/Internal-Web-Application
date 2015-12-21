@@ -76,6 +76,9 @@ public class GetResponsiblePatientsResponseDto extends ResponseDTO{
 
 			if(this.getResponsiblePatients()!=null){
 				// responsible elements
+				
+				Element patientsElement = doc.createElement("patients");
+				
 				for(Patient patient : this.getResponsiblePatients()){
 					Element patientElement = doc.createElement("patient");
 					
@@ -117,10 +120,11 @@ public class GetResponsiblePatientsResponseDto extends ResponseDTO{
 					patientElement.appendChild(depGrade);
 
 
-					rootElement.appendChild(patientElement);
+					patientsElement.appendChild(patientElement);
 				}
+				
+				rootElement.appendChild(patientsElement);
 			}
-
 
 		} catch (ParserConfigurationException e) {
 			StringWriter sw = new StringWriter();

@@ -75,6 +75,9 @@ public class GetPatientResponsiblesResponseDto extends ResponseDTO{
 
 			if(this.getPatientResponsibles()!=null){
 				// responsible elements
+				
+				Element responsableElements = doc.createElement("responsables");
+				
 				for(Responsible resp : this.getPatientResponsibles()){
 					Element responsible = doc.createElement("responsible");
 					
@@ -86,8 +89,9 @@ public class GetPatientResponsiblesResponseDto extends ResponseDTO{
 					responsibleName.appendChild(doc.createTextNode(String.valueOf(resp.getUser().getName())));
 					responsible.appendChild(responsibleName);
 
-					rootElement.appendChild(responsible);
+					responsableElements.appendChild(responsible);
 				}
+				rootElement.appendChild(responsableElements);
 			}
 
 
