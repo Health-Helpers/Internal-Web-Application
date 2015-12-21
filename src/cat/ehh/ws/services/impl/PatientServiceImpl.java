@@ -12,7 +12,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import cat.ehh.web.constants.Constants;
+import cat.ehh.web.dao.AuxiliarDataDAO;
 import cat.ehh.web.dao.PatientDAO;
 import cat.ehh.web.dao.PatientResponsibleDAO;
 import cat.ehh.web.dao.UserDAO;
@@ -20,9 +25,12 @@ import cat.ehh.web.dto.responses.patient.AddResponsibleToPatientResponseDto;
 import cat.ehh.web.dto.responses.patient.CreatePatientResponseDto;
 import cat.ehh.web.dto.responses.patient.DeletePatientResponseDto;
 import cat.ehh.web.dto.responses.patient.DeleteResponsibleFromPatientResponseDto;
+import cat.ehh.web.dto.responses.patient.GetPatientLocationResponseDto;
 import cat.ehh.web.dto.responses.patient.GetPatientResponsiblesResponseDto;
 import cat.ehh.web.dto.responses.patient.ReadPatientResponseDto;
+import cat.ehh.web.dto.responses.patient.SendPatientLocationResponseDto;
 import cat.ehh.web.dto.responses.patient.UpdatePatientResponseDto;
+import cat.ehh.web.model.Auxiliar_data;
 import cat.ehh.web.model.Patient;
 import cat.ehh.web.model.PatientResponsible;
 import cat.ehh.web.model.Responsible;
@@ -42,6 +50,9 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 
 	@Autowired 
 	PatientResponsibleDAO patientResponsibleDao;
+
+	@Autowired 
+	AuxiliarDataDAO auxiliarDataDao;
 
 	@Override
 	public String createPatient(String name, String surname,String idDoc, String phone, String birthdate, String adress,String disease, String dependencyGrade,String langId) {
@@ -252,6 +263,107 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 			responseDto.setMessage("getPatientResponsibles Error");
 		}
 
+		return responseDto.createXMLString();
+	}
+
+	@Override
+	public String sendPatientLocation(int patientId, String date, float latitude, float longitude) {
+		SendPatientLocationResponseDto responseDto = new SendPatientLocationResponseDto();
+		try{
+			Auxiliar_data auxData = auxiliarDataDao.getPatientAuxiliarData(patientId);
+
+			if(auxData!=null){
+				JsonParser parser = new JsonParser();
+				Object obj = parser.parse(auxData.getAuxiliar_data());
+
+				JsonObject jsonObject = (JsonObject) obj;
+
+				JsonArray jsonLocations = jsonObject.getAsJsonArray("locations");
+
+
+				JsonObject newLocation = new JsonObject();
+				if(date==null){
+					date = DateUtil.getStringFromDate(new Date());
+				}
+				newLocation.addProperty("date", date);
+				newLocation.addProperty("latitude", date);
+				newLocation.addProperty("longitude", date);
+
+				jsonLocations.add(newLocation);
+
+				auxData.setAuxiliar_data(jsonLocations.getAsString());
+
+				auxiliarDataDao.update(auxData);
+
+			}else{
+				//Hem de crear un json nou
+				JsonObject newLocation = new JsonObject();
+				if(date==null){
+					date = DateUtil.getStringFromDate(new Date());
+				}
+				newLocation.addProperty("date", date);
+				newLocation.addProperty("latitude", latitude);
+				newLocation.addProperty("longitude", longitude);
+
+				JsonArray locationsArray = new JsonArray();
+				JsonObject locationsObject = new JsonObject();
+				locationsArray.add(newLocation);
+				locationsObject.add("locations", locationsArray);
+
+				auxData = new Auxiliar_data();
+				auxData.setPatientId(new BigDecimal(patientId));
+				auxData.setAuxiliar_data(locationsObject.toString());
+
+				auxiliarDataDao.create(auxData);
+			}
+
+
+			responseDto.setCode("0");
+			responseDto.setMessage("sendPatientLocation OK");
+
+		}catch(Exception e){
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			log.error(sw.toString());
+
+			responseDto.setCode("-1");
+			responseDto.setMessage("sendPatientLocation Error");
+		}
+		return responseDto.createXMLString();
+	}
+
+	@Override
+	public String getPatientLocation(int patientId) {
+		GetPatientLocationResponseDto responseDto = new GetPatientLocationResponseDto();
+		
+		try{
+			Auxiliar_data auxData = auxiliarDataDao.getPatientAuxiliarData(patientId);
+			JsonParser parser = new JsonParser();
+			Object obj = parser.parse(auxData.getAuxiliar_data());
+			JsonObject jsonObject = (JsonObject) obj;
+
+			JsonArray jsonLocations = jsonObject.getAsJsonArray("locations");
+
+			JsonObject locationJsonObject = (JsonObject) jsonLocations.get(0);
+			String locationDate = locationJsonObject.get("date").getAsString();
+			String locationLat = locationJsonObject.get("latitude").getAsString();
+			String locationLon = locationJsonObject.get("longitude").getAsString();
+
+			responseDto.setDate(locationDate);
+			responseDto.setLatitude(locationLat);
+			responseDto.setLongitude(locationLon);
+			
+			responseDto.setCode("0");
+			responseDto.setMessage("getPatientLocation OK");
+
+		}catch(Exception e){
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			log.error(sw.toString());
+
+			responseDto.setCode("-1");
+			responseDto.setMessage("getPatientLocation Error");
+		}
 		return responseDto.createXMLString();
 	}
 }

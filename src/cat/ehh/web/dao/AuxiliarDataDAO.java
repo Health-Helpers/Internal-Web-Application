@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import cat.ehh.web.model.Auxiliar_data;
+import cat.ehh.web.model.PatientResponsible;
 
 @Repository
 public class AuxiliarDataDAO extends DAO<Auxiliar_data> {
@@ -54,5 +56,20 @@ public class AuxiliarDataDAO extends DAO<Auxiliar_data> {
 		List<Auxiliar_data> llistatTots = (List<Auxiliar_data>)entityManager.createNamedQuery("Auxiliar_data.findAll").getResultList();
 
 		return llistatTots;
+	}
+
+	public Auxiliar_data getPatientAuxiliarData(int patientId) {
+		
+		Query query = entityManager.createQuery("SELECT a FROM Auxiliar_data a where a.patientId =:pId");
+		query.setParameter("pId", patientId);
+	
+		Auxiliar_data auxiliarData = null;
+		try{
+			auxiliarData = (Auxiliar_data) query.getSingleResult();
+		}catch(Exception e){
+			
+		}
+
+		return auxiliarData;
 	}
 }

@@ -63,6 +63,16 @@ public class SoapWSController extends SpringBeanAutowiringSupport{
 		return patientService.getPatientResponsibles(patientId);
 	}
 	
+	@WebMethod
+	public String sendPatientLocation(int patientId,String locationDate, float latitude, float longitude){
+		return patientService.sendPatientLocation(patientId,locationDate,latitude,longitude);
+	}
+	
+	@WebMethod
+	public String getPatientLocation(int patientId){
+		return patientService.getPatientLocation(patientId);
+	}
+	
 	/************************************Responsible***********************************************/
 	@WebMethod
 	public String createResponsible(String name, String surname,String idDoc, String phone, String birthdate, String adress, String langId){

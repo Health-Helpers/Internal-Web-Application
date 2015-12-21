@@ -4,19 +4,31 @@
       "name":"Medical Center 1",
       "latidude" : "1",
       "longitude":"1",
-      "address":"Carrer tal nº 11"
+      "address":"Carrer tal 11"
     },
     {"id":"2",
       "name":"Medical Center 2",
       "latidude" : "2",
       "longitude":"2",
-      "address":"Carrer tal nº 12"
+      "address":"Carrer tal 12"
     },
-     {"id":"2",
+     {"id":"3",
       "name":"Medical Center 3",
       "latidude" : "3",
       "longitude":"3",
-      "address":"Carrer tal nº 13"
+      "address":"Carrer tal 13"
+    },
+     {"id":"4",
+      "name":"Medical Center 4",
+      "latidude" : "4",
+      "longitude":"4",
+      "address":"Carrer tal 14"
+    },
+     {"id":"5",
+      "name":"Medical Center 5",
+      "latidude" : "5",
+      "longitude":"5",
+      "address":"Carrer tal 15"
     }
   ]
 }

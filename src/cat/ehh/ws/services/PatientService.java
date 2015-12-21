@@ -13,4 +13,7 @@ public interface PatientService {
 	public String deleteResponsibleFromPatient(int patientId,int responsibleId);
 	public String getPatientResponsibles(int patientId);
 	//TODO: Define more methods, i.e. getAdjustements, getAuxiliarData,...
+	
+	public String sendPatientLocation(int patientId, String date, float latitude, float longitude);
+	public String getPatientLocation(int patientId);
 }
