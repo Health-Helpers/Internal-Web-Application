@@ -291,7 +291,7 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 
 				jsonLocations.add(newLocation);
 
-				auxData.setAuxiliar_data(jsonLocations.getAsString());
+				auxData.setAuxiliar_data(jsonLocations.toString());
 
 				auxiliarDataDao.update(auxData);
 
