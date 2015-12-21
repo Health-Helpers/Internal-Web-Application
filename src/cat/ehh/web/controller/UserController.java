@@ -68,7 +68,11 @@ public class UserController {
 		user.setSurname(surname);
 		user.setType(type);
 		user.setAdress(address);
-		user.setLangid(new BigDecimal(language));
+		if(language!=null){
+			user.setLangid(new BigDecimal(language));
+		}else{
+			user.setLangid(new BigDecimal(1));
+		}
 		userDao.update(user);
 		try {
 			response.sendRedirect(request.getContextPath()+"/user");

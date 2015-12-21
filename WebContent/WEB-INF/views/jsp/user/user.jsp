@@ -21,6 +21,7 @@ if (session.getAttribute("username") != null && !session.getAttribute("username"
 
 	<%
 		List<UserEHH> usuarios = (List<UserEHH>) session.getAttribute("usuarios");
+	
 	%>
 
 	<div class="wrapper container">
@@ -60,12 +61,7 @@ if (session.getAttribute("username") != null && !session.getAttribute("username"
 			<!-- The form which is used to populate the item data -->
 			<form id="userForm" method="post" class="form-horizontal" style="display: none;" action="user/edit">     
 			    
-			     <div class="form-group">
-			        <label class="col-xs-3 control-label"><spring:message code="label.id" /></label>
-			        <div class="col-xs-5">
-			            <input type="text" class="form-control" name="id" />
-			        </div>
-			     </div>
+			      <input type="hidden" class="form-control" name="id"/>
 			    
 			    <div class="form-group">
 			        <label class="col-xs-3 control-label"><spring:message code="label.dni" /></label>
@@ -98,7 +94,7 @@ if (session.getAttribute("username") != null && !session.getAttribute("username"
 			     <div class="form-group">
 			        <label class="col-xs-3 control-label"><spring:message code="label.birthdate" /></label>
 			        <div class="col-xs-5">
-			            <input type="text" class="form-control" name="birthdate" />
+			            <input id="datepicker" type="text" class="form-control" name="birthdate" />
 			        </div>
 			    </div>
 			    
@@ -174,22 +170,22 @@ function openModal(idUser){
            },
         method: 'GET'
     }).success(function(response) {
-
+    	
     	var json = response;
         obj = JSON.parse(json);                                    
 
         //alert(obj.User.userId);
         //alert(obj.User.tipo);      
 
-         
+         var birthDate = new Date(obj.User.birthdate);
         // Populate the form fields with the data returned from server
         $('#userForm')
        		.find('[name="id"]').val(obj.User.userId).end()
         	.find('[name="iddoc"]').val(obj.User.iddoc).end()
             .find('[name="name"]').val(obj.User.name).end()
             .find('[name="surname"]').val(obj.User.surname).end()
-            .find('[name="adress"]').val(obj.User.adress).end()            
-            .find('[name="birthdate"]').val(obj.User.birthdate).end()
+            .find('[name="adress"]').val(obj.User.adress).end()       
+            .find('[name="birthdate"]').val((birthDate.getMonth() + 1) + "/" + birthDate.getDate() + "/" + birthDate.getFullYear()).end()
             .find('[name="phone"]').val(obj.User.phone).end()
             .find('[name="language"]').val(obj.User.language).end()
             .find('[name="tipo"]').val(obj.User.type).prop("checked", true).end();
@@ -226,7 +222,7 @@ function openModalNew(){
   	  .find('[name="iddoc"]').val("").end()
       .find('[name="name"]').val("").end()
       .find('[name="surname"]').val("").end()
-       .find('[name="adress"]').val("").end()     
+      .find('[name="adress"]').val("").end()     
       .find('[name="birthdate"]').val("").end()
       .find('[name="phone"]').val("").end()
       .find('[name="language"]').val("").end()
@@ -253,12 +249,37 @@ function openModalNew(){
             })
             .modal('show');
 }
-	
-
-
-
 </script>
+<script>
+	$(function() {
+		$("#datepicker").datepicker();
+	});
 
+	$(function($) {
+		$.datepicker.regional['es'] = {
+			closeText : 'Cerrar',
+			prevText : '<Ant',
+	        nextText: 'Sig>',
+			currentText : 'Hoy',
+			monthNames : [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
+					'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
+					'Noviembre', 'Diciembre' ],
+			monthNamesShort : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+					'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+			dayNames : [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves',
+					'Viernes', 'Sábado' ],
+			dayNamesShort : [ 'Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb' ],
+			dayNamesMin : [ 'Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá' ],
+			weekHeader : 'Sm',
+			dateFormat : 'dd/mm/yy',
+			firstDay : 1,
+			isRTL : false,
+			showMonthAfterYear : false,
+			yearSuffix : ''
+		};
+		$.datepicker.setDefaults($.datepicker.regional['es']);
+	});
+</script>
 
 </html>
 

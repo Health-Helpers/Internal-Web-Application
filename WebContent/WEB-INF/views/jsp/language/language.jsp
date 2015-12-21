@@ -61,13 +61,8 @@
 			<!-- The form which is used to populate the item data -->
 			<form id="langForm" method="post" class="form-horizontal" style="display: none;" action="language/editLanguage">
 			 			     
-			    <div class="form-group">
-			        <label class="col-xs-3 control-label"><spring:message code="label.id" /></label>
-			        <div class="col-xs-5">
-			            <input type="text" class="form-control" name="id" />
-			        </div>
-			    </div>
-			    
+			      <input type="hidden" class="form-control" name="id" />
+			      
 			     <div class="form-group">
 			        <label class="col-xs-3 control-label"><spring:message code="label.code" /></label>
 			        <div class="col-xs-5">
