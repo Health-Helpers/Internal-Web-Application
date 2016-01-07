@@ -38,6 +38,10 @@ public class UserEHH implements Serializable {
 	private String phone;
 
 	private String surname;
+	
+	private String installationId;
+	
+	private String status;
 
 	private Integer type;
 
@@ -53,10 +57,7 @@ public class UserEHH implements Serializable {
 	private Language language;
 
 
-	public UserEHH() {
-	}
-	
-	
+	public UserEHH() {}
 
 	public UserEHH(String adress, Date birthdate, String iddoc, BigDecimal langid, String name, String phone,
 			String surname, Integer type) {
@@ -70,8 +71,6 @@ public class UserEHH implements Serializable {
 		this.surname = surname;
 		this.type = type;
 	}
-
-
 
 	public long getUserId() {
 		return this.userId;
@@ -198,6 +197,20 @@ public class UserEHH implements Serializable {
 		this.language = language;
 	}
 
+	public String getInstallationId() {
+		return installationId;
+	}
 
+	public void setInstallationId(String installationId) {
+		this.installationId = installationId;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 }
