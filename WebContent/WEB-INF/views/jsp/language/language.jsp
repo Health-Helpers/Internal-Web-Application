@@ -66,20 +66,22 @@
 			     <div class="form-group">
 			        <label class="col-xs-3 control-label"><spring:message code="label.code" /></label>
 			        <div class="col-xs-5">
-			            <input type="text" class="form-control" name="code" />
+			            <input type="text"  id="codigo" name="codigo"
+							placeholder="<spring:message code="label.code" />" required
+							pattern="[A-Za-z]{2}_[A-Za-z]{2}" class="form-control"/>
 			        </div>
 			    </div>
 			     
 			     <div class="form-group">
 			        <label class="col-xs-3 control-label"><spring:message code="label.name" /></label>
 			        <div class="col-xs-5">
-			            <input type="text" class="form-control" name="name"  />
+			            <input type="text" class="form-control" name="name" required />
 			        </div>
 			    </div>
 			
 			    <div class="form-group">
 			        <div class="col-xs-5 col-xs-offset-3">
-			            <button type="submit" class="btn btn-default">Save</button>
+			            <button type="submit" class="btn btn-default"><spring:message code="label.save" /></button>
 			        </div>
 			    </div>
 			</form>
