@@ -46,6 +46,7 @@ public class UserServiceImpl extends SpringBeanAutowiringSupport implements User
 
 				user.setPhone(phone);
 				user.setIddoc(idDoc);
+				user.setInstallationId(parseInstallationId);
 
 				user = userDao.create(user);
 
