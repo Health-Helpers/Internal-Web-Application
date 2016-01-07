@@ -23,7 +23,7 @@ public class CreateUserResponseDto extends ResponseDTO{
 	Logger log = LoggerFactory.getLogger(CreateUserResponseDto.class);
 
 	UserEHH user;
-	
+
 	public String getCode() {
 		return code;
 	}
@@ -42,7 +42,7 @@ public class CreateUserResponseDto extends ResponseDTO{
 	public void setUser(UserEHH user) {
 		this.user = user;
 	}
-	
+
 	@Override
 	public String createXMLString(){
 		return StringEscapeUtils.unescapeXml(XMLUtil.fromXMLToString(this.createXML()));
@@ -56,10 +56,9 @@ public class CreateUserResponseDto extends ResponseDTO{
 		try {
 			docBuilder = docFactory.newDocumentBuilder();
 
-
 			// root elements
 			doc = docBuilder.newDocument();
-			Element rootElement = doc.createElement("createResponsibleResponse");
+			Element rootElement = doc.createElement("createUserResponse");
 			doc.appendChild(rootElement);
 
 			// code element
@@ -82,27 +81,29 @@ public class CreateUserResponseDto extends ResponseDTO{
 				Element userDoc = doc.createElement("idDoc");
 				userDoc.appendChild(doc.createTextNode(String.valueOf(this.getUser().getIddoc())));
 				userElement.appendChild(userDoc);
-				
+
 				Element userName = doc.createElement("name");
 				userName.appendChild(doc.createTextNode(String.valueOf(this.getUser().getName())));
 				userElement.appendChild(userName);
-				
+
 				Element userSurname = doc.createElement("surname");
 				userSurname.appendChild(doc.createTextNode(String.valueOf(this.getUser().getSurname())));
 				userElement.appendChild(userSurname);
-				
-				Element userBirth = doc.createElement("birthdate");
-				userBirth.appendChild(doc.createTextNode(DateUtil.getStringFromDate(this.getUser().getBirthdate())));
-				userElement.appendChild(userBirth);
-				
+
+				if(this.getUser().getBirthdate()!=null){
+					Element userBirth = doc.createElement("birthdate");
+					userBirth.appendChild(doc.createTextNode(DateUtil.getStringFromDate(this.getUser().getBirthdate())));
+					userElement.appendChild(userBirth);
+				}
+
 				Element userAddress = doc.createElement("address");
 				userAddress.appendChild(doc.createTextNode(String.valueOf(this.getUser().getAdress())));
 				userElement.appendChild(userAddress);
-				
+
 				Element userPhone = doc.createElement("phone");
 				userPhone.appendChild(doc.createTextNode(String.valueOf(this.getUser().getPhone())));
 				userElement.appendChild(userPhone);
-				
+
 				rootElement.appendChild(userElement);
 			}
 
