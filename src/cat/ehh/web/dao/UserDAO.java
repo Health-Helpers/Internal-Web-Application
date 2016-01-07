@@ -9,7 +9,6 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import cat.ehh.web.model.PatientResponsible;
 import cat.ehh.web.model.UserEHH;
 
 @Repository
@@ -58,7 +57,7 @@ public class UserDAO extends DAO<UserEHH> {
 
 	public boolean checkUserExistence(String idDoc, String phone) {
 		
-		Query query = entityManager.createQuery("SELECT u FROM User u where u.idDoc = ? and u.phone = ?");
+		Query query = entityManager.createQuery("SELECT u FROM UserEHH u where u.iddoc = ?1 and u.phone = ?2");
 		query.setParameter(1, idDoc);
 		query.setParameter(2, phone);
 		

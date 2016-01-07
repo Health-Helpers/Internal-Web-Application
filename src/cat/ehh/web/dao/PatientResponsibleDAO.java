@@ -61,7 +61,7 @@ public class PatientResponsibleDAO extends DAO<PatientResponsible> {
 	@Transactional
 	public PatientResponsible findByPatientAndResponsible(int patientId, int responsibleId) {
 		
-		Query query = entityManager.createQuery("SELECT p FROM PatientResponsible p where p.patientId = ? and p.responsibleId = ?");
+		Query query = entityManager.createQuery("SELECT p FROM PatientResponsible p where p.patientId = ?1 and p.responsibleId = ?2");
 		query.setParameter(1, patientId);
 		query.setParameter(2, responsibleId);
 		
