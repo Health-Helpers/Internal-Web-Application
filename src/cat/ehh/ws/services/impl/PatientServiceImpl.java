@@ -45,7 +45,7 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 
 	@Autowired
 	PatientDAO patientDao;
-	
+
 	@Autowired
 	ResponsibleDAO responsibleDao;
 
@@ -65,8 +65,8 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 		try{
 
 			Responsible resp = responsibleDao.read(new Long(responsibleId));
-			
-			
+
+
 			Date birthD = DateUtil.getDateFromString(birthdate);
 
 			UserEHH user = new UserEHH(adress, birthD, idDoc, new BigDecimal(0), name, phone, surname, Constants.PATIENT);
@@ -86,7 +86,7 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 				patientResponsible.setResponsible(resp);
 				patientResponsible.setPatientId(new BigDecimal(patient.getPatientId()));
 				patientResponsible.setResponsibleId(new BigDecimal(resp.getResponsibleId()));
-				
+
 				patientResponsibleDao.create(patientResponsible);
 			}
 
@@ -348,7 +348,7 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 	@Override
 	public String getPatientLocation(int patientId) {
 		GetPatientLocationResponseDto responseDto = new GetPatientLocationResponseDto();
-		
+
 		try{
 			Auxiliar_data auxData = auxiliarDataDao.getPatientAuxiliarData(patientId);
 			JsonParser parser = new JsonParser();
@@ -357,15 +357,19 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 
 			JsonArray jsonLocations = jsonObject.getAsJsonArray("locations");
 
-			JsonObject locationJsonObject = (JsonObject) jsonLocations.get(jsonLocations.size()-1);
-			String locationDate = locationJsonObject.get("date").getAsString();
-			String locationLat = locationJsonObject.get("latitude").getAsString();
-			String locationLon = locationJsonObject.get("longitude").getAsString();
+			if(jsonLocations!=null && jsonLocations.size()>0){
+				JsonObject locationJsonObject = (JsonObject) jsonLocations.get(jsonLocations.size()-1);
+				String locationDate = locationJsonObject.get("date").getAsString();
+				String locationLat = locationJsonObject.get("latitude").getAsString();
+				String locationLon = locationJsonObject.get("longitude").getAsString();
+				
+				responseDto.setDate(locationDate);
+				responseDto.setLatitude(locationLat);
+				responseDto.setLongitude(locationLon);
+			}
 
-			responseDto.setDate(locationDate);
-			responseDto.setLatitude(locationLat);
-			responseDto.setLongitude(locationLon);
 			
+
 			responseDto.setCode("0");
 			responseDto.setMessage("getPatientLocation OK");
 

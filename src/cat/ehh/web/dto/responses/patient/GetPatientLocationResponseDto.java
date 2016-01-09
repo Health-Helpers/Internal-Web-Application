@@ -23,7 +23,7 @@ public class GetPatientLocationResponseDto  extends ResponseDTO{
 	private String latitude;
 	private String longitude;
 	private String date;
-	
+
 
 	public String getCode() {
 		return code;
@@ -37,7 +37,7 @@ public class GetPatientLocationResponseDto  extends ResponseDTO{
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+
 	public String getLatitude() {
 		return latitude;
 	}
@@ -56,7 +56,7 @@ public class GetPatientLocationResponseDto  extends ResponseDTO{
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
+
 
 	@Override
 	public String createXMLString(){
@@ -86,22 +86,28 @@ public class GetPatientLocationResponseDto  extends ResponseDTO{
 			message.appendChild(doc.createTextNode(this.getMessage()));
 			rootElement.appendChild(message);
 
-				Element location = doc.createElement("location");
+			Element location = doc.createElement("location");
 
-				// patient elements
-				Element dateElement = doc.createElement("date");
+			// patient elements
+			Element dateElement = doc.createElement("date");
+			if(this.getDate()!=null){
 				dateElement.appendChild(doc.createTextNode(String.valueOf(this.getDate())));
-				location.appendChild(dateElement);
-				
-				Element latitudeElement = doc.createElement("latitude");
-				latitudeElement.appendChild(doc.createTextNode(String.valueOf(this.getLatitude())));
-				location.appendChild(latitudeElement);
-				
-				Element longitudeElement = doc.createElement("longitude");
-				longitudeElement.appendChild(doc.createTextNode(String.valueOf(this.getLongitude())));
-				location.appendChild(longitudeElement);
+			}
+			location.appendChild(dateElement);
 
-				rootElement.appendChild(location);
+			Element latitudeElement = doc.createElement("latitude");
+			if(this.getLatitude()!=null){
+				latitudeElement.appendChild(doc.createTextNode(String.valueOf(this.getLatitude())));
+			}
+			location.appendChild(latitudeElement);
+
+			Element longitudeElement = doc.createElement("longitude");
+			if(this.getLongitude()!=null){
+				longitudeElement.appendChild(doc.createTextNode(String.valueOf(this.getLongitude())));
+			}
+			location.appendChild(longitudeElement);
+
+			rootElement.appendChild(location);
 
 		} catch (ParserConfigurationException e) {
 			StringWriter sw = new StringWriter();
