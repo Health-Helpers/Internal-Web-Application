@@ -20,6 +20,7 @@ import cat.ehh.web.constants.Constants;
 import cat.ehh.web.dao.AuxiliarDataDAO;
 import cat.ehh.web.dao.PatientDAO;
 import cat.ehh.web.dao.PatientResponsibleDAO;
+import cat.ehh.web.dao.ResponsibleDAO;
 import cat.ehh.web.dao.UserDAO;
 import cat.ehh.web.dto.responses.patient.AddResponsibleToPatientResponseDto;
 import cat.ehh.web.dto.responses.patient.CreatePatientResponseDto;
@@ -44,6 +45,9 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 
 	@Autowired
 	PatientDAO patientDao;
+	
+	@Autowired
+	ResponsibleDAO responsibleDao;
 
 	@Autowired
 	UserDAO userDao;
@@ -55,15 +59,17 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 	AuxiliarDataDAO auxiliarDataDao;
 
 	@Override
-	public String createPatient(String name, String surname,String idDoc, String phone, String birthdate, String adress,String disease, String dependencyGrade,String langId) {
+	public String createPatient(String name, String surname,String idDoc, String phone, String birthdate, String adress,String disease, String dependencyGrade,int responsibleId) {
 		CreatePatientResponseDto responseDto = new CreatePatientResponseDto();
 
 		try{
 
-			BigDecimal langIdBigDeci = new BigDecimal(langId);
+			Responsible resp = responsibleDao.read(new Long(responsibleId));
+			
+			
 			Date birthD = DateUtil.getDateFromString(birthdate);
 
-			UserEHH user = new UserEHH(adress, birthD, idDoc, langIdBigDeci, name, phone, surname, Constants.PATIENT);
+			UserEHH user = new UserEHH(adress, birthD, idDoc, new BigDecimal(0), name, phone, surname, Constants.PATIENT);
 			user = userDao.create(user);
 
 			Patient patient = new Patient();
@@ -74,6 +80,15 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 
 			patient = patientDao.create(patient);
 
+			if(resp!=null){
+				PatientResponsible patientResponsible = new PatientResponsible();
+				patientResponsible.setPatient(patient);
+				patientResponsible.setResponsible(resp);
+				patientResponsible.setPatientId(new BigDecimal(patient.getPatientId()));
+				patientResponsible.setResponsibleId(new BigDecimal(resp.getResponsibleId()));
+				
+				patientResponsibleDao.create(patientResponsible);
+			}
 
 			responseDto.setCode("0");
 			responseDto.setMessage("Create Patient OK");
@@ -92,13 +107,12 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 
 	@Override
 	public String updatePatient(int patientId,String name, String surname, String idDoc, String phone, String birthdate,
-			String adress, String disease, String dependencyGrade, String langId) {
+			String adress, String disease, String dependencyGrade, int responsibleId) {
 
 		UpdatePatientResponseDto responseDto = new UpdatePatientResponseDto();
 
 		try{
 
-			BigDecimal langIdBigDeci = new BigDecimal(langId);
 			Date birthD = DateUtil.getDateFromString(birthdate);
 
 			Patient patient = patientDao.read(new Long(patientId));
@@ -106,7 +120,6 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 			user.setAdress(adress);
 			user.setBirthdate(birthD);
 			user.setIddoc(idDoc);
-			user.setLangid(langIdBigDeci);
 			user.setName(name);
 			user.setSurname(surname);
 			user.setPhone(phone);

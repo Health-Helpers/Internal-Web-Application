@@ -37,8 +37,8 @@ public class UpdatePatient {
     private java.lang.String arg7;
     @XmlElement(name = "dependencyGrade",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg8;
-    @XmlElement(name = "langId",namespace = "http://ws.ehh.cat/")
-    private java.lang.String arg9;
+    @XmlElement(name = "responsibleId",namespace = "http://ws.ehh.cat/")
+    private int arg9;
 
     public int getArg0() {
         return this.arg0;
@@ -112,11 +112,11 @@ public class UpdatePatient {
         this.arg8 = newArg8;
     }
 
-    public java.lang.String getArg9() {
+    public int getArg9() {
         return this.arg9;
     }
 
-    public void setArg9(java.lang.String newArg9)  {
+    public void setArg9(int newArg9)  {
         this.arg9 = newArg9;
     }
 

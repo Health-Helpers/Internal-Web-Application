@@ -91,9 +91,11 @@ public class CreatePatientResponseDto extends ResponseDTO{
 				patientSurname.appendChild(doc.createTextNode(String.valueOf(this.getPatient().getUser().getSurname())));
 				patient.appendChild(patientSurname);
 				
-				Element patientBirth = doc.createElement("birthdate");
-				patientBirth.appendChild(doc.createTextNode(DateUtil.getStringFromDate(this.getPatient().getUser().getBirthdate())));
-				patient.appendChild(patientBirth);
+				if(this.getPatient().getUser().getBirthdate()!=null){
+					Element patientBirth = doc.createElement("birthdate");
+					patientBirth.appendChild(doc.createTextNode(DateUtil.getStringFromDate(this.getPatient().getUser().getBirthdate())));
+					patient.appendChild(patientBirth);
+				}
 				
 				Element patientAddress = doc.createElement("address");
 				patientAddress.appendChild(doc.createTextNode(String.valueOf(this.getPatient().getUser().getAdress())));

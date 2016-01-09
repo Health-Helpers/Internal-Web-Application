@@ -70,6 +70,7 @@ public class UserEHH implements Serializable {
 		this.phone = phone;
 		this.surname = surname;
 		this.type = type;
+		this.status = "0";
 	}
 
 	public long getUserId() {

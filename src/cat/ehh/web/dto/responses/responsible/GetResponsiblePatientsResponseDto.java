@@ -100,7 +100,9 @@ public class GetResponsiblePatientsResponseDto extends ResponseDTO{
 					patientElement.appendChild(patientSurname);
 					
 					Element patientBirth = doc.createElement("birthdate");
-					patientBirth.appendChild(doc.createTextNode(DateUtil.getStringFromDate(patient.getUser().getBirthdate())));
+					if(patient.getUser().getBirthdate()!=null){
+						patientBirth.appendChild(doc.createTextNode(DateUtil.getStringFromDate(patient.getUser().getBirthdate())));
+					}
 					patientElement.appendChild(patientBirth);
 					
 					Element patientAddress = doc.createElement("address");

@@ -21,7 +21,7 @@ import cat.ehh.web.util.XMLUtil;
 public class CreateResponsibleResponseDto extends ResponseDTO{
 
 	Logger log = LoggerFactory.getLogger(CreateResponsibleResponseDto.class);
-	
+
 	Responsible responsible;
 
 	public String getCode() {
@@ -36,7 +36,7 @@ public class CreateResponsibleResponseDto extends ResponseDTO{
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+
 
 	public Responsible getResponsible() {
 		return responsible;
@@ -83,27 +83,29 @@ public class CreateResponsibleResponseDto extends ResponseDTO{
 				Element responsibleDoc = doc.createElement("idDoc");
 				responsibleDoc.appendChild(doc.createTextNode(String.valueOf(this.getResponsible().getUser().getIddoc())));
 				responsible.appendChild(responsibleDoc);
-				
+
 				Element responsibleName = doc.createElement("name");
 				responsibleName.appendChild(doc.createTextNode(String.valueOf(this.getResponsible().getUser().getName())));
 				responsible.appendChild(responsibleName);
-				
+
 				Element responsibleSurname = doc.createElement("surname");
 				responsibleSurname.appendChild(doc.createTextNode(String.valueOf(this.getResponsible().getUser().getSurname())));
 				responsible.appendChild(responsibleSurname);
-				
-				Element responsibleBirth = doc.createElement("birthdate");
-				responsibleBirth.appendChild(doc.createTextNode(DateUtil.getStringFromDate(this.getResponsible().getUser().getBirthdate())));
-				responsible.appendChild(responsibleBirth);
-				
+
+				if(this.getResponsible().getUser().getBirthdate()!=null){
+					Element responsibleBirth = doc.createElement("birthdate");
+					responsibleBirth.appendChild(doc.createTextNode(DateUtil.getStringFromDate(this.getResponsible().getUser().getBirthdate())));
+					responsible.appendChild(responsibleBirth);
+				}
+
 				Element responsibleAddress = doc.createElement("address");
 				responsibleAddress.appendChild(doc.createTextNode(String.valueOf(this.getResponsible().getUser().getAdress())));
 				responsible.appendChild(responsibleAddress);
-				
+
 				Element responsiblePhone = doc.createElement("phone");
 				responsiblePhone.appendChild(doc.createTextNode(String.valueOf(this.getResponsible().getUser().getPhone())));
 				responsible.appendChild(responsiblePhone);
-				
+
 				rootElement.appendChild(responsible);
 			}
 
