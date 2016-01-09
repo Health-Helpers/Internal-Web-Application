@@ -304,7 +304,7 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 
 				jsonLocations.add(newLocation);
 
-				auxData.setAuxiliar_data(jsonLocations.toString());
+				auxData.setAuxiliar_data(jsonObject.toString());
 
 				auxiliarDataDao.update(auxData);
 
@@ -357,7 +357,7 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 
 			JsonArray jsonLocations = jsonObject.getAsJsonArray("locations");
 
-			JsonObject locationJsonObject = (JsonObject) jsonLocations.get(0);
+			JsonObject locationJsonObject = (JsonObject) jsonLocations.get(jsonLocations.size()-1);
 			String locationDate = locationJsonObject.get("date").getAsString();
 			String locationLat = locationJsonObject.get("latitude").getAsString();
 			String locationLon = locationJsonObject.get("longitude").getAsString();
