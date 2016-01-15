@@ -25,6 +25,9 @@ public class Auxiliar_data implements Serializable {
 
 	@Column(name="patientId")
 	private BigDecimal patientId;
+	
+	@Column(name="geofences")
+	private String geofences;
 
 	public Auxiliar_data() {
 	}
@@ -55,4 +58,13 @@ public class Auxiliar_data implements Serializable {
 		this.patientId = patientId;
 	}
 
+	public String getGeofences() {
+		return geofences;
+	}
+
+	public void setGeofences(String geofences) {
+		this.geofences = geofences;
+	}
+
+	
 }

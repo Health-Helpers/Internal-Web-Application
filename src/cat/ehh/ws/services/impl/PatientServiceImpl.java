@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -22,10 +23,13 @@ import cat.ehh.web.dao.PatientDAO;
 import cat.ehh.web.dao.PatientResponsibleDAO;
 import cat.ehh.web.dao.ResponsibleDAO;
 import cat.ehh.web.dao.UserDAO;
+import cat.ehh.web.dto.GeofenceDTO;
+import cat.ehh.web.dto.responses.patient.AddPatientGeofenceResponseDto;
 import cat.ehh.web.dto.responses.patient.AddResponsibleToPatientResponseDto;
 import cat.ehh.web.dto.responses.patient.CreatePatientResponseDto;
 import cat.ehh.web.dto.responses.patient.DeletePatientResponseDto;
 import cat.ehh.web.dto.responses.patient.DeleteResponsibleFromPatientResponseDto;
+import cat.ehh.web.dto.responses.patient.GetPatientGeofenceResponseDto;
 import cat.ehh.web.dto.responses.patient.GetPatientLocationResponseDto;
 import cat.ehh.web.dto.responses.patient.GetPatientResponsiblesResponseDto;
 import cat.ehh.web.dto.responses.patient.ReadPatientResponseDto;
@@ -380,6 +384,124 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 
 			responseDto.setCode("-1");
 			responseDto.setMessage("getPatientLocation Error");
+		}
+		return responseDto.createXMLString();
+	}
+
+	@Override
+	public String getPatientGeofences(int patientId) {
+		GetPatientGeofenceResponseDto responseDto = new GetPatientGeofenceResponseDto();
+
+		try{
+			Auxiliar_data auxData = auxiliarDataDao.getPatientAuxiliarData(patientId);
+			JsonParser parser = new JsonParser();
+			Object obj = parser.parse(auxData.getGeofences());
+
+			JsonArray jsonArray = (JsonArray) obj;
+			
+			if(jsonArray!=null){
+				List<GeofenceDTO> geofencesList = new ArrayList<GeofenceDTO>();
+				for(JsonElement geofenceJsonElement : jsonArray){
+					GeofenceDTO geofenceDto = new GeofenceDTO();
+					JsonObject geofenceJsonObj = geofenceJsonElement.getAsJsonObject();
+					
+					geofenceDto.setId(geofenceJsonObj.get("id").getAsString());
+					geofenceDto.setRadius(geofenceJsonObj.get("radius").getAsString());
+					geofenceDto.setLatitude(geofenceJsonObj.get("latitude").getAsString());
+					geofenceDto.setLongitude(geofenceJsonObj.get("longitude").getAsString());
+					
+					geofencesList.add(geofenceDto);
+				}
+				responseDto.setGeofenceList(geofencesList);
+			}
+			
+			responseDto.setCode("0");
+			responseDto.setMessage("getPatientLocation OK");
+
+		}catch(Exception e){
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			log.error(sw.toString());
+
+			responseDto.setCode("-1");
+			responseDto.setMessage("getPatientLocation Error");
+		}
+		return responseDto.createXMLString();
+	}
+
+	@Override
+	public String addPatientGeofence(int patientId, int radius, double geofenceLatitude, double geofenceLongitude) {
+		AddPatientGeofenceResponseDto responseDto = new AddPatientGeofenceResponseDto();
+		try{
+			Auxiliar_data auxData = auxiliarDataDao.getPatientAuxiliarData(patientId);
+
+			if(auxData!=null){
+				
+				JsonParser parser = new JsonParser();
+				Object obj = null;
+				
+				if( auxData.getGeofences()!=null){
+					obj = parser.parse(auxData.getGeofences());
+					JsonArray jsonGeofences = (JsonArray) obj;
+
+					JsonObject newGeofence = new JsonObject();
+					
+					newGeofence.addProperty("id", System.currentTimeMillis());
+					newGeofence.addProperty("radius", radius);
+					newGeofence.addProperty("latitude", geofenceLatitude);
+					newGeofence.addProperty("longitude", geofenceLongitude);
+					
+					jsonGeofences.add(newGeofence);
+					
+					auxData.setGeofences(jsonGeofences.toString());
+				}else{
+					obj = new Object();
+					JsonArray jsonGeofences = new JsonArray();
+					JsonObject newGeofence = new JsonObject();
+					
+					newGeofence.addProperty("id", System.currentTimeMillis());
+					newGeofence.addProperty("radius", radius);
+					newGeofence.addProperty("latitude", geofenceLatitude);
+					newGeofence.addProperty("longitude", geofenceLongitude);
+
+
+					jsonGeofences.add(newGeofence);
+					
+					auxData.setGeofences(jsonGeofences.toString());
+				}
+
+				auxiliarDataDao.update(auxData);
+
+			}else{
+				//Hem de crear un json nou
+				JsonObject newGeofence = new JsonObject();
+				
+				newGeofence.addProperty("id", System.currentTimeMillis());
+				newGeofence.addProperty("radius", radius);
+				newGeofence.addProperty("latitude", geofenceLatitude);
+				newGeofence.addProperty("longitude", geofenceLongitude);
+
+				JsonArray geofenceArray = new JsonArray();
+				geofenceArray.add(newGeofence);
+
+				auxData = new Auxiliar_data();
+				auxData.setPatientId(new BigDecimal(patientId));
+				auxData.setGeofences(geofenceArray.toString());
+
+				auxiliarDataDao.create(auxData);
+			}
+
+
+			responseDto.setCode("0");
+			responseDto.setMessage("addPatientGeofence OK");
+
+		}catch(Exception e){
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			log.error(sw.toString());
+
+			responseDto.setCode("-1");
+			responseDto.setMessage("addPatientGeofence Error");
 		}
 		return responseDto.createXMLString();
 	}
