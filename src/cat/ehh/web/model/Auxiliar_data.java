@@ -20,7 +20,7 @@ public class Auxiliar_data implements Serializable {
 	@Column(name="idAuxiliarData")
 	private long idAuxiliarData;
 
-	@Column(name="auxiliar_data")
+	@Column(name="auxiliar_data",length=100000)
 	private String auxiliar_data;
 
 	@Column(name="patientId")
