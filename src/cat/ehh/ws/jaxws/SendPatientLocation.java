@@ -19,13 +19,13 @@ import javax.xml.bind.annotation.XmlType;
 
 public class SendPatientLocation {
 
-    @XmlElement(name = "patientId")
+    @XmlElement(name = "patientId",namespace = "http://ws.ehh.cat/")
     private int arg0;
-    @XmlElement(name = "locationDate")
+    @XmlElement(name = "locationDate",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg1;
-    @XmlElement(name = "latitude")
+    @XmlElement(name = "latitude",namespace = "http://ws.ehh.cat/")
     private float arg2;
-    @XmlElement(name = "longitude")
+    @XmlElement(name = "longitude",namespace = "http://ws.ehh.cat/")
     private float arg3;
 
     public int getArg0() {

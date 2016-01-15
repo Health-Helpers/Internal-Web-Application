@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.ehh.cat/" elementFormDefault="unqualified" targetNamespace="http://ws.ehh.cat/" version="1.0">
+<?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.ehh.cat/" elementFormDefault="qualified" targetNamespace="http://ws.ehh.cat/" version="1.0">
 <xs:element name="addPatientGeofence" type="tns:addPatientGeofence"/>
 <xs:element name="addPatientGeofenceResponse" type="tns:addPatientGeofenceResponse"/>
 <xs:element name="addPatientToResponsible" type="tns:addPatientToResponsible"/>

@@ -19,13 +19,13 @@ import javax.xml.bind.annotation.XmlType;
 
 public class AddPatientGeofence {
 
-    @XmlElement(name = "patientId")
+    @XmlElement(name = "patientId",namespace = "http://ws.ehh.cat/")
     private int arg0;
-    @XmlElement(name = "radius")
+    @XmlElement(name = "radius",namespace = "http://ws.ehh.cat/")
     private int arg1;
-    @XmlElement(name = "latitude")
+    @XmlElement(name = "latitude",namespace = "http://ws.ehh.cat/")
     private double arg2;
-    @XmlElement(name = "longitude")
+    @XmlElement(name = "longitude",namespace = "http://ws.ehh.cat/")
     private double arg3;
 
     public int getArg0() {

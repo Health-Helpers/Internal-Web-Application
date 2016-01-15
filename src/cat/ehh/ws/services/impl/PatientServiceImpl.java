@@ -27,6 +27,7 @@ import cat.ehh.web.dto.GeofenceDTO;
 import cat.ehh.web.dto.responses.patient.AddPatientGeofenceResponseDto;
 import cat.ehh.web.dto.responses.patient.AddResponsibleToPatientResponseDto;
 import cat.ehh.web.dto.responses.patient.CreatePatientResponseDto;
+import cat.ehh.web.dto.responses.patient.DeleteGeofenceResponseDto;
 import cat.ehh.web.dto.responses.patient.DeletePatientResponseDto;
 import cat.ehh.web.dto.responses.patient.DeleteResponsibleFromPatientResponseDto;
 import cat.ehh.web.dto.responses.patient.GetPatientGeofenceResponseDto;
@@ -34,6 +35,7 @@ import cat.ehh.web.dto.responses.patient.GetPatientLocationResponseDto;
 import cat.ehh.web.dto.responses.patient.GetPatientResponsiblesResponseDto;
 import cat.ehh.web.dto.responses.patient.ReadPatientResponseDto;
 import cat.ehh.web.dto.responses.patient.SendPatientLocationResponseDto;
+import cat.ehh.web.dto.responses.patient.UpdateGeofenceResponseDto;
 import cat.ehh.web.dto.responses.patient.UpdatePatientResponseDto;
 import cat.ehh.web.model.Auxiliar_data;
 import cat.ehh.web.model.Patient;
@@ -300,11 +302,11 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 
 				JsonObject newLocation = new JsonObject();
 				if(date==null){
-					date = DateUtil.getStringFromDate(new Date());
+					date = DateUtil.getTimestampStringFromDate(new Date());
 				}
 				newLocation.addProperty("date", date);
-				newLocation.addProperty("latitude", date);
-				newLocation.addProperty("longitude", date);
+				newLocation.addProperty("latitude", latitude);
+				newLocation.addProperty("longitude", longitude);
 
 				jsonLocations.add(newLocation);
 
@@ -316,7 +318,7 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 				//Hem de crear un json nou
 				JsonObject newLocation = new JsonObject();
 				if(date==null){
-					date = DateUtil.getStringFromDate(new Date());
+					date = DateUtil.getTimestampStringFromDate(new Date());
 				}
 				newLocation.addProperty("date", date);
 				newLocation.addProperty("latitude", latitude);
@@ -363,7 +365,7 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 
 			if(jsonLocations!=null && jsonLocations.size()>0){
 				JsonObject locationJsonObject = (JsonObject) jsonLocations.get(jsonLocations.size()-1);
-				String locationDate = locationJsonObject.get("date").getAsString();
+				String locationDate = DateUtil.getTimestampStringFromDate(DateUtil.getDateFromString(locationJsonObject.get("date").getAsString()));
 				String locationLat = locationJsonObject.get("latitude").getAsString();
 				String locationLon = locationJsonObject.get("longitude").getAsString();
 				
@@ -491,7 +493,6 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 				auxiliarDataDao.create(auxData);
 			}
 
-
 			responseDto.setCode("0");
 			responseDto.setMessage("addPatientGeofence OK");
 
@@ -507,15 +508,86 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 	}
 
 	@Override
-	public String updatePatientGeofence(int patientId, long geofenceId, int radius, double geofenceLatitude,
-			double geofenceLongitude) {
-		// TODO Auto-generated method stub
-		return null;
+	public String updatePatientGeofence(int patientId, long geofenceId, int radius, double geofenceLatitude,double geofenceLongitude) {
+		UpdateGeofenceResponseDto responseDto = new UpdateGeofenceResponseDto();
+		try{
+			Auxiliar_data auxData = auxiliarDataDao.getPatientAuxiliarData(patientId);
+
+			if(auxData!=null){
+				
+				JsonParser parser = new JsonParser();
+				Object obj = null;
+				
+				if(auxData.getGeofences()!=null){
+					obj = parser.parse(auxData.getGeofences());
+					JsonArray jsonGeofences = (JsonArray) obj;
+
+					for(JsonElement geofenceJsonElement : jsonGeofences){
+						JsonObject geofenceJsonObj = geofenceJsonElement.getAsJsonObject();
+						
+						if(geofenceJsonObj.get("id").getAsLong() == geofenceId){
+							geofenceJsonObj.addProperty("radius", radius);
+							geofenceJsonObj.addProperty("latitude", geofenceLatitude);
+							geofenceJsonObj.addProperty("longitude", geofenceLongitude);
+						}
+					}
+					auxData.setGeofences(jsonGeofences.toString());
+				}
+				auxiliarDataDao.update(auxData);
+			}
+
+			responseDto.setCode("0");
+			responseDto.setMessage("updatePatientGeofence OK");
+
+		}catch(Exception e){
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			log.error(sw.toString());
+
+			responseDto.setCode("-1");
+			responseDto.setMessage("updatePatientGeofence Error");
+		}
+		return responseDto.createXMLString();
 	}
 
 	@Override
 	public String deletePatientGeofence(int patientId, long geofenceId) {
-		// TODO Auto-generated method stub
-		return null;
+		DeleteGeofenceResponseDto responseDto = new DeleteGeofenceResponseDto();
+		try{
+			Auxiliar_data auxData = auxiliarDataDao.getPatientAuxiliarData(patientId);
+
+			if(auxData!=null){
+				
+				JsonParser parser = new JsonParser();
+				Object obj = null;
+				
+				if(auxData.getGeofences()!=null){
+					obj = parser.parse(auxData.getGeofences());
+					JsonArray jsonGeofences = (JsonArray) obj;
+
+					for(JsonElement geofenceJsonElement : jsonGeofences){
+						JsonObject geofenceJsonObj = geofenceJsonElement.getAsJsonObject();
+						
+						if(geofenceJsonObj.get("id").getAsLong() == geofenceId){
+							jsonGeofences.remove(geofenceJsonElement);
+						}
+					}
+					auxData.setGeofences(jsonGeofences.toString());
+				}
+				auxiliarDataDao.update(auxData);
+			}
+
+			responseDto.setCode("0");
+			responseDto.setMessage("deletePatientGeofence OK");
+
+		}catch(Exception e){
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			log.error(sw.toString());
+
+			responseDto.setCode("-1");
+			responseDto.setMessage("deletePatientGeofence Error");
+		}
+		return responseDto.createXMLString();
 	}
 }

@@ -19,9 +19,9 @@ import javax.xml.bind.annotation.XmlType;
 
 public class DeletePatientGeofence {
 
-    @XmlElement(name = "patientId")
+    @XmlElement(name = "patientId",namespace = "http://ws.ehh.cat/")
     private int arg0;
-    @XmlElement(name = "geofenceId")
+    @XmlElement(name = "geofenceId",namespace = "http://ws.ehh.cat/")
     private long arg1;
 
     public int getArg0() {

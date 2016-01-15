@@ -19,11 +19,11 @@ import javax.xml.bind.annotation.XmlType;
 
 public class RegisterUser {
 
-    @XmlElement(name = "idDoc")
+    @XmlElement(name = "idDoc",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg0;
-    @XmlElement(name = "phone")
+    @XmlElement(name = "phone",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg1;
-    @XmlElement(name = "parseInstallationId")
+    @XmlElement(name = "parseInstallationId",namespace = "http://ws.ehh.cat/")
     private java.lang.String arg2;
 
     public java.lang.String getArg0() {

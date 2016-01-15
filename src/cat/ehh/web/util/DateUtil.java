@@ -22,4 +22,13 @@ public class DateUtil {
 		strDate = formatter.format(date);
 		return strDate;	
 		}
+	
+	public static String getTimestampStringFromDate(Date date){
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		String strDate = "";
+		strDate = formatter.format(date);
+		return strDate;	
+		}
+	
+	
 }
