@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.ehh.cat/" targetNamespace="http://ws.ehh.cat/" version="1.0">
+<?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.ehh.cat/" elementFormDefault="unqualified" targetNamespace="http://ws.ehh.cat/" version="1.0">
+<xs:element name="addPatientGeofence" type="tns:addPatientGeofence"/>
+<xs:element name="addPatientGeofenceResponse" type="tns:addPatientGeofenceResponse"/>
 <xs:element name="addPatientToResponsible" type="tns:addPatientToResponsible"/>
 <xs:element name="addPatientToResponsibleResponse" type="tns:addPatientToResponsibleResponse"/>
 <xs:element name="addResponsibleToPatient" type="tns:addResponsibleToPatient"/>
@@ -10,11 +12,15 @@
 <xs:element name="deletePatient" type="tns:deletePatient"/>
 <xs:element name="deletePatientFromResponsible" type="tns:deletePatientFromResponsible"/>
 <xs:element name="deletePatientFromResponsibleResponse" type="tns:deletePatientFromResponsibleResponse"/>
+<xs:element name="deletePatientGeofence" type="tns:deletePatientGeofence"/>
+<xs:element name="deletePatientGeofenceResponse" type="tns:deletePatientGeofenceResponse"/>
 <xs:element name="deletePatientResponse" type="tns:deletePatientResponse"/>
 <xs:element name="deleteResponsible" type="tns:deleteResponsible"/>
 <xs:element name="deleteResponsibleFromPatient" type="tns:deleteResponsibleFromPatient"/>
 <xs:element name="deleteResponsibleFromPatientResponse" type="tns:deleteResponsibleFromPatientResponse"/>
 <xs:element name="deleteResponsibleResponse" type="tns:deleteResponsibleResponse"/>
+<xs:element name="getPatientGeofences" type="tns:getPatientGeofences"/>
+<xs:element name="getPatientGeofencesResponse" type="tns:getPatientGeofencesResponse"/>
 <xs:element name="getPatientLocation" type="tns:getPatientLocation"/>
 <xs:element name="getPatientLocationResponse" type="tns:getPatientLocationResponse"/>
 <xs:element name="getPatientResponsibles" type="tns:getPatientResponsibles"/>
@@ -27,116 +33,24 @@
 <xs:element name="readPatientResponse" type="tns:readPatientResponse"/>
 <xs:element name="readResponsible" type="tns:readResponsible"/>
 <xs:element name="readResponsibleResponse" type="tns:readResponsibleResponse"/>
+<xs:element name="registerUser" type="tns:registerUser"/>
+<xs:element name="registerUserResponse" type="tns:registerUserResponse"/>
 <xs:element name="sendPatientLocation" type="tns:sendPatientLocation"/>
 <xs:element name="sendPatientLocationResponse" type="tns:sendPatientLocationResponse"/>
 <xs:element name="updatePatient" type="tns:updatePatient"/>
+<xs:element name="updatePatientGeofence" type="tns:updatePatientGeofence"/>
+<xs:element name="updatePatientGeofenceResponse" type="tns:updatePatientGeofenceResponse"/>
 <xs:element name="updatePatientResponse" type="tns:updatePatientResponse"/>
 <xs:element name="updateResponsible" type="tns:updateResponsible"/>
 <xs:element name="updateResponsibleResponse" type="tns:updateResponsibleResponse"/>
-<xs:complexType name="createResponsible">
-    <xs:sequence>
-      <xs:element form="qualified" minOccurs="0" name="name" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="surname" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="idDoc" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="phone" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="birthdate" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="address" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="langId" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="createResponsibleResponse">
-    <xs:sequence>
-      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="deleteResponsible">
-    <xs:sequence>
-      <xs:element form="qualified" name="responsibleId" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="deleteResponsibleResponse">
-    <xs:sequence>
-      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="sendPatientLocation">
-    <xs:sequence>
-      <xs:element name="patientId" type="xs:int"/>
-      <xs:element minOccurs="1" name="locationDate" type="xs:string"/>
-      <xs:element name="latitude" type="xs:float"/>
-      <xs:element name="longitude" type="xs:float"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="sendPatientLocationResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="getPatientLocation">
+<xs:complexType name="getPatientGeofences">
     <xs:sequence>
       <xs:element name="patientId" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="getPatientLocationResponse">
+<xs:complexType name="getPatientGeofencesResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="getPatientResponsibles">
-    <xs:sequence>
-      <xs:element form="qualified" name="patientId" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="getPatientResponsiblesResponse">
-    <xs:sequence>
-      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="updatePatient">
-    <xs:sequence>
-      <xs:element form="qualified" name="patientId" type="xs:int"/>
-      <xs:element form="qualified" minOccurs="0" name="name" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="surname" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="idDOc" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="phone" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="birthdate" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="address" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="disease" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="dependencyGrade" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="langId" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="updatePatientResponse">
-    <xs:sequence>
-      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="init">
-    <xs:sequence/>
-  </xs:complexType>
-<xs:complexType name="initResponse">
-    <xs:sequence/>
-  </xs:complexType>
-<xs:complexType name="deleteResponsibleFromPatient">
-    <xs:sequence>
-      <xs:element form="qualified" name="patientId" type="xs:int"/>
-      <xs:element form="qualified" name="responsibleId" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="deleteResponsibleFromPatientResponse">
-    <xs:sequence>
-      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="deletePatientFromResponsible">
-    <xs:sequence>
-      <xs:element form="qualified" name="patientId" type="xs:int"/>
-      <xs:element form="qualified" name="responsibleId" type="xs:int"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="deletePatientFromResponsibleResponse">
-    <xs:sequence>
-      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 <xs:complexType name="deletePatient">
@@ -160,6 +74,34 @@
       <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
+<xs:complexType name="addPatientToResponsible">
+    <xs:sequence>
+      <xs:element form="qualified" name="patientId" type="xs:int"/>
+      <xs:element form="qualified" name="responsibleId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="addPatientToResponsibleResponse">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="init">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="initResponse">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="deleteResponsibleFromPatient">
+    <xs:sequence>
+      <xs:element form="qualified" name="patientId" type="xs:int"/>
+      <xs:element form="qualified" name="responsibleId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deleteResponsibleFromPatientResponse">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
 <xs:complexType name="readPatient">
     <xs:sequence>
       <xs:element form="qualified" name="patientId" type="xs:int"/>
@@ -170,12 +112,90 @@
       <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
+<xs:complexType name="sendPatientLocation">
+    <xs:sequence>
+      <xs:element name="patientId" type="xs:int"/>
+      <xs:element minOccurs="0" name="locationDate" type="xs:string"/>
+      <xs:element name="latitude" type="xs:float"/>
+      <xs:element name="longitude" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="sendPatientLocationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="updatePatientGeofence">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+      <xs:element name="arg1" type="xs:long"/>
+      <xs:element name="arg2" type="xs:int"/>
+      <xs:element name="arg3" type="xs:double"/>
+      <xs:element name="arg4" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="updatePatientGeofenceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
 <xs:complexType name="readResponsible">
     <xs:sequence>
       <xs:element form="qualified" name="responsibleId" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
 <xs:complexType name="readResponsibleResponse">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deletePatientGeofence">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+      <xs:element name="arg1" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deletePatientGeofenceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="updatePatient">
+    <xs:sequence>
+      <xs:element form="qualified" name="patientId" type="xs:int"/>
+      <xs:element form="qualified" minOccurs="0" name="name" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="surname" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="idDOc" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="phone" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="birthdate" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="address" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="disease" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="dependencyGrade" type="xs:string"/>
+      <xs:element form="qualified" name="responsibleId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="updatePatientResponse">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deletePatientFromResponsible">
+    <xs:sequence>
+      <xs:element form="qualified" name="patientId" type="xs:int"/>
+      <xs:element form="qualified" name="responsibleId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deletePatientFromResponsibleResponse">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deleteResponsible">
+    <xs:sequence>
+      <xs:element form="qualified" name="responsibleId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deleteResponsibleResponse">
     <xs:sequence>
       <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
@@ -190,7 +210,7 @@
       <xs:element form="qualified" minOccurs="0" name="address" type="xs:string"/>
       <xs:element form="qualified" minOccurs="0" name="disease" type="xs:string"/>
       <xs:element form="qualified" minOccurs="0" name="dependencyGrade" type="xs:string"/>
-      <xs:element form="qualified" minOccurs="0" name="langId" type="xs:string"/>
+      <xs:element form="qualified" name="responsibleId" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
 <xs:complexType name="createPatientResponse">
@@ -198,13 +218,22 @@
       <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="addPatientToResponsible">
+<xs:complexType name="getPatientResponsibles">
     <xs:sequence>
       <xs:element form="qualified" name="patientId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getPatientResponsiblesResponse">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getResponsiblePatients">
+    <xs:sequence>
       <xs:element form="qualified" name="responsibleId" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="addPatientToResponsibleResponse">
+<xs:complexType name="getResponsiblePatientsResponse">
     <xs:sequence>
       <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
@@ -226,14 +255,55 @@
       <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="getResponsiblePatients">
+<xs:complexType name="getPatientLocation">
     <xs:sequence>
-      <xs:element form="qualified" name="responsibleId" type="xs:int"/>
+      <xs:element name="patientId" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="getResponsiblePatientsResponse">
+<xs:complexType name="getPatientLocationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="createResponsible">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="name" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="surname" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="idDoc" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="phone" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="birthdate" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="address" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="langId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="createResponsibleResponse">
     <xs:sequence>
       <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="addPatientGeofence">
+    <xs:sequence>
+      <xs:element name="patientId" type="xs:int"/>
+      <xs:element name="radius" type="xs:int"/>
+      <xs:element name="latitude" type="xs:double"/>
+      <xs:element name="longitude" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="addPatientGeofenceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="registerUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idDoc" type="xs:string"/>
+      <xs:element minOccurs="0" name="phone" type="xs:string"/>
+      <xs:element minOccurs="0" name="parseInstallationId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="registerUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

@@ -89,6 +89,16 @@ public class SoapWSController extends SpringBeanAutowiringSupport{
 		return patientService.addPatientGeofence(patientId,radius,geofenceLatitude,geofenceLongitude);
 	}
 	
+	@WebMethod
+	public String updatePatientGeofence(int patientId,long geofenceId,int radius, double geofenceLatitude,double geofenceLongitude){
+		return patientService.updatePatientGeofence(patientId,geofenceId,radius,geofenceLatitude,geofenceLongitude);
+	}
+	
+	@WebMethod
+	public String deletePatientGeofence(int patientId,long geofenceId){
+		return patientService.deletePatientGeofence(patientId,geofenceId);
+	}
+	
 	/************************************Responsible***********************************************/
 	@WebMethod
 	public String createResponsible(String name, String surname,String idDoc, String phone, String birthdate, String adress, String langId){

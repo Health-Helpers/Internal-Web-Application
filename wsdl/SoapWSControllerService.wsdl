@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions name="SoapWSControllerService" targetNamespace="http://ws.ehh.cat/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.ehh.cat/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<wsdl:definitions name="SoapWSControllerService" targetNamespace="http://ws.ehh.cat/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.ehh.cat/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <wsdl:types>
 <schema xmlns="http://www.w3.org/2001/XMLSchema">
   <import namespace="http://ws.ehh.cat/" schemaLocation="SoapWSControllerService_schema1.xsd"></import>
 </schema>
   </wsdl:types>
-  <wsdl:message name="init">
-    <wsdl:part name="parameters" element="tns:init">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getResponsiblePatientsResponse">
-    <wsdl:part name="parameters" element="tns:getResponsiblePatientsResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="updatePatient">
-    <wsdl:part name="parameters" element="tns:updatePatient">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="initResponse">
     <wsdl:part name="parameters" element="tns:initResponse">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="deleteResponsibleFromPatient">
-    <wsdl:part name="parameters" element="tns:deleteResponsibleFromPatient">
+  <wsdl:message name="addPatientToResponsible">
+    <wsdl:part name="parameters" element="tns:addPatientToResponsible">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="createPatient">
-    <wsdl:part name="parameters" element="tns:createPatient">
+  <wsdl:message name="addPatientGeofenceResponse">
+    <wsdl:part name="parameters" element="tns:addPatientGeofenceResponse">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="readPatientResponse">
-    <wsdl:part name="parameters" element="tns:readPatientResponse">
+  <wsdl:message name="init">
+    <wsdl:part name="parameters" element="tns:init">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendPatientLocation">
+    <wsdl:part name="parameters" element="tns:sendPatientLocation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteResponsibleFromPatientResponse">
+    <wsdl:part name="parameters" element="tns:deleteResponsibleFromPatientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePatientGeofence">
+    <wsdl:part name="parameters" element="tns:updatePatientGeofence">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getPatientLocationResponse">
@@ -41,159 +41,151 @@
     <wsdl:part name="parameters" element="tns:sendPatientLocationResponse">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="createResponsible">
-    <wsdl:part name="parameters" element="tns:createResponsible">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="deletePatientResponse">
-    <wsdl:part name="parameters" element="tns:deletePatientResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="addResponsibleToPatient">
-    <wsdl:part name="parameters" element="tns:addResponsibleToPatient">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="updatePatientResponse">
-    <wsdl:part name="parameters" element="tns:updatePatientResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="deleteResponsibleResponse">
-    <wsdl:part name="parameters" element="tns:deleteResponsibleResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="deletePatientFromResponsibleResponse">
-    <wsdl:part name="parameters" element="tns:deletePatientFromResponsibleResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="addPatientToResponsible">
-    <wsdl:part name="parameters" element="tns:addPatientToResponsible">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="createPatientResponse">
-    <wsdl:part name="parameters" element="tns:createPatientResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="sendPatientLocation">
-    <wsdl:part name="parameters" element="tns:sendPatientLocation">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getPatientResponsiblesResponse">
-    <wsdl:part name="parameters" element="tns:getPatientResponsiblesResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="deletePatient">
-    <wsdl:part name="parameters" element="tns:deletePatient">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getPatientResponsibles">
-    <wsdl:part name="parameters" element="tns:getPatientResponsibles">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="addPatientToResponsibleResponse">
-    <wsdl:part name="parameters" element="tns:addPatientToResponsibleResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="addResponsibleToPatientResponse">
-    <wsdl:part name="parameters" element="tns:addResponsibleToPatientResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="createResponsibleResponse">
-    <wsdl:part name="parameters" element="tns:createResponsibleResponse">
+  <wsdl:message name="readResponsibleResponse">
+    <wsdl:part name="parameters" element="tns:readResponsibleResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="updateResponsibleResponse">
     <wsdl:part name="parameters" element="tns:updateResponsibleResponse">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="readResponsibleResponse">
-    <wsdl:part name="parameters" element="tns:readResponsibleResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getResponsiblePatients">
-    <wsdl:part name="parameters" element="tns:getResponsiblePatients">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="readResponsible">
-    <wsdl:part name="parameters" element="tns:readResponsible">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="updateResponsible">
-    <wsdl:part name="parameters" element="tns:updateResponsible">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="deleteResponsible">
-    <wsdl:part name="parameters" element="tns:deleteResponsible">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="deleteResponsibleFromPatientResponse">
-    <wsdl:part name="parameters" element="tns:deleteResponsibleFromPatientResponse">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="readPatient">
-    <wsdl:part name="parameters" element="tns:readPatient">
+  <wsdl:message name="getPatientGeofencesResponse">
+    <wsdl:part name="parameters" element="tns:getPatientGeofencesResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="deletePatientFromResponsible">
     <wsdl:part name="parameters" element="tns:deletePatientFromResponsible">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="deleteResponsible">
+    <wsdl:part name="parameters" element="tns:deleteResponsible">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createResponsibleResponse">
+    <wsdl:part name="parameters" element="tns:createResponsibleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPatientResponsibles">
+    <wsdl:part name="parameters" element="tns:getPatientResponsibles">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getPatientLocation">
     <wsdl:part name="parameters" element="tns:getPatientLocation">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="deletePatientFromResponsibleResponse">
+    <wsdl:part name="parameters" element="tns:deletePatientFromResponsibleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addResponsibleToPatientResponse">
+    <wsdl:part name="parameters" element="tns:addResponsibleToPatientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deletePatientResponse">
+    <wsdl:part name="parameters" element="tns:deletePatientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteResponsibleResponse">
+    <wsdl:part name="parameters" element="tns:deleteResponsibleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createPatientResponse">
+    <wsdl:part name="parameters" element="tns:createPatientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPatientGeofence">
+    <wsdl:part name="parameters" element="tns:addPatientGeofence">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerUser">
+    <wsdl:part name="parameters" element="tns:registerUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPatientGeofences">
+    <wsdl:part name="parameters" element="tns:getPatientGeofences">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deletePatient">
+    <wsdl:part name="parameters" element="tns:deletePatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addResponsibleToPatient">
+    <wsdl:part name="parameters" element="tns:addResponsibleToPatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getResponsiblePatientsResponse">
+    <wsdl:part name="parameters" element="tns:getResponsiblePatientsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteResponsibleFromPatient">
+    <wsdl:part name="parameters" element="tns:deleteResponsibleFromPatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="readPatient">
+    <wsdl:part name="parameters" element="tns:readPatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPatientToResponsibleResponse">
+    <wsdl:part name="parameters" element="tns:addPatientToResponsibleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="readResponsible">
+    <wsdl:part name="parameters" element="tns:readResponsible">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deletePatientGeofenceResponse">
+    <wsdl:part name="parameters" element="tns:deletePatientGeofenceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="readPatientResponse">
+    <wsdl:part name="parameters" element="tns:readPatientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deletePatientGeofence">
+    <wsdl:part name="parameters" element="tns:deletePatientGeofence">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePatient">
+    <wsdl:part name="parameters" element="tns:updatePatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createPatient">
+    <wsdl:part name="parameters" element="tns:createPatient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePatientGeofenceResponse">
+    <wsdl:part name="parameters" element="tns:updatePatientGeofenceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getResponsiblePatients">
+    <wsdl:part name="parameters" element="tns:getResponsiblePatients">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateResponsible">
+    <wsdl:part name="parameters" element="tns:updateResponsible">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePatientResponse">
+    <wsdl:part name="parameters" element="tns:updatePatientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerUserResponse">
+    <wsdl:part name="parameters" element="tns:registerUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createResponsible">
+    <wsdl:part name="parameters" element="tns:createResponsible">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPatientResponsiblesResponse">
+    <wsdl:part name="parameters" element="tns:getPatientResponsiblesResponse">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="SoapWSController">
-    <wsdl:operation name="createResponsible">
-      <wsdl:input name="createResponsible" message="tns:createResponsible">
+    <wsdl:operation name="getPatientGeofences">
+      <wsdl:input name="getPatientGeofences" message="tns:getPatientGeofences">
     </wsdl:input>
-      <wsdl:output name="createResponsibleResponse" message="tns:createResponsibleResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="deleteResponsible">
-      <wsdl:input name="deleteResponsible" message="tns:deleteResponsible">
-    </wsdl:input>
-      <wsdl:output name="deleteResponsibleResponse" message="tns:deleteResponsibleResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="sendPatientLocation">
-      <wsdl:input name="sendPatientLocation" message="tns:sendPatientLocation">
-    </wsdl:input>
-      <wsdl:output name="sendPatientLocationResponse" message="tns:sendPatientLocationResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getPatientLocation">
-      <wsdl:input name="getPatientLocation" message="tns:getPatientLocation">
-    </wsdl:input>
-      <wsdl:output name="getPatientLocationResponse" message="tns:getPatientLocationResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getPatientResponsibles">
-      <wsdl:input name="getPatientResponsibles" message="tns:getPatientResponsibles">
-    </wsdl:input>
-      <wsdl:output name="getPatientResponsiblesResponse" message="tns:getPatientResponsiblesResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="updatePatient">
-      <wsdl:input name="updatePatient" message="tns:updatePatient">
-    </wsdl:input>
-      <wsdl:output name="updatePatientResponse" message="tns:updatePatientResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="init">
-      <wsdl:input name="init" message="tns:init">
-    </wsdl:input>
-      <wsdl:output name="initResponse" message="tns:initResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="deleteResponsibleFromPatient">
-      <wsdl:input name="deleteResponsibleFromPatient" message="tns:deleteResponsibleFromPatient">
-    </wsdl:input>
-      <wsdl:output name="deleteResponsibleFromPatientResponse" message="tns:deleteResponsibleFromPatientResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="deletePatientFromResponsible">
-      <wsdl:input name="deletePatientFromResponsible" message="tns:deletePatientFromResponsible">
-    </wsdl:input>
-      <wsdl:output name="deletePatientFromResponsibleResponse" message="tns:deletePatientFromResponsibleResponse">
+      <wsdl:output name="getPatientGeofencesResponse" message="tns:getPatientGeofencesResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="deletePatient">
@@ -208,10 +200,40 @@
       <wsdl:output name="addResponsibleToPatientResponse" message="tns:addResponsibleToPatientResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="addPatientToResponsible">
+      <wsdl:input name="addPatientToResponsible" message="tns:addPatientToResponsible">
+    </wsdl:input>
+      <wsdl:output name="addPatientToResponsibleResponse" message="tns:addPatientToResponsibleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="init">
+      <wsdl:input name="init" message="tns:init">
+    </wsdl:input>
+      <wsdl:output name="initResponse" message="tns:initResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteResponsibleFromPatient">
+      <wsdl:input name="deleteResponsibleFromPatient" message="tns:deleteResponsibleFromPatient">
+    </wsdl:input>
+      <wsdl:output name="deleteResponsibleFromPatientResponse" message="tns:deleteResponsibleFromPatientResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="readPatient">
       <wsdl:input name="readPatient" message="tns:readPatient">
     </wsdl:input>
       <wsdl:output name="readPatientResponse" message="tns:readPatientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendPatientLocation">
+      <wsdl:input name="sendPatientLocation" message="tns:sendPatientLocation">
+    </wsdl:input>
+      <wsdl:output name="sendPatientLocationResponse" message="tns:sendPatientLocationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePatientGeofence">
+      <wsdl:input name="updatePatientGeofence" message="tns:updatePatientGeofence">
+    </wsdl:input>
+      <wsdl:output name="updatePatientGeofenceResponse" message="tns:updatePatientGeofenceResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="readResponsible">
@@ -220,22 +242,40 @@
       <wsdl:output name="readResponsibleResponse" message="tns:readResponsibleResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="deletePatientGeofence">
+      <wsdl:input name="deletePatientGeofence" message="tns:deletePatientGeofence">
+    </wsdl:input>
+      <wsdl:output name="deletePatientGeofenceResponse" message="tns:deletePatientGeofenceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePatient">
+      <wsdl:input name="updatePatient" message="tns:updatePatient">
+    </wsdl:input>
+      <wsdl:output name="updatePatientResponse" message="tns:updatePatientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePatientFromResponsible">
+      <wsdl:input name="deletePatientFromResponsible" message="tns:deletePatientFromResponsible">
+    </wsdl:input>
+      <wsdl:output name="deletePatientFromResponsibleResponse" message="tns:deletePatientFromResponsibleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteResponsible">
+      <wsdl:input name="deleteResponsible" message="tns:deleteResponsible">
+    </wsdl:input>
+      <wsdl:output name="deleteResponsibleResponse" message="tns:deleteResponsibleResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="createPatient">
       <wsdl:input name="createPatient" message="tns:createPatient">
     </wsdl:input>
       <wsdl:output name="createPatientResponse" message="tns:createPatientResponse">
     </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="addPatientToResponsible">
-      <wsdl:input name="addPatientToResponsible" message="tns:addPatientToResponsible">
+    <wsdl:operation name="getPatientResponsibles">
+      <wsdl:input name="getPatientResponsibles" message="tns:getPatientResponsibles">
     </wsdl:input>
-      <wsdl:output name="addPatientToResponsibleResponse" message="tns:addPatientToResponsibleResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="updateResponsible">
-      <wsdl:input name="updateResponsible" message="tns:updateResponsible">
-    </wsdl:input>
-      <wsdl:output name="updateResponsibleResponse" message="tns:updateResponsibleResponse">
+      <wsdl:output name="getPatientResponsiblesResponse" message="tns:getPatientResponsiblesResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getResponsiblePatients">
@@ -244,87 +284,45 @@
       <wsdl:output name="getResponsiblePatientsResponse" message="tns:getResponsiblePatientsResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="updateResponsible">
+      <wsdl:input name="updateResponsible" message="tns:updateResponsible">
+    </wsdl:input>
+      <wsdl:output name="updateResponsibleResponse" message="tns:updateResponsibleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPatientLocation">
+      <wsdl:input name="getPatientLocation" message="tns:getPatientLocation">
+    </wsdl:input>
+      <wsdl:output name="getPatientLocationResponse" message="tns:getPatientLocationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createResponsible">
+      <wsdl:input name="createResponsible" message="tns:createResponsible">
+    </wsdl:input>
+      <wsdl:output name="createResponsibleResponse" message="tns:createResponsibleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPatientGeofence">
+      <wsdl:input name="addPatientGeofence" message="tns:addPatientGeofence">
+    </wsdl:input>
+      <wsdl:output name="addPatientGeofenceResponse" message="tns:addPatientGeofenceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerUser">
+      <wsdl:input name="registerUser" message="tns:registerUser">
+    </wsdl:input>
+      <wsdl:output name="registerUserResponse" message="tns:registerUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SoapWSControllerServiceSoapBinding" type="tns:SoapWSController">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="createResponsible">
+    <wsdl:operation name="getPatientGeofences">
       <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="createResponsible">
+      <wsdl:input name="getPatientGeofences">
         <soap:body use="literal"/>
       </wsdl:input>
-      <wsdl:output name="createResponsibleResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="deleteResponsible">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="deleteResponsible">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="deleteResponsibleResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="sendPatientLocation">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="sendPatientLocation">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="sendPatientLocationResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getPatientLocation">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="getPatientLocation">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="getPatientLocationResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getPatientResponsibles">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="getPatientResponsibles">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="getPatientResponsiblesResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="init">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="init">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="initResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="updatePatient">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="updatePatient">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="updatePatientResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="deletePatientFromResponsible">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="deletePatientFromResponsible">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="deletePatientFromResponsibleResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="deleteResponsibleFromPatient">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="deleteResponsibleFromPatient">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="deleteResponsibleFromPatientResponse">
+      <wsdl:output name="getPatientGeofencesResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -346,6 +344,33 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="addPatientToResponsible">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addPatientToResponsible">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addPatientToResponsibleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="init">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="init">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="initResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteResponsibleFromPatient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteResponsibleFromPatient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteResponsibleFromPatientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="readPatient">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="readPatient">
@@ -355,12 +380,66 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="addPatientToResponsible">
+    <wsdl:operation name="sendPatientLocation">
       <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="addPatientToResponsible">
+      <wsdl:input name="sendPatientLocation">
         <soap:body use="literal"/>
       </wsdl:input>
-      <wsdl:output name="addPatientToResponsibleResponse">
+      <wsdl:output name="sendPatientLocationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePatientGeofence">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updatePatientGeofence">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updatePatientGeofenceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readResponsible">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="readResponsible">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="readResponsibleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePatientGeofence">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deletePatientGeofence">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deletePatientGeofenceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePatient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updatePatient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updatePatientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePatientFromResponsible">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deletePatientFromResponsible">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deletePatientFromResponsibleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteResponsible">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteResponsible">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteResponsibleResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -373,12 +452,12 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="readResponsible">
+    <wsdl:operation name="getPatientResponsibles">
       <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="readResponsible">
+      <wsdl:input name="getPatientResponsibles">
         <soap:body use="literal"/>
       </wsdl:input>
-      <wsdl:output name="readResponsibleResponse">
+      <wsdl:output name="getPatientResponsiblesResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -397,6 +476,42 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="updateResponsibleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPatientLocation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPatientLocation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPatientLocationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createResponsible">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createResponsible">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createResponsibleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPatientGeofence">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addPatientGeofence">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addPatientGeofenceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="registerUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerUserResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

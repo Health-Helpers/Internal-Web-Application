@@ -505,4 +505,17 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 		}
 		return responseDto.createXMLString();
 	}
+
+	@Override
+	public String updatePatientGeofence(int patientId, long geofenceId, int radius, double geofenceLatitude,
+			double geofenceLongitude) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deletePatientGeofence(int patientId, long geofenceId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

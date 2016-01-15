@@ -18,4 +18,7 @@ public interface PatientService {
 	public String getPatientLocation(int patientId);
 	public String getPatientGeofences(int patientId);
 	public String addPatientGeofence(int patientId, int radius, double geofenceLatitude, double geofenceLongitude);
+	public String updatePatientGeofence(int patientId, long geofenceId, int radius, double geofenceLatitude,
+			double geofenceLongitude);
+	public String deletePatientGeofence(int patientId, long geofenceId);
 }

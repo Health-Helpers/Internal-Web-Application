@@ -55,22 +55,20 @@ public class UserDAO extends DAO<UserEHH> {
 		return llistatTots;
 	}
 
-	public boolean checkUserExistence(String idDoc, String phone) {
-		
+	public UserEHH checkUserExistence(String idDoc, String phone) {
+
 		Query query = entityManager.createQuery("SELECT u FROM UserEHH u where u.iddoc = ?1 and u.phone = ?2");
 		query.setParameter(1, idDoc);
 		query.setParameter(2, phone);
-		
-		List<UserEHH> userList = (List<UserEHH>) query.getResultList();
-		
-		if(userList!=null && userList.size()==0){
-			return false;	
-		}else if(userList==null || userList.size()>0){
-			return true;
-		}else{
-			return true;
+
+		UserEHH user = null;
+		try{
+			user = (UserEHH) query.getSingleResult();
+		}catch(Exception e){
+			
 		}
 		
+		return user;
 	}
 }
 

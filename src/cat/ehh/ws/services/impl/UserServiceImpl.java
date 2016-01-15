@@ -37,20 +37,16 @@ public class UserServiceImpl extends SpringBeanAutowiringSupport implements User
 	@Override
 	public String registerUser(String idDoc, String phone,String parseInstallationId) {
 		CreateUserResponseDto responseDto = new CreateUserResponseDto();
-		UserEHH user = new UserEHH();
 
 		try{
+			UserEHH user = userDao.checkUserExistence(idDoc,phone);
+			if(user!=null){
 
-			//TODO: Comprovar que no n'existeixi cap amb aquest DNI + telf
-			if(!userDao.checkUserExistence(idDoc,phone)){
-
-				user.setPhone(phone);
-				user.setIddoc(idDoc);
 				user.setInstallationId(parseInstallationId);
 
-				user = userDao.create(user);
+				user = userDao.update(user);
 
-				//Enviar una PUSH a l'usuari recient creat mitjantçant l'API REST del parse.com
+				//Enviar una PUSH a l'usuari recient creat mitjantï¿½ant l'API REST del parse.com
 				sendPushNotification(parseInstallationId,"Welcome");
 
 				responseDto.setCode("0");
@@ -58,7 +54,7 @@ public class UserServiceImpl extends SpringBeanAutowiringSupport implements User
 				responseDto.setUser(user);
 			}else{
 				responseDto.setCode("1");
-				responseDto.setMessage("Create User NOK :  User with same idDoc and phone already exist!");
+				responseDto.setMessage("Create User NOK : NO User with same idDoc and phone exist!");
 			}
 		}catch(Exception e){
 			StringWriter sw = new StringWriter();
