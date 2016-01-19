@@ -236,9 +236,9 @@ public class ResponsibleServiceImpl extends SpringBeanAutowiringSupport implemen
 
 			if(responsiblePatients!=null){
 				for(PatientResponsible patResp : responsiblePatients){
-					if(patResp.getPatient().getUser().getStatus()!=null && patResp.getPatient().getUser().getStatus().equals("1")){
+				//	if(patResp.getPatient().getUser().getStatus()!=null && patResp.getPatient().getUser().getStatus().equals("1")){
 						patientsList.add(patResp.getPatient());
-					}
+				//	}
 				}
 				responseDto.setResponsiblePatients(patientsList);
 			}

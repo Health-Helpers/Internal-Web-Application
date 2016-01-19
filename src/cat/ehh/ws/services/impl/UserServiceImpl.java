@@ -46,7 +46,7 @@ public class UserServiceImpl extends SpringBeanAutowiringSupport implements User
 
 				user = userDao.update(user);
 
-				//Enviar una PUSH a l'usuari recient creat mitjant�ant l'API REST del parse.com
+				//Enviar una PUSH a l'usuari recient creat mitjantcant l'API REST del parse.com
 				sendPushNotification(parseInstallationId,"Welcome");
 
 				responseDto.setCode("0");
