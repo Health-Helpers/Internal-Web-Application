@@ -55,7 +55,8 @@ public class ResponsibleServiceImpl extends SpringBeanAutowiringSupport implemen
 			Date birthD = DateUtil.getDateFromString(birthdate);
 
 			UserEHH user = new UserEHH(adress, birthD, idDoc, langIdBigDeci, name, phone, surname, Constants.RESPONSIBLE);
-			user.setStatus("1");
+			//FIXME: Active for demo. Otherwise it will be INACTIVE
+			user.setStatus(Constants.ACTIVE);
 			user = userDao.create(user);
 
 			Responsible responsible = new Responsible();
@@ -236,9 +237,9 @@ public class ResponsibleServiceImpl extends SpringBeanAutowiringSupport implemen
 
 			if(responsiblePatients!=null){
 				for(PatientResponsible patResp : responsiblePatients){
-				//	if(patResp.getPatient().getUser().getStatus()!=null && patResp.getPatient().getUser().getStatus().equals("1")){
+//					if(patResp.getPatient().getUser().getStatus()!=null && patResp.getPatient().getUser().getStatus().equals(Constants.ACTIVE)){
 						patientsList.add(patResp.getPatient());
-				//	}
+//					}
 				}
 				responseDto.setResponsiblePatients(patientsList);
 			}

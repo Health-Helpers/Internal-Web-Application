@@ -73,8 +73,6 @@ public class UserEHH implements Serializable {
 		this.phone = phone;
 		this.surname = surname;
 		this.type = type;
-		//FIXME: Status initially must be zero
-		this.status = Constants.ACTIVE;
 	}
 
 	public long getUserId() {

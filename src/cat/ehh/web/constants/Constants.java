@@ -6,5 +6,5 @@ public class Constants {
 	public static int RESPONSIBLE = 1;
 	
 	public static String ACTIVE = "1";
-	public static String UNACTIVE = "0";
+	public static String INACTIVE = "0";
 }

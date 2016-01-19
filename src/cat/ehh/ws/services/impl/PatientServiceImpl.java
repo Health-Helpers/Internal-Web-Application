@@ -76,6 +76,8 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 			Date birthD = DateUtil.getDateFromString(birthdate);
 
 			UserEHH user = new UserEHH(adress, birthD, idDoc, new BigDecimal(0), name, phone, surname, Constants.PATIENT);
+			//FIXME: Active for demo. Otherwise it will be INACTIVE
+			user.setStatus(Constants.ACTIVE);
 			user = userDao.create(user);
 
 			Patient patient = new Patient();
