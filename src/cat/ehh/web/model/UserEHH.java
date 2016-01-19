@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.*;
+
+import cat.ehh.web.constants.Constants;
+
 import java.util.Date;
 import java.util.List;
 
@@ -71,7 +74,7 @@ public class UserEHH implements Serializable {
 		this.surname = surname;
 		this.type = type;
 		//FIXME: Status initially must be zero
-		this.status = "1";
+		this.status = Constants.ACTIVE;
 	}
 
 	public long getUserId() {
