@@ -420,7 +420,7 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 			}
 			
 			responseDto.setCode("0");
-			responseDto.setMessage("getPatientLocation OK");
+			responseDto.setMessage("getPatientGeofences OK");
 
 		}catch(Exception e){
 			StringWriter sw = new StringWriter();
@@ -428,7 +428,7 @@ public class PatientServiceImpl extends SpringBeanAutowiringSupport implements P
 			log.error(sw.toString());
 
 			responseDto.setCode("-1");
-			responseDto.setMessage("getPatientLocation Error");
+			responseDto.setMessage("getPatientGeofences Error");
 		}
 		return responseDto.createXMLString();
 	}

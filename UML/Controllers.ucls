@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="cat.ehh.web.controller.WelcomeController" project="EHHWeb" 
     file="/EHHWeb/src/cat/ehh/web/controller/WelcomeController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="183" y="118"/>    
+    <position height="173" width="357" x="524" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="cat.ehh.web.controller.LanguageController" project="EHHWeb" 
     file="/EHHWeb/src/cat/ehh/web/controller/LanguageController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="571" y="162"/>    
+    <position height="245" width="443" x="41" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="cat.ehh.web.controller.LoginController" project="EHHWeb" 
     file="/EHHWeb/src/cat/ehh/web/controller/LoginController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="188" y="298"/>    
+    <position height="173" width="400" x="1374" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="cat.ehh.web.controller.UserController" project="EHHWeb" 
     file="/EHHWeb/src/cat/ehh/web/controller/UserController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="569" y="428"/>    
+    <position height="245" width="413" x="921" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

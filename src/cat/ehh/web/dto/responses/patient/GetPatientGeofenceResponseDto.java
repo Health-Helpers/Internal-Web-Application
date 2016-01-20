@@ -78,7 +78,7 @@ public class GetPatientGeofenceResponseDto extends ResponseDTO{
 			if(this.getGeofenceList()!=null){
 				//geofence Elements
 				for(GeofenceDTO geofence : this.getGeofenceList()){
-					Element geofenceElement = doc.createElement("latitude");
+					Element geofenceElement = doc.createElement("geofence");
 					
 					Element idElement = doc.createElement("id");
 					if(geofence.getId()!=null){
@@ -94,7 +94,7 @@ public class GetPatientGeofenceResponseDto extends ResponseDTO{
 					
 					Element latitudeElement = doc.createElement("latitude");
 					if(geofence.getLatitude()!=null){
-						radiusElement.appendChild(doc.createTextNode(String.valueOf(geofence.getLatitude())));
+						latitudeElement.appendChild(doc.createTextNode(String.valueOf(geofence.getLatitude())));
 					}
 					geofenceElement.appendChild(latitudeElement);
 					
